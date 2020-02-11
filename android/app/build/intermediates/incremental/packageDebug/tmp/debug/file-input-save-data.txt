@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Feb 11 11:25:01 BRT 2020
+#Tue Feb 11 13:02:41 BRT 2020
 56.path=lib/arm64-v8a/libnative-filters.so
 5.base=/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 42.base=/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/transforms/mergeJniLibs/debug/0

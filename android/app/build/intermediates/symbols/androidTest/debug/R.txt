@@ -1,3 +1,0 @@
-int integer react_native_dev_server_port 0x7f010000
-int integer react_native_inspector_proxy_port 0x7f010001
-int string app_name 0x7f020000
