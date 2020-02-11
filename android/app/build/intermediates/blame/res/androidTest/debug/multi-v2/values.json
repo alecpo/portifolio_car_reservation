@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/home/alessandrocezar/workspace/usecargoapp/android/app/build/generated/res/resValues/androidTest/debug/values/generated.xml",
+                    "from": {
+                        "startLines": "6,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "157,221",
+                        "endColumns": "63,68",
+                        "endOffsets": "216,285"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,119",
+                        "endColumns": "63,68",
+                        "endOffsets": "114,183"
+                    }
+                },
+                {
+                    "source": "/home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/420909e6c0c46afa554e79684c4836ac/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "42",
+                        "endOffsets": "93"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "188",
+                        "endColumns": "42",
+                        "endOffsets": "226"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,220 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [com.facebook.react:react-native:0.61.5] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/3f7f3b24222f9e30a2f03a4d522cb4c0/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.appcompat:appcompat:1.0.2] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/e319c94d3a974e52df35a03aaaee079e/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/30740a3e8461efde389430c5bb239a7e/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/82443188fd44634a07066074f5088fde/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/98e05c9bbf28c0d33f23a01f71f20dde/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/6b15acd8099cbaf76b1b8ac15bc16d9e/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/76005af63c21b89f2b50f9b671531ca2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/8dbe4da794b8935c9ad73eb1da393ed7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/a446aa17a648ed7ad38f34bc7893d86b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/8c50966184c4953a8900d373c68dcb0b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/4a131849ddaea5a012e0cd011077fc0e/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/bfb4e74ed714a30e7a78bd62be57aae7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/fcfbd3c20ac2eff26220df0878a8dbd2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/e970a4987fde9cd37c49773d7795d704/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d9a82b985f2d4d2864c626a950fd3a37/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/92a7cc0e8328703e47f7e764cf90511d/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/f84ed3fa6955e82008ab3f35eb45da44/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d70910b9c11bb9ded05034eca0ee9d46/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/add2d0cbecfa0e4ba26c8664e946e385/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/478cc91eb65516b05b63c0dc1064c554/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/bc84573a630190cd46776693048fc74b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/664a2a00fce57b24de3668f4a93ff03f/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7374449d71399d86d8654175d3620de6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/acd949adbe65a32d5c3f5a00f096bc83/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/218a17c10eb8375f3fef8956cf77b03d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b3d42fba101353fcc2b02d3358b6b00e/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/fd099cce77ef46bee7eaae29e5c6e69c/AndroidManifest.xml:17:1-22:12
+MERGED from [org.webkit:android-jsc:r245459] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/79ab49745660c4ac001820c7b8cffada/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.fresco:fresco:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/9076cb3f39cbf1068977ba1f4731b52d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/aad60bd0f41936dc82740b50ab1932cf/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/75aa77e02cba6720357577b588a2f553/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/cc13e64f07dfc6f6839591eb86bacf32/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b1fcd4971384741c3807671d796e2f33/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d8856915b99a2fcf26f26403ad1d8418/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/342861978ff64e0bb53085df9e6451a8/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/5f847c6616d5eda0915d5f823605691e/AndroidManifest.xml:2:1-13:12
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7bc7dcffb9a599bd3d7b9c2d401d9ed7/AndroidManifest.xml:2:1-9:12
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+	package
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:2:3-28
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:2:3-28
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:6:5-24:19
+MERGED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:6:5-24:19
+MERGED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:6:5-24:19
+MERGED from [com.facebook.react:react-native:0.61.5] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/3f7f3b24222f9e30a2f03a4d522cb4c0/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.5] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/3f7f3b24222f9e30a2f03a4d522cb4c0/AndroidManifest.xml:11:5-20
+MERGED from [androidx.core:core:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/92a7cc0e8328703e47f7e764cf90511d/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/92a7cc0e8328703e47f7e764cf90511d/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/f84ed3fa6955e82008ab3f35eb45da44/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/f84ed3fa6955e82008ab3f35eb45da44/AndroidManifest.xml:22:5-23:19
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/5f847c6616d5eda0915d5f823605691e/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/5f847c6616d5eda0915d5f823605691e/AndroidManifest.xml:11:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/92a7cc0e8328703e47f7e764cf90511d/AndroidManifest.xml:22:18-86
+	android:label
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:8:7-39
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:8:7-39
+	tools:ignore
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:7:75-114
+	android:roundIcon
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:10:7-52
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:10:7-52
+	tools:targetApi
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:7:54-74
+	android:icon
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:9:7-41
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:9:7-41
+	android:allowBackup
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:11:7-34
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:11:7-34
+	android:theme
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:12:7-38
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:12:7-38
+	android:usesCleartextTraffic
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:7:18-53
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:7:7-38
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:7:7-38
+activity#com.usecargoapp.MainActivity
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:13:7-22:18
+	android:label
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:15:9-41
+	android:windowSoftInputMode
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:17:9-51
+	android:configChanges
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:16:9-79
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:14:9-37
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:18:9-21:25
+action#android.intent.action.MAIN
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:19:13-65
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:19:21-62
+category#android.intent.category.LAUNCHER
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:20:13-73
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:20:23-70
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:23:7-84
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml:23:17-81
+uses-sdk
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+MERGED from [com.facebook.react:react-native:0.61.5] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/3f7f3b24222f9e30a2f03a4d522cb4c0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.61.5] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/3f7f3b24222f9e30a2f03a4d522cb4c0/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.appcompat:appcompat:1.0.2] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/e319c94d3a974e52df35a03aaaee079e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.2] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/e319c94d3a974e52df35a03aaaee079e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/30740a3e8461efde389430c5bb239a7e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/30740a3e8461efde389430c5bb239a7e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/82443188fd44634a07066074f5088fde/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/82443188fd44634a07066074f5088fde/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/98e05c9bbf28c0d33f23a01f71f20dde/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/98e05c9bbf28c0d33f23a01f71f20dde/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/6b15acd8099cbaf76b1b8ac15bc16d9e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/6b15acd8099cbaf76b1b8ac15bc16d9e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/76005af63c21b89f2b50f9b671531ca2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/76005af63c21b89f2b50f9b671531ca2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/8dbe4da794b8935c9ad73eb1da393ed7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/8dbe4da794b8935c9ad73eb1da393ed7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/a446aa17a648ed7ad38f34bc7893d86b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/a446aa17a648ed7ad38f34bc7893d86b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/8c50966184c4953a8900d373c68dcb0b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/8c50966184c4953a8900d373c68dcb0b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/4a131849ddaea5a012e0cd011077fc0e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/4a131849ddaea5a012e0cd011077fc0e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/bfb4e74ed714a30e7a78bd62be57aae7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/bfb4e74ed714a30e7a78bd62be57aae7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/fcfbd3c20ac2eff26220df0878a8dbd2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/fcfbd3c20ac2eff26220df0878a8dbd2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/e970a4987fde9cd37c49773d7795d704/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/e970a4987fde9cd37c49773d7795d704/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d9a82b985f2d4d2864c626a950fd3a37/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d9a82b985f2d4d2864c626a950fd3a37/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/92a7cc0e8328703e47f7e764cf90511d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.1] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/92a7cc0e8328703e47f7e764cf90511d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/f84ed3fa6955e82008ab3f35eb45da44/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/f84ed3fa6955e82008ab3f35eb45da44/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d70910b9c11bb9ded05034eca0ee9d46/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d70910b9c11bb9ded05034eca0ee9d46/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/add2d0cbecfa0e4ba26c8664e946e385/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/add2d0cbecfa0e4ba26c8664e946e385/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/478cc91eb65516b05b63c0dc1064c554/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/478cc91eb65516b05b63c0dc1064c554/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/bc84573a630190cd46776693048fc74b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/bc84573a630190cd46776693048fc74b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/664a2a00fce57b24de3668f4a93ff03f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/664a2a00fce57b24de3668f4a93ff03f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7374449d71399d86d8654175d3620de6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7374449d71399d86d8654175d3620de6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/acd949adbe65a32d5c3f5a00f096bc83/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/acd949adbe65a32d5c3f5a00f096bc83/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/218a17c10eb8375f3fef8956cf77b03d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/218a17c10eb8375f3fef8956cf77b03d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b3d42fba101353fcc2b02d3358b6b00e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b3d42fba101353fcc2b02d3358b6b00e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/fd099cce77ef46bee7eaae29e5c6e69c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/fd099cce77ef46bee7eaae29e5c6e69c/AndroidManifest.xml:20:5-44
+MERGED from [org.webkit:android-jsc:r245459] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/79ab49745660c4ac001820c7b8cffada/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/79ab49745660c4ac001820c7b8cffada/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/9076cb3f39cbf1068977ba1f4731b52d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/9076cb3f39cbf1068977ba1f4731b52d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/aad60bd0f41936dc82740b50ab1932cf/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/aad60bd0f41936dc82740b50ab1932cf/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/75aa77e02cba6720357577b588a2f553/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/75aa77e02cba6720357577b588a2f553/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/cc13e64f07dfc6f6839591eb86bacf32/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/cc13e64f07dfc6f6839591eb86bacf32/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b1fcd4971384741c3807671d796e2f33/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b1fcd4971384741c3807671d796e2f33/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d8856915b99a2fcf26f26403ad1d8418/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/d8856915b99a2fcf26f26403ad1d8418/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/342861978ff64e0bb53085df9e6451a8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/342861978ff64e0bb53085df9e6451a8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/5f847c6616d5eda0915d5f823605691e/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/5f847c6616d5eda0915d5f823605691e/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7bc7dcffb9a599bd3d7b9c2d401d9ed7/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7bc7dcffb9a599bd3d7b9c2d401d9ed7/AndroidManifest.xml:5:5-7:41
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from /home/alessandrocezar/workspace/usecargoapp/android/app/src/debug/AndroidManifest.xml:5:22-75
