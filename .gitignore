@@ -39,7 +39,6 @@ buck-out
 .project
 .settings
 .classpath
-/android/
 
 # Watchman
 .watchmanconfig
