@@ -25,6 +25,7 @@ const LoginScreen = () => {
           textAlign="center"
         />
         <TextInput
+          testID="emailInput"
           placeholder={STRINGS.login.emailPlaceholder}
           autoCapitalize={"none"}
           keyboardType="email-address"
@@ -35,6 +36,7 @@ const LoginScreen = () => {
           textAlign="center"
         />
         <TextInput
+          testID="passwordInput"
           placeholder={STRINGS.login.passwordPlaceHolder}
           secureTextEntry
           autoCapitalize={"none"}
