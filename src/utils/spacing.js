@@ -1,6 +1,6 @@
 const spacing = {
-  big: "40px",
-  huge: "60px"
+  big: '40px',
+  huge: '60px'
 };
 
 export default spacing;

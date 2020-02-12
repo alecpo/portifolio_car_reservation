@@ -1,4 +1,4 @@
-#Tue Feb 11 13:02:41 BRT 2020
-base.0=/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Tue Feb 11 19:27:25 BRT 2020
+base.0=/home/alessandrocezar/cloneTemporario/usecargoapp/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

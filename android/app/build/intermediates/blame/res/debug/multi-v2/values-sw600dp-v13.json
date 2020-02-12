@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "/home/alessandrocezar/cloneTemporario/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
                     "source": "/home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7035f019a9628244cee2c25fbf235b7b/res/values-sw600dp-v13/values-sw600dp-v13.xml",

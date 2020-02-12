@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/home/alessandrocezar/cloneTemporario/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
                     "source": "/home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/7035f019a9628244cee2c25fbf235b7b/res/values-land/values-land.xml",

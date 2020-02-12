@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "/home/alessandrocezar/cloneTemporario/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "/home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/638e3f0585a9a36f5a57012a7a086305/res/values-en-rXC/values-en-rXC.xml",
