@@ -1,7 +1,7 @@
-const detox = require("detox");
-const { Before, BeforeAll, AfterAll, After } = require("cucumber");
-const config = require("../../../package.json").detox;
-const adapter = require("./adapter");
+const detox = require('detox');
+const { Before, BeforeAll, AfterAll, After } = require('cucumber');
+const config = require('../../../package.json').detox;
+const adapter = require('./adapter');
 
 BeforeAll(async () => {
   await detox.init(config);
