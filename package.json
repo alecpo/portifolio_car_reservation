@@ -53,9 +53,10 @@
         "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
         "type": "android.emulator",
         "device": {
-          "avdName": "Nexus_6_API_28"
+          "avdName": "pixel2"
         }
       }
-    }
+    },
+    "test-runner": "mocha"
   }
 }

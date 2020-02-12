@@ -1,7 +1,4 @@
-#language: pt
+Feature: Demo Test
 
-Funcionalidade: Primeiro teste
-
-Cenário: Testar inputs de login
-Dado que eu esteja na tela de login
-Quando eu clico no input de email e digito um email
+    Scenario: Dextox Cucumber Example
+        Given I should have login screen

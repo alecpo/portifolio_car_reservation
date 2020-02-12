@@ -1,4 +1,4 @@
-const detox = require("detox");
+const detox = require('detox');
 class DetoxCucumberAdapter {
   constructor(detox) {
     this.detox = detox;
@@ -8,7 +8,7 @@ class DetoxCucumberAdapter {
     await this.detox.beforeEach({
       title: context.pickle.name,
       fullName: context.pickle.name,
-      status: "running"
+      status: 'running'
     });
   }
 
@@ -23,12 +23,12 @@ class DetoxCucumberAdapter {
 
   _mapStatus(context) {
     switch (context.result.status) {
-      case "passed":
-        return "passed";
-      case "failed":
-        return "failed";
+      case 'passed':
+        return 'passed';
+      case 'failed':
+        return 'failed';
       default:
-        return "failed";
+        return 'failed';
     }
   }
 }
