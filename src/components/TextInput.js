@@ -16,9 +16,9 @@ const TextInput = props => {
           onPress={() => setPasswordVisible(!passwordIsVisible)}
         >
           <Icon
-            name={passwordIsVisible ? 'eye' : 'eye-with-line'}
+            name={passwordIsVisible ? 'eye-with-line' : 'eye'}
             size={22}
-            color={COLORS.textInputBorderColorDefault}
+            color={COLORS.defaultGray}
           />
         </StyledShowPasswordButton>
       )}
@@ -31,7 +31,6 @@ const StyledView = styled.View``;
 const StyledTextInput = styled.TextInput`
   border-radius: 8px;
   font-size: 16px;
-  margin-top: 20px;
   padding-left: 15px;
   background-color: ${COLORS.secondary};
   border-width: 1px;

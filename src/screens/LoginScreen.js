@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import TextInput from '../components/TextInput';
 import Label from '../components/Label';
@@ -15,17 +16,28 @@ import COLORS from '../utils/colors';
 import background from '../assets/img/background.png';
 
 const LoginScreen = () => {
+  const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
+    false
+  );
   return (
     <StyledImageBackground source={background}>
       <StyledScrollView>
+        <StyledHelpButton>
+          <Icon
+            name={'help-circle-outline'}
+            size={40}
+            color={COLORS.loginScreenActionButtons}
+          />
+        </StyledHelpButton>
+
         <StyledLogoView>
           <StyledLogo source={{ uri: `${API.LOGOS}/usecargocolorido.png` }} />
         </StyledLogoView>
         <StyledInputsView>
           <Label
             content={STRINGS.login.email}
-            typography={TYPOGRAPHY.textInputLabel}
             textAlign='center'
+            marginBottom={SPACING.small}
           />
           <TextInput
             testID='emailInput'
@@ -35,8 +47,9 @@ const LoginScreen = () => {
           />
           <Label
             content={STRINGS.login.password}
-            typography={TYPOGRAPHY.textInputLabel}
             textAlign='center'
+            marginBottom={SPACING.small}
+            marginTop={SPACING.regular}
           />
           <TextInput
             testID='passwordInput'
@@ -45,7 +58,48 @@ const LoginScreen = () => {
             autoCapitalize={'none'}
             hasShowPassword
           />
+          <StyledCheckButton
+            onPress={() =>
+              setRememberPasswordChecked(!isRememberPasswordChecked)
+            }
+          >
+            <Icon
+              name={
+                isRememberPasswordChecked
+                  ? 'check-box-outline'
+                  : 'checkbox-blank-outline'
+              }
+              size={25}
+              color={COLORS.defaultText}
+            />
+            <Label
+              content={STRINGS.login.rememberMe}
+              marginLeft={SPACING.small}
+              typography={TYPOGRAPHY.textInputLabel}
+            />
+          </StyledCheckButton>
         </StyledInputsView>
+
+        <StyledLoginButton>
+          <Label
+            content={STRINGS.LOGIN}
+            color={COLORS.secondary}
+            marginTop={SPACING.small}
+            marginBottom={SPACING.small}
+          />
+        </StyledLoginButton>
+
+        <StyledActionsView>
+          <StyledActionButton>
+            <Label content={STRINGS.login.signup} color={COLORS.secondary} />
+          </StyledActionButton>
+          <StyledActionButton>
+            <Label
+              content={STRINGS.login.forgotPassword}
+              color={COLORS.secondary}
+            />
+          </StyledActionButton>
+        </StyledActionsView>
       </StyledScrollView>
     </StyledImageBackground>
   );
@@ -59,9 +113,14 @@ const StyledImageBackground = styled.ImageBackground`
   flex: 1;
   align-items: center;
   padding-left: 20px;
-  padding-top: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+`;
+
+const StyledHelpButton = styled.TouchableOpacity`
+  position: absolute;
+  margin-top: ${SPACING.regular};
+  right: 5px;
 `;
 
 const StyledLogoView = styled.View`
@@ -79,6 +138,35 @@ const StyledLogo = styled.Image`
   width: 120px;
   height: 120px;
   resize-mode: contain;
+`;
+
+const StyledCheckButton = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const StyledActionsView = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StyledLoginButton = styled.TouchableOpacity`
+  align-items: center;
+  border-radius: 6px;
+  background-color: ${COLORS.loginButton};
+  margin-top: ${SPACING.medium};
+`;
+
+const StyledActionButton = styled.TouchableOpacity`
+  align-items: center;
+  border-radius: 6px;
+  background-color: ${COLORS.loginScreenActionButtons};
+  margin-top: ${SPACING.regular};
+  padding-top: ${SPACING.small};
+  padding-right: ${SPACING.regular};
+  padding-left: ${SPACING.regular};
+  padding-bottom: ${SPACING.small};
 `;
 
 export default LoginScreen;

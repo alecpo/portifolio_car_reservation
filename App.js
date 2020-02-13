@@ -11,6 +11,7 @@ const { Navigator, Screen } = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor='white' barStyle='dark-content' />
       <Navigator initialRouteName='Login' headerMode='none'>
         <Screen name='Login' component={LoginScreen} />
       </Navigator>

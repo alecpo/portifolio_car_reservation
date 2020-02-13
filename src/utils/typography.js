@@ -9,7 +9,7 @@ const SIZE = {
 };
 
 const typography = {
-  textInputLabel: {
+  defaultLabel: {
     weight: 'bold',
     size: SIZE.big
   }
