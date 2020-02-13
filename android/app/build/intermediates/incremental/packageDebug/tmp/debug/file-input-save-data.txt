@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Feb 13 11:28:21 BRT 2020
+#Thu Feb 13 12:33:52 BRT 2020
 60.set=NATIVE_RESOURCE
 52.set=NATIVE_RESOURCE
 53.base=/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/merged_assets/debug/out
