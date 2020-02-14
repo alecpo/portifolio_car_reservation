@@ -14,7 +14,7 @@ import COLORS from '@/utils/colors';
 
 import background from '@/assets/img/background.png';
 
-const LoginScreen = () => {
+const LoginScreen = ({ teste }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
     false
   );
