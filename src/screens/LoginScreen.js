@@ -24,7 +24,7 @@ const LoginScreen = () => {
         <StyledHelpButton>
           <Icon
             name={'help-circle-outline'}
-            size={40}
+            size={35}
             color={COLORS.loginScreenActionButtons}
           />
         </StyledHelpButton>
