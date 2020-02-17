@@ -12,6 +12,8 @@ module.exports = {
     'comma-dangle': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/prop-types': ['error', { ignore: ['navigation'] }],
     'react/state-in-constructor': 'off',

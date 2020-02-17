@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -23,7 +22,7 @@ const LoginScreen = () => {
       <StyledScrollView>
         <StyledHelpButton>
           <Icon
-            name={'help-circle-outline'}
+            name='help-circle-outline'
             size={35}
             color={COLORS.loginScreenActionButtons}
           />
@@ -41,7 +40,7 @@ const LoginScreen = () => {
           <TextInput
             testID='emailInput'
             placeholder={STRINGS.login.emailPlaceholder}
-            autoCapitalize={'none'}
+            autoCapitalize='none'
             keyboardType='email-address'
           />
           <Label
@@ -54,7 +53,7 @@ const LoginScreen = () => {
             testID='passwordInput'
             placeholder={STRINGS.login.passwordPlaceHolder}
             secureTextEntry
-            autoCapitalize={'none'}
+            autoCapitalize='none'
             hasShowPassword
           />
           <StyledCheckButton
@@ -119,7 +118,7 @@ const StyledImageBackground = styled.ImageBackground`
 const StyledHelpButton = styled.TouchableOpacity`
   position: absolute;
   margin-top: ${SPACING.regular};
-  right: 5px;
+  right: 6px;
 `;
 
 const StyledLogoView = styled.View`
