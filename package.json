@@ -6,8 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration android.emu.debug"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
@@ -36,6 +36,7 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "^24.9.0",

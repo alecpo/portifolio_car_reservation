@@ -3,7 +3,7 @@
     "target": "esnext", // define to your liking
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src"]
+      "~/*": ["src"]
     }
   },
   "exclude": ["node_modules"] // Optional
