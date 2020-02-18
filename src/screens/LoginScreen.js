@@ -78,7 +78,7 @@ const LoginScreen = ({ navigation }) => {
           </StyledCheckButton>
         </StyledInputsView>
 
-        <StyledLoginButton onPress={() => navigation.push('Home')}>
+        <StyledLoginButton onPress={() => navigation.push('Main')}>
           <Label
             content={STRINGS.LOGIN}
             color={COLORS.secondary}
