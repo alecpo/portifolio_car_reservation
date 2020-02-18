@@ -13,7 +13,7 @@ import COLORS from '~/utils/colors';
 
 import background from '~/assets/img/background.png';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
     false
   );
@@ -78,7 +78,7 @@ const LoginScreen = () => {
           </StyledCheckButton>
         </StyledInputsView>
 
-        <StyledLoginButton>
+        <StyledLoginButton onPress={() => navigation.push('Home')}>
           <Label
             content={STRINGS.LOGIN}
             color={COLORS.secondary}

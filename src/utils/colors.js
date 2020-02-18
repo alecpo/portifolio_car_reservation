@@ -1,4 +1,5 @@
 const colors = {
+  primary: '#2f5293',
   secondary: 'white',
   black: 'black',
   textInputBorderColorDefault: '#ddd',
