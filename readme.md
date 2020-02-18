@@ -1,84 +1,115 @@
 # Windows
 
-## Troubleshootings
+# Troubleshootings
 
-### Problemas ao rodar projeto pela primeira vez
+- # Problemas ao rodar projeto pela primeira vez
 
-É possível que após clonar o repositório do projeto e tentar rodar os comandos:
+  - ## Permissão na pasta do projeto
 
-    yarn
-    npx react-native run-android
+    É possível que após clonar o repositório do projeto e tentar rodar os
+    comandos:
 
-você se depare com um problema comum de permissão de pastas.
+        yarn
+        npx react-native run-android
 
-#### Solução
+    você se depare com um problema comum de permissão de pastas.
 
-1.  Nas propriedades da pasta do projeto, vá na aba "Segurança", e em seguida
-    clique em "Editar";
-2.  Na nova janela que irá se abrir, clique em "Adicionar";
-3.  Digite o nome do seu usuário no campo de texto e clique em "Verificar
-    nomes".
-4.  Seu usuário será reconhecido no campo de texto, em seguida clique em:
-    OK->Aplicar->OK->OK.
+    #### Solução
 
-Após isso, se ainda se deparar com outro problema ao tentar executar o comando
+    1. Nas propriedades da pasta do projeto, vá na aba "Segurança", e em seguida
+       clique em "Editar";
+    2. Na nova janela que irá se abrir, clique em "Adicionar";
+    3. Digite o nome do seu usuário no campo de texto e clique em "Verificar
+       nomes".
+    4. Seu usuário será reconhecido no campo de texto, em seguida clique em:
+       OK->Aplicar->OK->OK.
 
-    npx react-native run-android
+  - ## Erro ao executar npx react-native run-android
 
-tente executar sem o "npx".
+    É possível que se depare com um erro semelhante ao demonstrado abaixo:
 
-Tente:
+    ![npx error](./src/assets/img/readme/npx_error.jpg)
 
-    react-native run-android
+    #### Solução
 
-Com isso, você deve conseguir rodar o projeto.
+    O erro acima é referente a alguma configuração do npx. Porém não é
+    impeditivo para o bom funcionamento do seu ambiente. Para contornar este
+    erro, tente rodar o projeto sem o npx:
 
-### Problemas ao rodar os testes funcionais
+           react-native run-android
 
-#### Build do Detox
+    Com isso, você deve estar apto a continuar.
 
-Ao tentar executar o comando:
+- # Problemas ao rodar os testes funcionais
 
-    detox build -c android.emu.debug
+  - ## Build do Detox
 
-você pode encontrar problemas relacionados à ausência do Detox:
+    Ao tentar executar o comando:
 
-![bash: detox not found](./src/assets/img/readme/detox_not_found.jpg)
+            detox build -c android.emu.debug
 
-#### Solução
+    você pode encontrar problemas relacionados à ausência do Detox:
 
-Execute os comandos presentes no "package.json" para o build do detox em modo
-debug separadamente:
+    ![bash: detox not found](./src/assets/img/readme/detox_not_found.jpg)
 
-1.          cd android/
-2.          ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug
-3.          cd ..
+    #### Solução
 
-Isso deve garantir a correta execção do build do Detox.
+    Execute os comandos presentes no "package.json" para o build do detox em
+    modo debug separadamente:
 
-#### Erro ao executar yarn test
+    1.              cd android/
+    2.              ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug
+    3.              cd ..
 
-Ao tentar executar o teste em si, rodando o comando:
+    **OBS: A figura abaixo demonstra um possível erro ao executar o comando
+    descrito no passo 2.**
 
-    yarn test
+    ![Erro no passo 2](./src/assets/img/readme/error_build_detox.jpg)
 
-você pode encontrar um erro no console referente a ausência do
-arquivo/diretório: "device.registry.state.lock"
+    Casso esse erro ocorra, execute o comando abaixo para limpar o gradlew
+    dentro da pasta android/
 
-#### Solução
+        ./gradlew clean
 
-Crie o diretório Detox.
+    Logo em seguida repita o comando do passo 2:
 
-Na pasta do seu usuário, certifique-se de criar toda a hierarquia de de pastas
-para o diretório Detox, que será utilizado pelo comando "yarn test" para criar o
-arquivo: android-device.registry.state.lock
+        ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug
 
-Exemplo da hierarquia de pastas:
+    Isso deve garantir a correta execção do build do Detox.
 
-C:/Users/PASTA_DO_SEU_USUARIO_AQUI/AppData/Local/data/Detox/
+  - ## Erro ao executar yarn test
 
-Após isso, será possível executar o comando novamente, desta vez, com sucesso.
+    **Antes de mais nada, certifique-se de configurar o nome correto do emulador
+    Android que está utilizando no package.json (esse nome pode ser encontrado
+    no próprio AVD manager do Android Studio)**
 
-Execute:
+    ![Erro no passo 2](./src/assets/img/readme/avd_name_androidstudio.jpg)
 
-    yarn test
+    ![Erro no passo 2](./src/assets/img/readme/avd_name_packagejson.jpg)
+
+    Ao tentar executar o teste em si, rodando o comando:
+
+            yarn test
+
+    você pode se deparar com o seguinte erro:
+
+    ![Erro no passo 2](./src/assets/img/readme/detox_init.jpg)
+
+    #### Solução
+
+    Crie o diretório Detox.
+
+    Na pasta do seu usuário, certifique-se de criar toda a hierarquia de de
+    pastas para o diretório Detox, que será utilizado pelo comando "yarn test"
+    para criar o arquivo: android-device.registry.state.lock
+
+    Exemplo da hierarquia de pastas:
+
+    C:/Users/PASTA_DO_SEU_USUARIO_AQUI/AppData/Local/data/Detox/
+
+    Após isso, será possível executar o comando novamente, desta vez, com
+    sucesso.
+
+    Execute:
+
+            yarn test
