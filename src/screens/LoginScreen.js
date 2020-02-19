@@ -88,10 +88,10 @@ const LoginScreen = ({ navigation }) => {
         </StyledLoginButton>
 
         <StyledActionsView>
-          <StyledActionButton>
+          <StyledActionButton onPress={() => navigation.push('SignUp')}>
             <Label content={STRINGS.login.signup} color={COLORS.secondary} />
           </StyledActionButton>
-          <StyledActionButton>
+          <StyledActionButton onPress={() => navigation.push('ForgotPassword')}>
             <Label
               content={STRINGS.login.forgotPassword}
               color={COLORS.secondary}

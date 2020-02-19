@@ -11,7 +11,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <SafeAreaView />
-      <StatusBar backgroundColor={COLORS.primary} barStyle='dark-content' />
+      <StatusBar backgroundColor={COLORS.primary} barStyle='light-content' />
       <RootStackNavigator />
     </NavigationContainer>
   );
