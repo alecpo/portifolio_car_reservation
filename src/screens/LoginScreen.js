@@ -20,7 +20,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <StyledImageBackground source={background}>
       <StyledScrollView>
-        <StyledHelpButton>
+        <StyledHelpButton onPress={() => navigation.push('Help')}>
           <Icon
             name='help-circle-outline'
             size={35}
@@ -32,26 +32,19 @@ const LoginScreen = ({ navigation }) => {
           <StyledLogo source={{ uri: `${API.LOGOS}/usecargocolorido.png` }} />
         </StyledLogoView>
         <StyledInputsView>
-          <Label
-            content={STRINGS.login.email}
-            textAlign='center'
-            marginBottom={SPACING.small}
-          />
           <TextInput
+            hasLabel
+            label={STRINGS.email}
             testID='emailInput'
-            placeholder={STRINGS.login.emailPlaceholder}
+            placeholder={STRINGS.emailPlaceholder}
             autoCapitalize='none'
             keyboardType='email-address'
           />
-          <Label
-            content={STRINGS.login.password}
-            textAlign='center'
-            marginBottom={SPACING.small}
-            marginTop={SPACING.regular}
-          />
           <TextInput
+            hasLabel
+            label={STRINGS.password}
             testID='passwordInput'
-            placeholder={STRINGS.login.passwordPlaceHolder}
+            placeholder={STRINGS.passwordPlaceholder}
             secureTextEntry
             autoCapitalize='none'
             hasShowPassword
@@ -109,10 +102,9 @@ const StyledScrollView = styled.ScrollView`
 
 const StyledImageBackground = styled.ImageBackground`
   flex: 1;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  padding-left: ${SPACING.regularPlus};
+  padding-right: ${SPACING.regularPlus};
+  padding-bottom: ${SPACING.regularPlus};
 `;
 
 const StyledHelpButton = styled.TouchableOpacity`
@@ -141,6 +133,7 @@ const StyledLogo = styled.Image`
 const StyledCheckButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
+  margin-top: ${SPACING.regular};
 `;
 
 const StyledActionsView = styled.View`

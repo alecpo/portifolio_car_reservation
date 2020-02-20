@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import styled from 'styled-components/native';
 
 import SplashScreen from '~/screens/SplashScreen';
+import HelpScreen from '~/screens//HelpScreen';
 import MainTabNavigator from '~/navigation/MainTabNavigator';
 import LoginScreen from '~/screens/LoginScreen';
 import SignUpScreen from '~/screens/SignUpScreen';
@@ -39,6 +40,7 @@ const RootStackNavigator = () => {
             name='Login'
             component={LoginScreen}
           />
+          <Screen name='Help' component={HelpScreen} />
           <Screen name='SignUp' component={SignUpScreen} />
           <Screen name='ForgotPassword' component={ForgotPasswordScreen} />
         </>

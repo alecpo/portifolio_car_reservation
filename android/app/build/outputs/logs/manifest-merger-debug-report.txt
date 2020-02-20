@@ -45,6 +45,7 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] /home/alessandrocezar/.gradle
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/acd949adbe65a32d5c3f5a00f096bc83/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/218a17c10eb8375f3fef8956cf77b03d/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b3d42fba101353fcc2b02d3358b6b00e/AndroidManifest.xml:17:1-22:12
+MERGED from [:react-native-linear-gradient] /home/alessandrocezar/workspace/usecargoapp/node_modules/react-native-linear-gradient/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [org.webkit:android-jsc:r245459] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/79ab49745660c4ac001820c7b8cffada/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.fresco:fresco:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/9076cb3f39cbf1068977ba1f4731b52d/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/aad60bd0f41936dc82740b50ab1932cf/AndroidManifest.xml:2:1-9:12
@@ -227,6 +228,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/alessandroc
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/218a17c10eb8375f3fef8956cf77b03d/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b3d42fba101353fcc2b02d3358b6b00e/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/b3d42fba101353fcc2b02d3358b6b00e/AndroidManifest.xml:20:5-44
+MERGED from [:react-native-linear-gradient] /home/alessandrocezar/workspace/usecargoapp/node_modules/react-native-linear-gradient/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] /home/alessandrocezar/workspace/usecargoapp/node_modules/react-native-linear-gradient/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/79ab49745660c4ac001820c7b8cffada/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/79ab49745660c4ac001820c7b8cffada/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.fresco:fresco:2.0.0] /home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/9076cb3f39cbf1068977ba1f4731b52d/AndroidManifest.xml:5:5-7:41

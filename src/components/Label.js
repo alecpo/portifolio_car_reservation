@@ -7,7 +7,7 @@ import TYPOGRAPHY from '../utils/typography';
 const Label = props => {
   const {
     content,
-    typography = {},
+    typography = TYPOGRAPHY.defaultLabelBold,
     textAlign = 'left',
     marginLeft = 0,
     marginRight = 0,
@@ -18,7 +18,7 @@ const Label = props => {
   return (
     <StyledText
       {...props}
-      typography={TYPOGRAPHY.defaultLabel}
+      typography={typography}
       textAlign={textAlign}
       marginLeft={marginLeft}
       marginRight={marginRight}
