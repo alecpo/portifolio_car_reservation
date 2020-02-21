@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "ios": "npx react-native run-ios --simulator=\"iPhone X\"",
+    "start": "npx react-native start",
     "lint": "eslint .",
-    "test": "node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration android.emu.debug"
+    "detox-test-ios": "detox build -c ios.sim.debug && node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration ios.sim.debug",
+    "detox-test-android": "detox build -c android.emu.debug && node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration android.emu.debug"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
@@ -51,6 +52,14 @@
   },
   "detox": {
     "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/usecargoapp.app",
+        "build": "xcodebuild -workspace ios/usecargoapp.xcworkspace -scheme usecargoapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone X"
+        }
+      },
       "android.emu.debug": {
         "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
         "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
