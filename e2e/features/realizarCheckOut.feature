@@ -14,7 +14,7 @@ Para devolver o carro para que um próximo usuário faça o uso.
 
 Background:
     Dado que exista a seguinte reserva vigente:
-    | Data e hora do check-in | Data e hora do check-out | Veículo          |
+    | Data e hora do check-in | Data e hora do check-out | Escolha um carro |
     | 27 Feb 2020, 16:30      | 27 Feb 2020, 20:30       | VW - VIRTUS      |
 
     Quando clico em "FAZER CHECK-OUT"   
@@ -273,7 +273,9 @@ Cenario: realiza o check-out, mas não preecho as estrelas do feedback.
     # dúvida nesse processo acima
     Então não habilita o botão "AVALIE A SUA EXPERIÊNCIA"
 
+
 #-------------------------------------------------------------------------------------------------------
+
 
 # Cenário: Ok
 

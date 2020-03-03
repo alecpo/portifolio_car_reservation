@@ -10,23 +10,22 @@ Como usuário cadastrado
 Eu quero realizar o check-in
 Para destravar e usar o carro compartilhado UseCar GO
 
+#Criar cenário de fundo
 
 Background:
-    Dado que é realizado uma reserva:
-    E seleciono "27 Feb 2020, 16:30" no campo "Data e hora do check-in"
-    E seleciono "27 Feb 2020, 20:30" no campo "Data e hora do check-out"
+    Dado que é realizado uma reserva na plataforma
+    E preencho no campo "Data e hora do check-in" com "3 Mar 2020, 11:15"
+    E preencho no campo "Data e hora do check-out" com "3 Mar 2020, 14:15"
     E clico no botão "Próxima etapa"
     E seleciono o carro "VW-Virtus"
     E clico no botão "Próxima etapa"
-    E seleciono o cartão 
-    E clico no botão "Fazer Reserva"
-    E exibe o "Termo de Uso"
-    E marco o check-box "Eu li e concordo com os termos de uso"
-    E aperto em "FAZER RESERVA"
+    E seleciono no campo "Cartão" com " "
+    E clico no botão "FAZER RESERVA"
 
     Quando clico em "FAZER CHECK-IN"   
       
-#Comentário: dúvida desse cenário de fundo
+
+#Comentário: NENHUM
 
 #-------------------------------------------------------------------------------------------------------
 # CASOS DE ERRO
@@ -35,19 +34,19 @@ Background:
 # Cenário: OK - Frente
 
 Cenario: realiza o Check-In, mas ao sinalizar uma avaria não tira foto da Frente do carro.
-    Então exibe uma página: "Dirija-se até o veículo:"
+Então exibe uma página: "Dirija-se até o veículo:"
 
 Quando clico no botão "Próxima Etapa"
-    E exibe uma nova janela "Check-in Etapa 1/5"
-    E uma pergunta "Existe alguma avaria na Frente do Carro?"
-    E clico em "SIM"
-    Então sou redirecionado a uma nova página "Check-in Etapa 1/5" 
-    Quando estou na tela "Check-in Etapa 1/5"
-    E leio a mensagem "Tire uma foto da Frente do carro"
-    E clico no "ícone de câmera"
-    E tiro uma foto
-    E clico no "x" para cancelar
-    Então não habilita o botão "Enviar"
+E exibe uma nova janela "Check-in Etapa 1/5"
+E uma pergunta "Existe alguma avaria na Frente do Carro?"
+E clico em "SIM"
+Então sou redirecionado a uma nova página "Check-in Etapa 1/5" 
+Quando estou na tela "Check-in Etapa 1/5"
+E leio a mensagem "Tire uma foto da Frente do carro"
+E clico no "ícone de câmera"
+E tiro uma foto
+E clico no "x" para cancelar
+Então não habilita o botão "Enviar"
 
 
 #-------------------------------------------------------------------------------------------------------
@@ -55,7 +54,7 @@ Quando clico no botão "Próxima Etapa"
 # Cenário: OK - Lado direito
 
 Cenario: realiza o Check-In, mas ao sinalizar uma avaria não tira foto do Lado direito do carro.
-    Então exibe uma página: "Dirija-se até o veículo:"
+Então exibe uma página: "Dirija-se até o veículo:"
 
 Quando clico no botão "Próxima Etapa"
     E exibe uma nova janela "Check-in Etapa 1/5"
@@ -472,8 +471,3 @@ Quando clico no botão "OK"
 
 #-------------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------
-
-
-
-
-

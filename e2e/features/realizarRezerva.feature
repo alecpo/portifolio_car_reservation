@@ -11,7 +11,7 @@ Eu quero realizar uma reserva
 Para usufruir do serviço de carro compartilhado UseCar GO
 
 Background: 
-    Dado que exista o seguinte usuário cadastrado
+    Dado que esteja logado no sistema com a conta
     | E-mail                |   Senha    |
     | adm@novalima.com.br   |   dev      |
 
@@ -582,5 +582,3 @@ Quando aperto em "Fazer Reserva" na tela "Detalhe da Reserva"
 
 #-------------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------
-
-
