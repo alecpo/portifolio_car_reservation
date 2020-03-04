@@ -21,7 +21,7 @@ const TextInput = props => {
   } = props;
   const [passwordIsVisible, setPasswordVisible] = useState(!secureTextEntry);
   return (
-    <StyledView
+    <StyledContainer
       marginLeft={marginLeft}
       marginRight={marginRight}
       marginTop={marginTop}
@@ -49,11 +49,11 @@ const TextInput = props => {
           </StyledShowPasswordButton>
         )}
       </StyledInputView>
-    </StyledView>
+    </StyledContainer>
   );
 };
 
-const StyledView = styled.View`
+const StyledContainer = styled.View`
   margin-left: ${({ marginLeft }) => marginLeft};
   margin-right: ${({ marginRight }) => marginRight};
   margin-top: ${({ marginTop }) => marginTop};
@@ -69,8 +69,8 @@ const StyledTextInput = styled.TextInput`
   width: 100%;
   border-radius: 5px;
   font-size: 16px;
-  padding-left: 15px;
   background-color: ${COLORS.secondary};
+  padding: 10px;
 `;
 
 const StyledShowPasswordButton = styled.TouchableOpacity`

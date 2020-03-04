@@ -7,7 +7,7 @@
     "ios": "npx react-native run-ios --simulator=\"iPhone X\"",
     "start": "npx react-native start",
     "lint": "eslint .",
-    "detox-test-ios": "detox build -c ios.sim.debug && node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration ios.sim.debug",
+    "detox-test-ios": "yarn ios && detox build -c ios.sim.debug && node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration ios.sim.debug",
     "detox-test-android": "detox build -c android.emu.debug && node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration android.emu.debug"
   },
   "dependencies": {

@@ -82,12 +82,12 @@ const LoginScreen = ({ navigation }) => {
 
         <StyledActionsView>
           <StyledActionButton onPress={() => navigation.push('SignUp')}>
-            <Label content={STRINGS.login.signup} color={COLORS.secondary} />
+            <Label content={STRINGS.login.signup} color={COLORS.primary} />
           </StyledActionButton>
           <StyledActionButton onPress={() => navigation.push('ForgotPassword')}>
             <Label
               content={STRINGS.login.forgotPassword}
-              color={COLORS.secondary}
+              color={COLORS.primary}
             />
           </StyledActionButton>
         </StyledActionsView>
@@ -140,24 +140,22 @@ const StyledActionsView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: ${SPACING.regular};
 `;
 
 const StyledLoginButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 6px;
-  background-color: ${COLORS.loginButton};
+  background-color: ${COLORS.primary};
   margin-top: ${SPACING.medium};
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 6px;
-  background-color: ${COLORS.loginScreenActionButtons};
-  margin-top: ${SPACING.regular};
-  padding-top: ${SPACING.small};
-  padding-right: ${SPACING.regular};
-  padding-left: ${SPACING.regular};
-  padding-bottom: ${SPACING.small};
+  padding: ${SPACING.small};
+  border-color: ${COLORS.primary};
+  border-width: 2px;
 `;
 
 export default LoginScreen;
