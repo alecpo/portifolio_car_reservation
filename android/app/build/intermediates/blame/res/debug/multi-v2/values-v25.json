@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alessandrocezar/workspace/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
+            "outputFile": "/Users/alessandrooliveira/workspace/usecargoapp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "/home/alessandrocezar/.gradle/caches/transforms-2/files-2.1/02157e0ccc207bf2f18bc01a1cbd1d4b/res/values-v25/values-v25.xml",
+                    "source": "/Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/4d07ba47ddeb948ea6a1bfa8ae0a7697/res/values-v25/values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

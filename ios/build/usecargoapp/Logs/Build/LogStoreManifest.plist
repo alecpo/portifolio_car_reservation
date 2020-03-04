@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>6D9DCDEF-7070-462F-B80F-A5DA3D3BCC1E</key>
+		<key>12B76226-A3DB-486E-A67F-E3AA6A8D3E33</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>6D9DCDEF-7070-462F-B80F-A5DA3D3BCC1E.xcactivitylog</string>
+			<string>12B76226-A3DB-486E-A67F-E3AA6A8D3E33.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -30,13 +30,13 @@
 			<key>signature</key>
 			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>603997434.88709795</real>
+			<real>604496634.03625798</real>
 			<key>timeStoppedRecording</key>
-			<real>603997437.22215497</real>
+			<real>604496638.04518604</real>
 			<key>title</key>
 			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>6D9DCDEF-7070-462F-B80F-A5DA3D3BCC1E</string>
+			<string>12B76226-A3DB-486E-A67F-E3AA6A8D3E33</string>
 		</dict>
 	</dict>
 </dict>

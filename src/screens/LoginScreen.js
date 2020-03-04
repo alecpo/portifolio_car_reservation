@@ -13,14 +13,14 @@ import COLORS from '~/utils/colors';
 
 import background from '~/assets/img/background.png';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
     false
   );
   return (
     <StyledImageBackground source={background}>
       <StyledScrollView>
-        <StyledHelpButton>
+        <StyledHelpButton onPress={() => navigation.push('Help')}>
           <Icon
             name='help-circle-outline'
             size={35}
@@ -32,26 +32,19 @@ const LoginScreen = () => {
           <StyledLogo source={{ uri: `${API.LOGOS}/usecargocolorido.png` }} />
         </StyledLogoView>
         <StyledInputsView>
-          <Label
-            content={STRINGS.login.email}
-            textAlign='center'
-            marginBottom={SPACING.small}
-          />
           <TextInput
+            hasLabel
+            label={STRINGS.email}
             testID='emailInput'
-            placeholder={STRINGS.login.emailPlaceholder}
+            placeholder={STRINGS.emailPlaceholder}
             autoCapitalize='none'
             keyboardType='email-address'
           />
-          <Label
-            content={STRINGS.login.password}
-            textAlign='center'
-            marginBottom={SPACING.small}
-            marginTop={SPACING.regular}
-          />
           <TextInput
+            hasLabel
+            label={STRINGS.password}
             testID='passwordInput'
-            placeholder={STRINGS.login.passwordPlaceHolder}
+            placeholder={STRINGS.passwordPlaceholder}
             secureTextEntry
             autoCapitalize='none'
             hasShowPassword
@@ -78,7 +71,7 @@ const LoginScreen = () => {
           </StyledCheckButton>
         </StyledInputsView>
 
-        <StyledLoginButton>
+        <StyledLoginButton onPress={() => navigation.push('Main')}>
           <Label
             content={STRINGS.LOGIN}
             color={COLORS.secondary}
@@ -88,13 +81,13 @@ const LoginScreen = () => {
         </StyledLoginButton>
 
         <StyledActionsView>
-          <StyledActionButton>
-            <Label content={STRINGS.login.signup} color={COLORS.secondary} />
+          <StyledActionButton onPress={() => navigation.push('SignUp')}>
+            <Label content={STRINGS.login.signup} color={COLORS.primary} />
           </StyledActionButton>
-          <StyledActionButton>
+          <StyledActionButton onPress={() => navigation.push('ForgotPassword')}>
             <Label
               content={STRINGS.login.forgotPassword}
-              color={COLORS.secondary}
+              color={COLORS.primary}
             />
           </StyledActionButton>
         </StyledActionsView>
@@ -109,10 +102,9 @@ const StyledScrollView = styled.ScrollView`
 
 const StyledImageBackground = styled.ImageBackground`
   flex: 1;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  padding-left: ${SPACING.regularPlus};
+  padding-right: ${SPACING.regularPlus};
+  padding-bottom: ${SPACING.regularPlus};
 `;
 
 const StyledHelpButton = styled.TouchableOpacity`
@@ -141,30 +133,29 @@ const StyledLogo = styled.Image`
 const StyledCheckButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
+  margin-top: ${SPACING.regular};
 `;
 
 const StyledActionsView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: ${SPACING.regular};
 `;
 
 const StyledLoginButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 6px;
-  background-color: ${COLORS.loginButton};
+  background-color: ${COLORS.primary};
   margin-top: ${SPACING.medium};
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 6px;
-  background-color: ${COLORS.loginScreenActionButtons};
-  margin-top: ${SPACING.regular};
-  padding-top: ${SPACING.small};
-  padding-right: ${SPACING.regular};
-  padding-left: ${SPACING.regular};
-  padding-bottom: ${SPACING.small};
+  padding: ${SPACING.small};
+  border-color: ${COLORS.primary};
+  border-width: 2px;
 `;
 
 export default LoginScreen;

@@ -8,9 +8,18 @@ const SIZE = {
   veryHuge: '26px'
 };
 
+const WEIGHT = {
+  bold: 'bold',
+  regular: '500'
+};
+
 const typography = {
   defaultLabel: {
-    weight: 'bold',
+    weight: WEIGHT.regular,
+    size: SIZE.veryBig
+  },
+  defaultLabelBold: {
+    weight: WEIGHT.bold,
     size: SIZE.big
   }
 };
