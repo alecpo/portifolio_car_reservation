@@ -11,19 +11,27 @@
     "detox-test-android": "detox build -c android.emu.debug && node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register --configuration android.emu.debug"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.8.1",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/bottom-tabs": "^5.0.5",
     "@react-navigation/native": "^5.0.1",
     "@react-navigation/stack": "^5.0.1",
+    "axios": "^0.19.2",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.5.6",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-masked-text": "^1.13.0",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.2",
     "react-native-screens": "^2.0.0-beta.2",
     "react-native-vector-icons": "^6.6.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {

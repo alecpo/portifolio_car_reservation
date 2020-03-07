@@ -67,7 +67,7 @@ const StyledInputView = styled.View`
 
 const StyledTextInput = styled.TextInput`
   width: 100%;
-  border-radius: 5px;
+  border-radius: 7px;
   font-size: 16px;
   background-color: ${COLORS.secondary};
   padding: 10px;

@@ -10,6 +10,7 @@ MERGED from [com.google.android.material:material:1.0.0] /Users/alessandroolivei
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/87cc6ff6fbaf317dd50f0b5c92ea9b21/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/fb6e385a677b15ab9f6b037e88a8bbe3/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02] /Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/a970b85c7a2015082f2ecf0b4039cd15/AndroidManifest.xml:17:1-24:12
+MERGED from [:@react-native-community_async-storage] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:@react-native-community_masked-view] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -158,6 +159,8 @@ MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/alessandrooliv
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/fb6e385a677b15ab9f6b037e88a8bbe3/AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02] /Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/a970b85c7a2015082f2ecf0b4039cd15/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02] /Users/alessandrooliveira/.gradle/caches/transforms-2/files-2.1/a970b85c7a2015082f2ecf0b4039cd15/AndroidManifest.xml:20:5-22:41
+MERGED from [:@react-native-community_async-storage] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_async-storage] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:@react-native-community_masked-view] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:@react-native-community_masked-view] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] /Users/alessandrooliveira/workspace/usecargoapp/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41

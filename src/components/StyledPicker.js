@@ -68,7 +68,7 @@ const StyledView = styled.View`
 
 const StyledInputView = styled.View`
   background-color: ${COLORS.secondary};
-  border-radius: 5px;
+  border-radius: 7px;
 `;
 
 export default StyledPicker;

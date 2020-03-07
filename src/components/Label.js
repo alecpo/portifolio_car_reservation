@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { MaskService } from 'react-native-masked-text';
 
 import COLORS from '../utils/colors';
 import TYPOGRAPHY from '../utils/typography';
@@ -13,7 +14,8 @@ const Label = props => {
     marginRight = 0,
     marginTop = 0,
     marginBottom = 0,
-    color = COLORS.defaultText
+    color = COLORS.defaultText,
+    mask
   } = props;
   return (
     <StyledText
@@ -26,7 +28,7 @@ const Label = props => {
       marginBottom={marginBottom}
       color={color}
     >
-      {content}
+      {mask ? MaskService.toMask(mask.type, content, mask.settings) : content}
     </StyledText>
   );
 };

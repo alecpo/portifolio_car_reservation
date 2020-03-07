@@ -68,14 +68,14 @@ const StyledActionsView = styled.View`
 
 const StyledLoginButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: ${COLORS.loginButton};
   margin-top: ${SPACING.medium};
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: ${COLORS.loginScreenActionButtons};
   margin-top: ${SPACING.regular};
   padding-top: ${SPACING.small};

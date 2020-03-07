@@ -1,48 +1,68 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconHelp from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
 
 import TextInput from '~/components/TextInput';
 import Label from '~/components/Label';
 
-import API from '~/config/api';
 import STRINGS from '~/utils/strings';
 import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
 import COLORS from '~/utils/colors';
 
-import background from '~/assets/img/background.png';
+import whiteLogo from '~/assets/img/logo_branco.png';
+
+import { login } from '~/store/actions/userActions';
 
 const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
     false
   );
-  return (
-    <StyledImageBackground source={background}>
-      <StyledScrollView>
-        <StyledHelpButton onPress={() => navigation.push('Help')}>
-          <Icon
-            name='help-circle-outline'
-            size={35}
-            color={COLORS.loginScreenActionButtons}
-          />
-        </StyledHelpButton>
+  const [email, setEmail] = useState('novoclientehmg@teste.com.br');
+  const [password, setPassword] = useState('dev');
 
+  const dispatch = useDispatch();
+
+  const onLogin = async () => {
+    const user = {
+      email,
+      password
+    };
+    dispatch(login(user));
+  };
+
+  return (
+    <StyledLinearGradient
+      colors={[
+        COLORS.nonLoggedBackgroundColor1,
+        COLORS.nonLoggedBackgroundColor2
+      ]}
+    >
+      <StyledScrollView>
         <StyledLogoView>
-          <StyledLogo source={{ uri: `${API.LOGOS}/usecargocolorido.png` }} />
+          <StyledLogo source={whiteLogo} />
         </StyledLogoView>
-        <StyledInputsView>
+        <>
           <TextInput
+            onChangeText={setEmail}
+            value={email}
             hasLabel
             label={STRINGS.email}
+            labelColor={COLORS.secondary}
             testID='emailInput'
             placeholder={STRINGS.emailPlaceholder}
             autoCapitalize='none'
             keyboardType='email-address'
           />
           <TextInput
+            onChangeText={setPassword}
+            value={password}
             hasLabel
             label={STRINGS.password}
+            labelColor={COLORS.secondary}
             testID='passwordInput'
             placeholder={STRINGS.passwordPlaceholder}
             secureTextEntry
@@ -61,17 +81,18 @@ const LoginScreen = ({ navigation }) => {
                   : 'checkbox-blank-outline'
               }
               size={25}
-              color={COLORS.defaultText}
+              color={COLORS.secondary}
             />
             <Label
               content={STRINGS.login.rememberMe}
               marginLeft={SPACING.small}
               typography={TYPOGRAPHY.textInputLabel}
+              color={COLORS.secondary}
             />
           </StyledCheckButton>
-        </StyledInputsView>
+        </>
 
-        <StyledLoginButton onPress={() => navigation.push('Main')}>
+        <StyledLoginButton onPress={onLogin}>
           <Label
             content={STRINGS.LOGIN}
             color={COLORS.secondary}
@@ -82,51 +103,52 @@ const LoginScreen = ({ navigation }) => {
 
         <StyledActionsView>
           <StyledActionButton onPress={() => navigation.push('SignUp')}>
-            <Label content={STRINGS.login.signup} color={COLORS.primary} />
+            <Label content={STRINGS.login.signup} color={COLORS.secondary} />
           </StyledActionButton>
           <StyledActionButton onPress={() => navigation.push('ForgotPassword')}>
             <Label
               content={STRINGS.login.forgotPassword}
-              color={COLORS.primary}
+              color={COLORS.secondary}
             />
           </StyledActionButton>
         </StyledActionsView>
+        <StyledHelpButton onPress={() => navigation.push('Help')}>
+          <Label
+            content={STRINGS.help}
+            color={COLORS.secondary}
+            marginRight={SPACING.small}
+          />
+          <IconHelp name='help-circle' size={24} color={COLORS.secondary} />
+        </StyledHelpButton>
       </StyledScrollView>
-    </StyledImageBackground>
+    </StyledLinearGradient>
   );
 };
+
+const StyledLinearGradient = styled(LinearGradient)`
+  flex: 1;
+  padding: ${SPACING.regularPlus};
+`;
 
 const StyledScrollView = styled.ScrollView`
   width: 100%;
 `;
 
-const StyledImageBackground = styled.ImageBackground`
-  flex: 1;
-  padding-left: ${SPACING.regularPlus};
-  padding-right: ${SPACING.regularPlus};
-  padding-bottom: ${SPACING.regularPlus};
-`;
-
 const StyledHelpButton = styled.TouchableOpacity`
-  position: absolute;
-  margin-top: ${SPACING.regular};
-  right: 6px;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  margin: ${SPACING.regular};
 `;
 
 const StyledLogoView = styled.View`
-  width: 100%;
   align-items: center;
-  margin-top: ${SPACING.huge};
-`;
-
-const StyledInputsView = styled.View`
-  width: 100%;
   margin-top: ${SPACING.big};
 `;
 
 const StyledLogo = styled.Image`
-  width: 120px;
-  height: 120px;
+  width: 250px;
+  height: 250px;
   resize-mode: contain;
 `;
 
@@ -145,17 +167,17 @@ const StyledActionsView = styled.View`
 
 const StyledLoginButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: ${COLORS.primary};
   margin-top: ${SPACING.medium};
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
+  border-radius: 7px;
   padding: ${SPACING.small};
-  border-color: ${COLORS.primary};
-  border-width: 2px;
+  border-color: ${COLORS.secondary};
+  border-width: 1px;
 `;
 
 export default LoginScreen;

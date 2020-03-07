@@ -16,11 +16,15 @@ const WEIGHT = {
 const typography = {
   defaultLabel: {
     weight: WEIGHT.regular,
-    size: SIZE.veryBig
+    size: SIZE.big
   },
   defaultLabelBold: {
     weight: WEIGHT.bold,
     size: SIZE.big
+  },
+  mediumLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.veryBig
   }
 };
 

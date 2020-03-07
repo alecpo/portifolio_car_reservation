@@ -6,6 +6,8 @@ const colors = {
   defaultGray: '#aaa',
   defaultText: '#333',
   loginButton: '#2f5293',
+  cancelButton: '#d94535',
+  backgroundModal: 'rgba(0,0,0,0.5)',
   loginScreenActionButtons: 'rgba(0,102,153,0.9)',
   nonLoggedBackgroundColor1: '#2f5293',
   nonLoggedBackgroundColor2: '#02bf3e'

@@ -6,21 +6,31 @@ import Label from '~/components/Label';
 import COLORS from '~/utils/colors';
 import SPACING from '~/utils/spacing';
 
-const SubmitButton = ({ title, submit = () => {} }) => (
-  <StyledButton onPress={submit}>
+const SubmitButton = ({
+  title,
+  labelColor = COLORS.secondary,
+  backgroundColor = COLORS.loginButton,
+  submit = () => {},
+  icon = () => {}
+}) => (
+  <StyledButton onPress={submit} backgroundColor={backgroundColor}>
     <Label
       content={title}
-      color={COLORS.secondary}
+      color={labelColor}
       marginTop={SPACING.smallPlus}
       marginBottom={SPACING.smallPlus}
+      marginRight={icon ? SPACING.small : '0px'}
     />
+    {icon()}
   </StyledButton>
 );
 
 const StyledButton = styled.TouchableOpacity`
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  background-color: ${COLORS.loginButton};
+  border-radius: 7px;
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 export default SubmitButton;

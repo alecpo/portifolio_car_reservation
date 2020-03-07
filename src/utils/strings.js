@@ -6,7 +6,14 @@ const strings = {
   passwordPlaceholder: 'Senha do usuário',
   origin: 'Origem',
   name: 'Nome',
-  address: 'Endereço',
+  ADDRESS: 'Endereço',
+  address: {
+    street: 'Rua',
+    number: 'Número',
+    complement: 'Complemento',
+    neighborhood: 'Bairro',
+    city: 'Cidade'
+  },
   resident: 'Morador',
   lessee: 'Locatário',
   federalRegister: 'CPF',
@@ -14,11 +21,13 @@ const strings = {
   phone: 'Telefone',
   birthday: 'Data de Nascimento',
   LOGIN: 'LOGIN',
+  help: 'Ajuda',
   login: {
     rememberMe: 'Lembrar de mim',
     signup: 'Cadastre-se',
     forgotPassword: 'Esqueceu sua senha?'
   },
+  LOGOUT: 'SAIR',
   SIGNUP: 'CADASTRE-SE',
   signup: {
     originPlaceholder: 'Selecione a origem',
@@ -29,6 +38,9 @@ const strings = {
     driverLicencyPlaceholder: '11111111111',
     phonePlaceholder: '(ddd) nº',
     birthdayPlaceholder: 'dd/mm/yyyy'
+  },
+  profile: {
+    data: 'Dados'
   }
 };
 

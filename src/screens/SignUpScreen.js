@@ -97,7 +97,7 @@ const SignUpScreen = ({ navigation }) => {
             value={address}
             onChangeText={value => updateState('address', value)}
             hasLabel
-            label={`${STRINGS.address} ${STRINGS.mandatory}`}
+            label={`${STRINGS.ADDRESS} ${STRINGS.mandatory}`}
             labelColor={COLORS.secondary}
             placeholder={STRINGS.signup.addressPlaceholder}
             testID='addressInputSignUp'
