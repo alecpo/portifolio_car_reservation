@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { ScrollView, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconHelp from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 
-import TextInput from '~/components/TextInput';
+import TextInputBox from '~/components/TextInputBox';
+import SubmitButton from '~/components/SubmitButton';
 import Label from '~/components/Label';
 
 import STRINGS from '~/utils/strings';
@@ -41,33 +43,35 @@ const LoginScreen = ({ navigation }) => {
         COLORS.nonLoggedBackgroundColor2
       ]}
     >
-      <StyledScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <StyledLogoView>
           <StyledLogo source={whiteLogo} />
         </StyledLogoView>
+
         <>
-          <TextInput
+          <TextInputBox
+            marginBottom={10}
             onChangeText={setEmail}
             value={email}
             hasLabel
             label={STRINGS.email}
             labelColor={COLORS.secondary}
-            testID='emailInput'
             placeholder={STRINGS.emailPlaceholder}
             autoCapitalize='none'
             keyboardType='email-address'
+            testID='emailInputLoginScreen'
           />
-          <TextInput
+          <TextInputBox
             onChangeText={setPassword}
             value={password}
             hasLabel
             label={STRINGS.password}
             labelColor={COLORS.secondary}
-            testID='passwordInput'
             placeholder={STRINGS.passwordPlaceholder}
             secureTextEntry
             autoCapitalize='none'
             hasShowPassword
+            testID='passwordInput'
           />
           <StyledCheckButton
             onPress={() =>
@@ -86,90 +90,82 @@ const LoginScreen = ({ navigation }) => {
             <Label
               content={STRINGS.login.rememberMe}
               marginLeft={SPACING.small}
-              typography={TYPOGRAPHY.textInputLabel}
+              typography={TYPOGRAPHY.TextInputBoxLabel}
               color={COLORS.secondary}
             />
           </StyledCheckButton>
         </>
 
-        <StyledLoginButton onPress={onLogin}>
-          <Label
-            content={STRINGS.LOGIN}
-            color={COLORS.secondary}
-            marginTop={SPACING.small}
-            marginBottom={SPACING.small}
+        <>
+          <SubmitButton
+            submit={onLogin}
+            title={STRINGS.LOGIN}
+            backgroundColor={COLORS.primary}
+            marginVertical={SPACING.smallPlus}
+            testID='loginButtonLoginScreen'
           />
-        </StyledLoginButton>
 
-        <StyledActionsView>
-          <StyledActionButton onPress={() => navigation.push('SignUp')}>
-            <Label content={STRINGS.login.signup} color={COLORS.secondary} />
-          </StyledActionButton>
-          <StyledActionButton onPress={() => navigation.push('ForgotPassword')}>
+          <StyledActionsView>
+            <StyledActionButton onPress={() => navigation.push('SignUp')}>
+              <Label content={STRINGS.login.signup} color={COLORS.secondary} />
+            </StyledActionButton>
+            <StyledActionButton
+              onPress={() => navigation.push('ForgotPassword')}
+            >
+              <Label
+                content={STRINGS.login.forgotPassword}
+                color={COLORS.secondary}
+              />
+            </StyledActionButton>
+          </StyledActionsView>
+
+          <StyledHelpButton onPress={() => navigation.push('Help')}>
             <Label
-              content={STRINGS.login.forgotPassword}
+              content={STRINGS.help}
               color={COLORS.secondary}
+              marginRight={SPACING.small}
             />
-          </StyledActionButton>
-        </StyledActionsView>
-        <StyledHelpButton onPress={() => navigation.push('Help')}>
-          <Label
-            content={STRINGS.help}
-            color={COLORS.secondary}
-            marginRight={SPACING.small}
-          />
-          <IconHelp name='help-circle' size={24} color={COLORS.secondary} />
-        </StyledHelpButton>
-      </StyledScrollView>
+            <IconHelp name='help-circle' size={24} color={COLORS.secondary} />
+          </StyledHelpButton>
+        </>
+      </ScrollView>
     </StyledLinearGradient>
   );
 };
 
 const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
-  padding: ${SPACING.regularPlus};
+  padding-horizontal: ${SPACING.smallPlus};
 `;
 
-const StyledScrollView = styled.ScrollView`
-  width: 100%;
+const StyledLogoView = styled.View`
+  margin-vertical: ${SPACING.smallPlus};
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledHelpButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   align-self: center;
-  margin: ${SPACING.regular};
-`;
-
-const StyledLogoView = styled.View`
-  align-items: center;
-  margin-top: ${SPACING.big};
 `;
 
 const StyledLogo = styled.Image`
-  width: 250px;
-  height: 250px;
-  resize-mode: contain;
+  width: 140px;
+  height: 140px;
 `;
 
 const StyledCheckButton = styled.TouchableOpacity`
+  margin-top: ${SPACING.smallPlus};
   flex-direction: row;
   align-items: center;
-  margin-top: ${SPACING.regular};
 `;
 
 const StyledActionsView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${SPACING.regular};
-`;
-
-const StyledLoginButton = styled.TouchableOpacity`
-  align-items: center;
-  border-radius: 7px;
-  background-color: ${COLORS.primary};
-  margin-top: ${SPACING.medium};
+  margin-bottom: ${SPACING.smallPlus};
 `;
 
 const StyledActionButton = styled.TouchableOpacity`

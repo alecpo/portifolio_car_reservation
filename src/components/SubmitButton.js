@@ -11,14 +11,19 @@ const SubmitButton = ({
   labelColor = COLORS.secondary,
   backgroundColor = COLORS.loginButton,
   submit = () => {},
-  icon = () => {}
+  icon = () => {},
+  marginVertical = '0px',
+  testID
 }) => (
-  <StyledButton onPress={submit} backgroundColor={backgroundColor}>
+  <StyledButton
+    onPress={submit}
+    marginVertical={marginVertical}
+    backgroundColor={backgroundColor}
+    testID={testID}
+  >
     <Label
       content={title}
       color={labelColor}
-      marginTop={SPACING.smallPlus}
-      marginBottom={SPACING.smallPlus}
       marginRight={icon ? SPACING.small : '0px'}
     />
     {icon()}
@@ -30,6 +35,8 @@ const StyledButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 7px;
+  margin-vertical: ${({ marginVertical }) => marginVertical};
+  padding-vertical: ${SPACING.smallPlus};
   background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 

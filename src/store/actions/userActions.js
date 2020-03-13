@@ -2,23 +2,55 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import API from '~/config/api';
-import { USER_LOGGED_IN, USER_LOGGED_OUT, LOADING_USER } from './actionTypes';
+import {
+  USER_LOGGED_IN,
+  USER_LOGGED_OUT,
+  LOADING_USER,
+  UPDATE_USER
+} from './actionTypes';
 
-export const loadingUser = () => {
-  return {
-    type: LOADING_USER
-  };
+export const getToken = async () => {
+  const token = await AsyncStorage.getItem('@access_token');
+  return token;
 };
 
-export const userLoggedIn = user => {
-  return {
-    type: USER_LOGGED_IN,
-    payload: user
-  };
+export const loadingUser = () => ({
+  type: LOADING_USER
+});
+
+export const userLoggedIn = user => ({
+  type: USER_LOGGED_IN,
+  payload: user
+});
+
+export const updateUser = partialUser => ({
+  type: UPDATE_USER,
+  payload: partialUser
+});
+
+export const onUpdateUser = (apiRoute, partialUser) => dispatch => {
+  /*  dispatch(loadingUser());
+  getToken()
+    .then(token => {
+      axios
+        .put(apiRoute, {
+          headers: { Authorization: `Bearer ${token}` },
+          data: { ...partialUser }
+        })
+        .then(res => {
+          console.log('res: ', res);
+          dispatch(updateUser(partialUser));
+        })
+        .catch(e => {
+          console.log('erro ao tentar atualizar dados do usuário: ', e);
+        });
+    })
+    .catch(); */
 };
 
 export const logout = () => async dispatch => {
   try {
+    dispatch(loadingUser());
     await AsyncStorage.removeItem('@access_token');
     dispatch({
       type: USER_LOGGED_OUT
@@ -28,22 +60,43 @@ export const logout = () => async dispatch => {
   }
 };
 
-/* export const getUser = () => async dispatch => {
-  //recupera user
+export const getUser = token => async dispatch => {
   try {
-    const token = await AsyncStorage.getItem('@access_token');
+    await dispatch(loadingUser());
     axios
       .get(`${API.user}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      .then(async resUser => {
+      .then(resUser => {
         const user = {
           ...resUser.data.user,
           userToken: token
         };
         delete user.password;
 
-        dispatch(userLoggedIn(user));
+        axios
+          .get(`${API.address}/${user.id_address}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+          .then(resAddressUser => {
+            const {
+              data: { zip, state, city, street, number, neighborhood }
+            } = resAddressUser;
+            Object.assign(user, {
+              address: {
+                zip,
+                state,
+                city,
+                street,
+                number,
+                neighborhood
+              }
+            });
+            dispatch(userLoggedIn(user));
+          })
+          .catch(() => {
+            console.log('erro ao tentar recuperar endereço do usuário');
+          });
       })
       .catch(() => {
         console.log('erro ao tentar recuperar usuário');
@@ -51,7 +104,7 @@ export const logout = () => async dispatch => {
   } catch (e) {
     console.log('Erro: ', e);
   }
-}; */
+};
 
 const setToken = async value => {
   try {
@@ -80,14 +133,36 @@ export const login = ({ email, password }) => dispatch => {
               .get(`${API.user}`, {
                 headers: { Authorization: `Bearer ${access_token}` }
               })
-              .then(async resUser => {
+              .then(resUser => {
                 const user = {
                   ...resUser.data.user,
                   userToken: access_token
                 };
                 delete user.password;
 
-                dispatch(userLoggedIn(user));
+                axios
+                  .get(`${API.address}/${user.id_address}`, {
+                    headers: { Authorization: `Bearer ${access_token}` }
+                  })
+                  .then(resAddressUser => {
+                    const {
+                      data: { zip, state, city, street, number, neighborhood }
+                    } = resAddressUser;
+                    Object.assign(user, {
+                      address: {
+                        zip,
+                        state,
+                        city,
+                        street,
+                        number,
+                        neighborhood
+                      }
+                    });
+                    dispatch(userLoggedIn(user));
+                  })
+                  .catch(() => {
+                    console.log('erro ao tentar recuperar endereço do usuário');
+                  });
               })
               .catch(() => {
                 console.log('erro ao tentar recuperar usuário');

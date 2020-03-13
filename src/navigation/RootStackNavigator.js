@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
+
+import { getUser, loadingUser } from '~/store/actions/userActions';
 
 import SplashScreen from '~/screens/SplashScreen';
 import MainStackNavigator from '~/navigation/MainStackNavigator';
@@ -17,8 +19,11 @@ import logo from '~/assets/img/logo_white.png';
 import COLORS from '~/utils/colors';
 
 const RootStackNavigator = () => {
+  const dispatch = useDispatch();
   const { Navigator, Screen } = createStackNavigator();
-  const { userToken } = useSelector(({ user }) => user);
+  const { userToken, isLoading: isLoadingUser } = useSelector(
+    ({ user }) => user
+  );
 
   const [isLoading, setIsLoading] = useState(true);
   const [token, setUserToken] = useState(null);
@@ -26,7 +31,10 @@ const RootStackNavigator = () => {
   const getToken = async () => {
     try {
       const value = await AsyncStorage.getItem('@access_token');
-      setIsLoading(false);
+
+      if (value) {
+        await dispatch(getUser(value));
+      }
       setUserToken(value);
     } catch (error) {
       console.log('Error retrieving data' + error);
@@ -36,6 +44,10 @@ const RootStackNavigator = () => {
   useEffect(() => {
     getToken();
   }, [userToken]);
+
+  useEffect(() => {
+    setIsLoading(isLoadingUser);
+  }, [isLoadingUser]);
 
   const config = {
     animation: 'spring',

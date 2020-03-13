@@ -41,6 +41,10 @@ const strings = {
   },
   profile: {
     data: 'Dados'
+  },
+  editModal: {
+    edit: 'Editar',
+    save: 'SALVAR DADOS'
   }
 };
 

@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Label from '~/components/Label';
 import StyledPicker from '~/components/StyledPicker';
-import TextInput from '~/components/TextInput';
+import TextInputBox from '~/components/TextInputBox';
 import CheckCircle from '~/components/CheckCircle';
 import SubmitButton from '~/components/SubmitButton';
 
@@ -73,7 +73,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='originPickerSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={name}
             onChangeText={value => updateState('name', value)}
             hasLabel
@@ -83,7 +83,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='nameInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={email}
             onChangeText={value => updateState('email', value)}
             hasLabel
@@ -93,7 +93,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='emailInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={address}
             onChangeText={value => updateState('address', value)}
             hasLabel
@@ -116,7 +116,7 @@ const SignUpScreen = ({ navigation }) => {
             />
           </StyledSelectUserTypeView>
 
-          <TextInput
+          <TextInputBox
             value={federalRegister}
             onChangeText={value => updateState('federalRegister', value)}
             hasLabel
@@ -126,7 +126,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='federalRegisterInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={driverLicency}
             onChangeText={value => updateState('driverLicency', value)}
             hasLabel
@@ -136,7 +136,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='driverLicencyInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={phone}
             onChangeText={value => updateState('phone', value)}
             hasLabel
@@ -146,7 +146,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='phoneInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={birthday}
             onChangeText={value => updateState('birthday', value)}
             hasLabel
@@ -156,7 +156,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='birthdayInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={password}
             onChangeText={value => updateState('password', value)}
             hasLabel
@@ -169,7 +169,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='passwordInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={confirmPassword}
             onChangeText={value => updateState('confirmPassword', value)}
             placeholder={STRINGS.signup.confirmPasswordPlaceholder}

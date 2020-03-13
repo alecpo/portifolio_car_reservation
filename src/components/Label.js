@@ -17,6 +17,7 @@ const Label = props => {
     color = COLORS.defaultText,
     mask
   } = props;
+
   return (
     <StyledText
       {...props}
@@ -28,7 +29,9 @@ const Label = props => {
       marginBottom={marginBottom}
       color={color}
     >
-      {mask ? MaskService.toMask(mask.type, content, mask.settings) : content}
+      {mask
+        ? MaskService.toMask(mask.type, content ?? '', mask.settings)
+        : content}
     </StyledText>
   );
 };

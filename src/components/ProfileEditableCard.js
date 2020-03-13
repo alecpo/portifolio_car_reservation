@@ -1,4 +1,6 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -10,9 +12,35 @@ import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
 
 const ProfileEditableCard = props => {
-  const { labelList, contentList, title } = props;
+  const { editableFields, labelList, contentList, title, apiRoute } = props;
+
+  const navigation = useNavigation();
+
+  const onPressCard = () => {
+    const labelListFiltered = {};
+
+    editableFields.forEach(
+      label => (labelListFiltered[label] = labelList[label])
+    );
+
+    const editableObject = {};
+    const editedObjectToSubmit = {};
+
+    Object.entries(labelListFiltered).map(item => {
+      editableObject[item[0]] = { ...item[1] };
+      editedObjectToSubmit[item[0]] = contentList[item[0]];
+    });
+
+    navigation.navigate('EditModal', {
+      apiRoute,
+      title,
+      editableObject,
+      editedObjectToSubmit
+    });
+  };
+
   return (
-    <StyledContainer {...props}>
+    <StyledContainer {...props} onPress={onPressCard}>
       <StyledCardHeader>
         <Label
           typography={TYPOGRAPHY.mediumLabelBold}
@@ -23,24 +51,26 @@ const ProfileEditableCard = props => {
       </StyledCardHeader>
       {labelList && (
         <>
-          <DivisorLine />
+          <DivisorLine marginVertical={SPACING.small} />
           <StyledCardBody>
-            {labelList.map((label, index) => (
-              <StyledKeyValueRow key={index}>
-                <Label
-                  content={`${label.title}: `}
-                  color={COLORS.primary}
-                  marginBottom={SPACING.small}
-                />
-                <Label
-                  mask={label.mask}
-                  content={contentList[index]}
-                  typography={TYPOGRAPHY.defaultLabel}
-                  colors={COLORS.defaultGray}
-                  marginBottom={SPACING.small}
-                />
-              </StyledKeyValueRow>
-            ))}
+            {Object.entries(labelList).map((item, index) => {
+              return (
+                <StyledKeyValueRow key={index}>
+                  <Label
+                    content={`${item[1].title}: `}
+                    color={COLORS.primary}
+                    marginBottom={SPACING.small}
+                  />
+                  <Label
+                    mask={item[1].mask}
+                    content={contentList[item[0]]}
+                    typography={TYPOGRAPHY.defaultLabel}
+                    colors={COLORS.defaultGray}
+                    marginBottom={SPACING.small}
+                  />
+                </StyledKeyValueRow>
+              );
+            })}
           </StyledCardBody>
         </>
       )}
@@ -49,10 +79,12 @@ const ProfileEditableCard = props => {
 };
 
 const StyledContainer = styled.TouchableOpacity`
-  margin-bottom: ${SPACING.smallPlus};
+  width: ${Dimensions.get('window').width * 0.95};
+  margin-vertical: ${SPACING.verySmall};
   padding: ${SPACING.small};
   border-radius: 7px;
-  background-color: #fff;
+  background-color: ${COLORS.secondary};
+  elevation: 5;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 `;
 

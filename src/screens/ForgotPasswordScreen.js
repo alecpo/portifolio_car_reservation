@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import TextInput from '~/components/TextInput';
+import TextInputBox from '~/components/TextInputBox';
 import Label from '~/components/Label';
 
 import API from '~/config/api';

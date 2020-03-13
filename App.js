@@ -25,6 +25,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <StyledSafeAreaView />
       <StatusBar
         ref={statusBarRef}
         backgroundColor={COLORS.primary}
