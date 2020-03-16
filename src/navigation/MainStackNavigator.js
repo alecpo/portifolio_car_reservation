@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import PropTypes from 'prop-types';
+import { useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -11,44 +12,42 @@ import HelpScreen from '~/screens/HelpScreen';
 
 import COLORS from '~/utils/colors';
 
+const selectIconName = key => {
+  switch (key) {
+    case 'Home':
+      return 'event-note';
+    case 'Reservations':
+      return 'update';
+    case 'Payments':
+      return 'account-balance-wallet';
+    case 'Perfil':
+      return 'person';
+    default:
+      return 'help-outline';
+  }
+};
+
+const TabBarIcon = ({ focused }) => {
+  const route = useRoute();
+  const iconName = selectIconName(route.name);
+
+  return (
+    <Icon
+      name={iconName}
+      size={30}
+      color={focused ? COLORS.primary : COLORS.defaultGray}
+    />
+  );
+};
+
 const MainStackNavigator = () => {
   const BottomTab = createBottomTabNavigator();
 
-  const selectIconName = key => {
-    switch (key) {
-      case 'Home':
-        return 'event-note';
-        break;
-      case 'Reservations':
-        return 'update';
-        break;
-      case 'Payments':
-        return 'account-balance-wallet';
-        break;
-      case 'Perfil':
-        return 'person';
-        break;
-      default:
-        return 'help-outline';
-        break;
-    }
-  };
+  const screenOptions = { tabBarIcon: TabBarIcon };
 
   return (
     <BottomTab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused }) => {
-          const iconName = selectIconName(route.name);
-
-          return (
-            <Icon
-              name={iconName}
-              size={30}
-              color={focused ? COLORS.primary : COLORS.defaultGray}
-            />
-          );
-        }
-      })}
+      screenOptions={screenOptions}
       tabBarOptions={{
         showLabel: false,
         activeTintColor: COLORS.primary,
@@ -63,6 +62,14 @@ const MainStackNavigator = () => {
       <BottomTab.Screen name='Help' component={HelpScreen} />
     </BottomTab.Navigator>
   );
+};
+
+TabBarIcon.defaultProps = {
+  focused: false
+};
+
+TabBarIcon.propTypes = {
+  focused: PropTypes.bool
 };
 
 export default MainStackNavigator;

@@ -22,7 +22,7 @@ const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding-bottom: ${SPACING.big};
+  padding-bottom: ${SPACING.big}px;
 `;
 
 const StyledLogo = styled.Image`

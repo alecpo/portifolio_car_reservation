@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -135,11 +135,11 @@ const LoginScreen = ({ navigation }) => {
 
 const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
-  padding-horizontal: ${SPACING.smallPlus};
+  padding-horizontal: ${SPACING.smallPlus}px;
 `;
 
 const StyledLogoView = styled.View`
-  margin-vertical: ${SPACING.smallPlus};
+  margin-vertical: ${SPACING.smallPlus}px;
   justify-content: center;
   align-items: center;
 `;
@@ -156,7 +156,7 @@ const StyledLogo = styled.Image`
 `;
 
 const StyledCheckButton = styled.TouchableOpacity`
-  margin-top: ${SPACING.smallPlus};
+  margin-top: ${SPACING.smallPlus}px;
   flex-direction: row;
   align-items: center;
 `;
@@ -165,13 +165,13 @@ const StyledActionsView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${SPACING.smallPlus};
+  margin-bottom: ${SPACING.smallPlus}px;
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 7px;
-  padding: ${SPACING.small};
+  padding: ${SPACING.small}px;
   border-color: ${COLORS.secondary};
   border-width: 1px;
 `;

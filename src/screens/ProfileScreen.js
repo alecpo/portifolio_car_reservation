@@ -82,12 +82,12 @@ const ProfileScreen = () => {
 };
 
 const StyledScrollView = styled.ScrollView`
-  top: ${SPACING.verySmall};
+  top: ${SPACING.verySmall}px;
 `;
 
 const StyledButtonView = styled.View`
   width: 100%;
-  padding-horizontal: ${SPACING.small};
+  padding-horizontal: ${SPACING.small}px;
 `;
 
 export default ProfileScreen;

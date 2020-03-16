@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { StatusBar, Dimensions } from 'react-native';
 import { useFormik } from 'formik';
@@ -56,6 +56,7 @@ const EditModalScreen = ({ route, navigation }) => {
         <StyledBody>
           {Object.entries(editableObject).map(item => (
             <TextInputLine
+              key={item[0]}
               onChangeText={formik.handleChange(item[0])}
               value={formik.values[item[0]]}
               marginBottom={10}
@@ -88,13 +89,13 @@ const StyledContainer = styled.View`
 `;
 
 const StyledBody = styled.View`
-  margin-vertical: ${SPACING.regular};
+  margin-vertical: ${SPACING.regular}px;
 `;
 
 const StyledModalContent = styled.View`
-  width: ${Dimensions.get('window').width * 0.8};
+  width: ${Dimensions.get('window').width * 0.8}px;
   background-color: white;
-  padding: ${SPACING.smallPlus};
+  padding: ${SPACING.smallPlus}px;
 `;
 
 const StyledHeader = styled.View`
@@ -104,7 +105,7 @@ const StyledHeader = styled.View`
 `;
 
 const StyledCloseButton = styled.TouchableOpacity`
-  padding-vertical: ${SPACING.verySmall};
+  padding-vertical: ${SPACING.verySmall}px;
 `;
 
 export default EditModalScreen;

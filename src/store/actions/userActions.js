@@ -56,7 +56,7 @@ export const logout = () => async dispatch => {
       type: USER_LOGGED_OUT
     });
   } catch (error) {
-    console.log('Error removing data' + error);
+    console.log(`Error removing data${error}`);
   }
 };
 
@@ -128,7 +128,7 @@ export const login = ({ email, password }) => dispatch => {
       } = res;
       if (access_token) {
         setToken(access_token)
-          .then(
+          .then(() => {
             axios
               .get(`${API.user}`, {
                 headers: { Authorization: `Bearer ${access_token}` }
@@ -139,7 +139,7 @@ export const login = ({ email, password }) => dispatch => {
                   userToken: access_token
                 };
                 delete user.password;
-
+                console.log('resUser: ', resUser);
                 axios
                   .get(`${API.address}/${user.id_address}`, {
                     headers: { Authorization: `Bearer ${access_token}` }
@@ -166,8 +166,8 @@ export const login = ({ email, password }) => dispatch => {
               })
               .catch(() => {
                 console.log('erro ao tentar recuperar usuário');
-              })
-          )
+              });
+          })
           .catch(() => {
             console.log('Erro ao utilizar async storage.');
           });

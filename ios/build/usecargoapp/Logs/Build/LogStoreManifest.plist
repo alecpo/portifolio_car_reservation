@@ -6,6 +6,38 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
+		<key>89C8CB13-8B84-4A9F-BA2C-CA7991F043BE</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>89C8CB13-8B84-4A9F-BA2C-CA7991F043BE.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>usecargoapp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>usecargoapp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>606059491.55709898</real>
+			<key>timeStoppedRecording</key>
+			<real>606059493.52585101</real>
+			<key>title</key>
+			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>89C8CB13-8B84-4A9F-BA2C-CA7991F043BE</string>
+		</dict>
 		<key>B58AA91F-8E70-4656-B9BD-160FA151F364</key>
 		<dict>
 			<key>className</key>

@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
@@ -18,10 +18,6 @@ axios.defaults.baseURL = 'https://api.hmg.pickndrive.com.br/api/v1';
 const App = () => {
   const store = storeConfig();
   const statusBarRef = useRef();
-
-  useEffect(() => {
-    console.log('store: ', store);
-  }, [store]);
 
   return (
     <Provider store={store}>

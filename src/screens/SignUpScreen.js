@@ -190,9 +190,9 @@ const SignUpScreen = ({ navigation }) => {
 
 const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
-  padding-left: ${SPACING.regularPlus};
-  padding-right: ${SPACING.regularPlus};
-  padding-bottom: ${SPACING.regularPlus};
+  padding-left: ${SPACING.regularPlus}px;
+  padding-right: ${SPACING.regularPlus}px;
+  padding-bottom: ${SPACING.regularPlus}px;
 `;
 
 const StyledScrollView = styled.ScrollView`
@@ -201,14 +201,14 @@ const StyledScrollView = styled.ScrollView`
 
 const StyledInputsView = styled.View`
   width: 100%;
-  margin-top: ${SPACING.small};
-  margin-bottom: ${SPACING.medium};
+  margin-top: ${SPACING.small}px;
+  margin-bottom: ${SPACING.medium}px;
 `;
 
 const StyledSelectUserTypeView = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-top: ${SPACING.regularPlus};
+  margin-top: ${SPACING.regularPlus}px;
 `;
 
 export default SignUpScreen;

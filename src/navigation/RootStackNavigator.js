@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
-
-import { getUser, loadingUser } from '~/store/actions/userActions';
 
 import SplashScreen from '~/screens/SplashScreen';
 import MainStackNavigator from '~/navigation/MainStackNavigator';
@@ -18,6 +16,8 @@ import logo from '~/assets/img/logo_white.png';
 
 import COLORS from '~/utils/colors';
 
+import { getUser } from '~/store/actions/userActions';
+
 const RootStackNavigator = () => {
   const dispatch = useDispatch();
   const { Navigator, Screen } = createStackNavigator();
@@ -28,22 +28,23 @@ const RootStackNavigator = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [token, setUserToken] = useState(null);
 
-  const getToken = async () => {
+  const getToken = useCallback(async () => {
     try {
       const value = await AsyncStorage.getItem('@access_token');
 
-      if (value) {
+      if (value && !userToken) {
+        console.log('value', value, 'userToken', userToken);
         await dispatch(getUser(value));
       }
       setUserToken(value);
     } catch (error) {
-      console.log('Error retrieving data' + error);
+      console.log(`Error retrieving data${error}`);
     }
-  };
+  }, [userToken, dispatch]);
 
   useEffect(() => {
     getToken();
-  }, [userToken]);
+  }, [userToken, getToken]);
 
   useEffect(() => {
     setIsLoading(isLoadingUser);
