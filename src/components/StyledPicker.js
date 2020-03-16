@@ -14,10 +14,10 @@ const StyledPicker = props => {
     labelColor,
     dataList,
     updateState = () => {},
-    marginLeft = '0px',
-    marginRight = '0px',
+    marginLeft = 0,
+    marginRight = 0,
     marginTop = SPACING.regularPlus,
-    marginBottom = '0px'
+    marginBottom = 0
   } = props;
   const { Item } = Picker;
 
@@ -46,7 +46,7 @@ const StyledPicker = props => {
       <StyledInputView>
         <Picker
           {...props}
-          mode={'dropdown'}
+          mode='dropdown'
           selectedValue={originSelected}
           onValueChange={(itemValue, itemIndex) => handleChangeValue(itemValue)}
         >
@@ -60,15 +60,15 @@ const StyledPicker = props => {
 };
 
 const StyledView = styled.View`
-  margin-left: ${({ marginLeft }) => marginLeft};
-  margin-right: ${({ marginRight }) => marginRight};
+  margin-left: ${({ marginLeft }) => marginLeft}px;
+  margin-right: ${({ marginRight }) => marginRight}px;
   margin-top: ${({ marginTop }) => marginTop};
-  margin-bottom: ${({ marginBottom }) => marginBottom};
+  margin-bottom: ${({ marginBottom }) => marginBottom}px;
 `;
 
 const StyledInputView = styled.View`
   background-color: ${COLORS.secondary};
-  border-radius: 5px;
+  border-radius: 7px;
 `;
 
 export default StyledPicker;

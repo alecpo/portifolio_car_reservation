@@ -1,12 +1,13 @@
 const spacing = {
-  small: '10px',
-  smallPlus: '15px',
-  regular: '20px',
-  regularPlus: '25px',
-  medium: '30px',
-  mediumPlus: '35px',
-  big: '40px',
-  huge: '60px'
+  verySmall: 5,
+  small: 10,
+  smallPlus: 15,
+  regular: 20,
+  regularPlus: 25,
+  medium: 30,
+  mediumPlus: 35,
+  big: 40,
+  huge: 60
 };
 
 export default spacing;

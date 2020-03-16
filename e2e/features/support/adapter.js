@@ -1,4 +1,5 @@
 const detox = require('detox');
+
 class DetoxCucumberAdapter {
   constructor(detox) {
     this.detox = detox;

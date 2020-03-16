@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>12B76226-A3DB-486E-A67F-E3AA6A8D3E33</key>
+		<key>89C8CB13-8B84-4A9F-BA2C-CA7991F043BE</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>12B76226-A3DB-486E-A67F-E3AA6A8D3E33.xcactivitylog</string>
+			<string>89C8CB13-8B84-4A9F-BA2C-CA7991F043BE.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -30,13 +30,45 @@
 			<key>signature</key>
 			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>604496634.03625798</real>
+			<real>606059491.55709898</real>
 			<key>timeStoppedRecording</key>
-			<real>604496638.04518604</real>
+			<real>606059493.52585101</real>
 			<key>title</key>
 			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>12B76226-A3DB-486E-A67F-E3AA6A8D3E33</string>
+			<string>89C8CB13-8B84-4A9F-BA2C-CA7991F043BE</string>
+		</dict>
+		<key>B58AA91F-8E70-4656-B9BD-160FA151F364</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B58AA91F-8E70-4656-B9BD-160FA151F364.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>usecargoapp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>usecargoapp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>605723025.31768703</real>
+			<key>timeStoppedRecording</key>
+			<real>605723027.45472801</real>
+			<key>title</key>
+			<string>Building workspace usecargoapp with scheme usecargoapp and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>B58AA91F-8E70-4656-B9BD-160FA151F364</string>
 		</dict>
 	</dict>
 </dict>

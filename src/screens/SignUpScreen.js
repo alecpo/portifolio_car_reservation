@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Label from '~/components/Label';
 import StyledPicker from '~/components/StyledPicker';
-import TextInput from '~/components/TextInput';
+import TextInputBox from '~/components/TextInputBox';
 import CheckCircle from '~/components/CheckCircle';
 import SubmitButton from '~/components/SubmitButton';
 
@@ -73,7 +73,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='originPickerSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={name}
             onChangeText={value => updateState('name', value)}
             hasLabel
@@ -83,7 +83,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='nameInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={email}
             onChangeText={value => updateState('email', value)}
             hasLabel
@@ -93,11 +93,11 @@ const SignUpScreen = ({ navigation }) => {
             testID='emailInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={address}
             onChangeText={value => updateState('address', value)}
             hasLabel
-            label={`${STRINGS.address} ${STRINGS.mandatory}`}
+            label={`${STRINGS.ADDRESS} ${STRINGS.mandatory}`}
             labelColor={COLORS.secondary}
             placeholder={STRINGS.signup.addressPlaceholder}
             testID='addressInputSignUp'
@@ -116,7 +116,7 @@ const SignUpScreen = ({ navigation }) => {
             />
           </StyledSelectUserTypeView>
 
-          <TextInput
+          <TextInputBox
             value={federalRegister}
             onChangeText={value => updateState('federalRegister', value)}
             hasLabel
@@ -126,7 +126,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='federalRegisterInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={driverLicency}
             onChangeText={value => updateState('driverLicency', value)}
             hasLabel
@@ -136,7 +136,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='driverLicencyInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={phone}
             onChangeText={value => updateState('phone', value)}
             hasLabel
@@ -146,7 +146,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='phoneInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={birthday}
             onChangeText={value => updateState('birthday', value)}
             hasLabel
@@ -156,7 +156,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='birthdayInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={password}
             onChangeText={value => updateState('password', value)}
             hasLabel
@@ -169,7 +169,7 @@ const SignUpScreen = ({ navigation }) => {
             testID='passwordInputSignUp'
           />
 
-          <TextInput
+          <TextInputBox
             value={confirmPassword}
             onChangeText={value => updateState('confirmPassword', value)}
             placeholder={STRINGS.signup.confirmPasswordPlaceholder}
@@ -190,9 +190,9 @@ const SignUpScreen = ({ navigation }) => {
 
 const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
-  padding-left: ${SPACING.regularPlus};
-  padding-right: ${SPACING.regularPlus};
-  padding-bottom: ${SPACING.regularPlus};
+  padding-left: ${SPACING.regularPlus}px;
+  padding-right: ${SPACING.regularPlus}px;
+  padding-bottom: ${SPACING.regularPlus}px;
 `;
 
 const StyledScrollView = styled.ScrollView`
@@ -201,14 +201,14 @@ const StyledScrollView = styled.ScrollView`
 
 const StyledInputsView = styled.View`
   width: 100%;
-  margin-top: ${SPACING.small};
-  margin-bottom: ${SPACING.medium};
+  margin-top: ${SPACING.small}px;
+  margin-bottom: ${SPACING.medium}px;
 `;
 
 const StyledSelectUserTypeView = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-top: ${SPACING.regularPlus};
+  margin-top: ${SPACING.regularPlus}px;
 `;
 
 export default SignUpScreen;

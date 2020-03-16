@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import TextInput from '~/components/TextInput';
+import TextInputBox from '~/components/TextInputBox';
 import Label from '~/components/Label';
 
 import API from '~/config/api';
@@ -34,19 +34,19 @@ const StyledImageBackground = styled.ImageBackground`
 
 const StyledHelpButton = styled.TouchableOpacity`
   position: absolute;
-  margin-top: ${SPACING.regular};
+  margin-top: ${SPACING.regular}px;
   right: 6px;
 `;
 
 const StyledLogoView = styled.View`
   width: 100%;
   align-items: center;
-  margin-top: ${SPACING.huge};
+  margin-top: ${SPACING.huge}px;
 `;
 
 const StyledInputsView = styled.View`
   width: 100%;
-  margin-top: ${SPACING.big};
+  margin-top: ${SPACING.big}px;
 `;
 
 const StyledLogo = styled.Image`
@@ -68,20 +68,20 @@ const StyledActionsView = styled.View`
 
 const StyledLoginButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: ${COLORS.loginButton};
-  margin-top: ${SPACING.medium};
+  margin-top: ${SPACING.medium}px;
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
+  border-radius: 7px;
   background-color: ${COLORS.loginScreenActionButtons};
-  margin-top: ${SPACING.regular};
-  padding-top: ${SPACING.small};
-  padding-right: ${SPACING.regular};
-  padding-left: ${SPACING.regular};
-  padding-bottom: ${SPACING.small};
+  margin-top: ${SPACING.regular}px;
+  padding-top: ${SPACING.small}px;
+  padding-right: ${SPACING.regular}px;
+  padding-left: ${SPACING.regular}px;
+  padding-bottom: ${SPACING.small}px;
 `;
 
 export default ForgotPasswordScreen;

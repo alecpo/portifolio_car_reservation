@@ -1,53 +1,77 @@
 import React, { useState } from 'react';
+import { ScrollView } from 'react-native';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconHelp from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
 
-import TextInput from '~/components/TextInput';
+import TextInputBox from '~/components/TextInputBox';
+import SubmitButton from '~/components/SubmitButton';
 import Label from '~/components/Label';
 
-import API from '~/config/api';
 import STRINGS from '~/utils/strings';
 import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
 import COLORS from '~/utils/colors';
 
-import background from '~/assets/img/background.png';
+import whiteLogo from '~/assets/img/logo_branco.png';
+
+import { login } from '~/store/actions/userActions';
 
 const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
     false
   );
-  return (
-    <StyledImageBackground source={background}>
-      <StyledScrollView>
-        <StyledHelpButton onPress={() => navigation.push('Help')}>
-          <Icon
-            name='help-circle-outline'
-            size={35}
-            color={COLORS.loginScreenActionButtons}
-          />
-        </StyledHelpButton>
+  const [email, setEmail] = useState('novoclientehmg@teste.com.br');
+  const [password, setPassword] = useState('dev');
 
+  const dispatch = useDispatch();
+
+  const onLogin = async () => {
+    const user = {
+      email,
+      password
+    };
+    dispatch(login(user));
+  };
+
+  return (
+    <StyledLinearGradient
+      colors={[
+        COLORS.nonLoggedBackgroundColor1,
+        COLORS.nonLoggedBackgroundColor2
+      ]}
+    >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <StyledLogoView>
-          <StyledLogo source={{ uri: `${API.LOGOS}/usecargocolorido.png` }} />
+          <StyledLogo source={whiteLogo} />
         </StyledLogoView>
-        <StyledInputsView>
-          <TextInput
+
+        <>
+          <TextInputBox
+            marginBottom={10}
+            onChangeText={setEmail}
+            value={email}
             hasLabel
             label={STRINGS.email}
-            testID='emailInput'
+            labelColor={COLORS.secondary}
             placeholder={STRINGS.emailPlaceholder}
             autoCapitalize='none'
             keyboardType='email-address'
+            testID='emailInputLoginScreen'
           />
-          <TextInput
+          <TextInputBox
+            onChangeText={setPassword}
+            value={password}
             hasLabel
             label={STRINGS.password}
-            testID='passwordInput'
+            labelColor={COLORS.secondary}
             placeholder={STRINGS.passwordPlaceholder}
             secureTextEntry
             autoCapitalize='none'
             hasShowPassword
+            testID='passwordInput'
           />
           <StyledCheckButton
             onPress={() =>
@@ -61,101 +85,95 @@ const LoginScreen = ({ navigation }) => {
                   : 'checkbox-blank-outline'
               }
               size={25}
-              color={COLORS.defaultText}
+              color={COLORS.secondary}
             />
             <Label
               content={STRINGS.login.rememberMe}
               marginLeft={SPACING.small}
-              typography={TYPOGRAPHY.textInputLabel}
+              typography={TYPOGRAPHY.TextInputBoxLabel}
+              color={COLORS.secondary}
             />
           </StyledCheckButton>
-        </StyledInputsView>
+        </>
 
-        <StyledLoginButton onPress={() => navigation.push('Main')}>
-          <Label
-            content={STRINGS.LOGIN}
-            color={COLORS.secondary}
-            marginTop={SPACING.small}
-            marginBottom={SPACING.small}
+        <>
+          <SubmitButton
+            submit={onLogin}
+            title={STRINGS.LOGIN}
+            backgroundColor={COLORS.primary}
+            marginVertical={SPACING.smallPlus}
+            testID='loginButtonLoginScreen'
           />
-        </StyledLoginButton>
 
-        <StyledActionsView>
-          <StyledActionButton onPress={() => navigation.push('SignUp')}>
-            <Label content={STRINGS.login.signup} color={COLORS.primary} />
-          </StyledActionButton>
-          <StyledActionButton onPress={() => navigation.push('ForgotPassword')}>
+          <StyledActionsView>
+            <StyledActionButton onPress={() => navigation.push('SignUp')}>
+              <Label content={STRINGS.login.signup} color={COLORS.secondary} />
+            </StyledActionButton>
+            <StyledActionButton
+              onPress={() => navigation.push('ForgotPassword')}
+            >
+              <Label
+                content={STRINGS.login.forgotPassword}
+                color={COLORS.secondary}
+              />
+            </StyledActionButton>
+          </StyledActionsView>
+
+          <StyledHelpButton onPress={() => navigation.push('Help')}>
             <Label
-              content={STRINGS.login.forgotPassword}
-              color={COLORS.primary}
+              content={STRINGS.help}
+              color={COLORS.secondary}
+              marginRight={SPACING.small}
             />
-          </StyledActionButton>
-        </StyledActionsView>
-      </StyledScrollView>
-    </StyledImageBackground>
+            <IconHelp name='help-circle' size={24} color={COLORS.secondary} />
+          </StyledHelpButton>
+        </>
+      </ScrollView>
+    </StyledLinearGradient>
   );
 };
 
-const StyledScrollView = styled.ScrollView`
-  width: 100%;
-`;
-
-const StyledImageBackground = styled.ImageBackground`
+const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
-  padding-left: ${SPACING.regularPlus};
-  padding-right: ${SPACING.regularPlus};
-  padding-bottom: ${SPACING.regularPlus};
-`;
-
-const StyledHelpButton = styled.TouchableOpacity`
-  position: absolute;
-  margin-top: ${SPACING.regular};
-  right: 6px;
+  padding-horizontal: ${SPACING.smallPlus}px;
 `;
 
 const StyledLogoView = styled.View`
-  width: 100%;
+  margin-vertical: ${SPACING.smallPlus}px;
+  justify-content: center;
   align-items: center;
-  margin-top: ${SPACING.huge};
 `;
 
-const StyledInputsView = styled.View`
-  width: 100%;
-  margin-top: ${SPACING.big};
+const StyledHelpButton = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
 `;
 
 const StyledLogo = styled.Image`
-  width: 120px;
-  height: 120px;
-  resize-mode: contain;
+  width: 140px;
+  height: 140px;
 `;
 
 const StyledCheckButton = styled.TouchableOpacity`
+  margin-top: ${SPACING.smallPlus}px;
   flex-direction: row;
   align-items: center;
-  margin-top: ${SPACING.regular};
 `;
 
 const StyledActionsView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${SPACING.regular};
-`;
-
-const StyledLoginButton = styled.TouchableOpacity`
-  align-items: center;
-  border-radius: 6px;
-  background-color: ${COLORS.primary};
-  margin-top: ${SPACING.medium};
+  margin-bottom: ${SPACING.smallPlus}px;
 `;
 
 const StyledActionButton = styled.TouchableOpacity`
   align-items: center;
-  border-radius: 6px;
-  padding: ${SPACING.small};
-  border-color: ${COLORS.primary};
-  border-width: 2px;
+  border-radius: 7px;
+  padding: ${SPACING.small}px;
+  border-color: ${COLORS.secondary};
+  border-width: 1px;
 `;
 
 export default LoginScreen;

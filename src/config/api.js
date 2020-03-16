@@ -1,7 +1,8 @@
-const HOST_URL = "https://pickndrive.s3-sa-east-1.amazonaws.com";
-const constants = {
-  LOGOS: `${HOST_URL}/logos`
-  //"https://pickndrive.s3-sa-east-1.amazonaws.com/logos/usecargocolorido.png"
+const endPoints = {
+  token: '/token',
+  user: '/user',
+  address: '/address',
+  updateUserPartial: '/user/partial'
 };
 
-export default constants;
+export default endPoints;

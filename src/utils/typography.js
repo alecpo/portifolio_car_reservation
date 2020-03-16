@@ -14,13 +14,33 @@ const WEIGHT = {
 };
 
 const typography = {
+  verySmallLabel: {
+    weight: WEIGHT.regular,
+    size: SIZE.verySmall
+  },
+  verySmallLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.verySmall
+  },
+  smallLabel: {
+    weight: WEIGHT.regular,
+    size: SIZE.small
+  },
+  smallLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.small
+  },
   defaultLabel: {
     weight: WEIGHT.regular,
-    size: SIZE.veryBig
+    size: SIZE.big
   },
   defaultLabelBold: {
     weight: WEIGHT.bold,
     size: SIZE.big
+  },
+  mediumLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.veryBig
   }
 };
 

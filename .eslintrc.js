@@ -1,6 +1,7 @@
 module.exports = {
   extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
-  plugins: ['react', 'prettier', 'react-hooks'],
+  parser: 'babel-eslint',
+  plugins: ['react', 'prettier', 'react-hooks', 'babel'],
   globals: {
     __DEV__: true,
     fetch: false
@@ -15,9 +16,12 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'react/jsx-one-expression-per-line': 'off',
-    'react/prop-types': ['error', { ignore: ['navigation'] }],
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': ['error', { ignore: ['navigation', 'route', 'mask'] }],
     'react/state-in-constructor': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn'
+    'react-hooks/exhaustive-deps': 'warn',
+    'babel/no-unused-expressions': 0,
+    'babel/no-unused-expressions': 1
   }
 };
