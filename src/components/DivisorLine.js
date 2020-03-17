@@ -9,7 +9,7 @@ const DivisorLine = ({ marginVertical }) => (
 );
 
 const StyledDivisorLine = styled.View`
-  height: 0.6px;
+  height: 1px;
   margin-vertical: ${({ marginVertical }) => marginVertical}px;
   background-color: ${COLORS.defaultGray};
 `;

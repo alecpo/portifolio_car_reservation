@@ -11,8 +11,9 @@ import ProfileEditableCard from '~/components/ProfileEditableCard';
 import STRINGS from '~/utils/strings';
 import COLORS from '~/utils/colors';
 import SPACING from '~/utils/spacing';
-import DATA_CARD_CONFIGS from '~/utils/enums/DATA_CARD_CONFIGS';
-import ADDRESS_CARD_CONFIGS from '~/utils/enums/ADDRESS_CARD_CONFIGS';
+import DATA_CARD_CONFIGS_PROFILE from '~/utils/enums/DATA_CARD_CONFIGS_PROFILE';
+import ADDRESS_CARD_CONFIGS_PROFILE from '~/utils/enums/ADDRESS_CARD_CONFIGS_PROFILE';
+import PASSWORD_CARD_CONFIGS_PROFILE from '~/utils/enums/PASSWORD_CARD_CONFIGS_PROFILE';
 
 import API from '~/config/api';
 
@@ -31,7 +32,7 @@ const ProfileScreen = () => {
     address: { city, street, number, neighborhood }
   } = useSelector(({ user }) => user);
 
-  const dataList = {
+  const userInfoCard = {
     name,
     cpf,
     drive_license,
@@ -40,7 +41,13 @@ const ProfileScreen = () => {
     email
   };
 
-  const addressList = { street, number, neighborhood, city };
+  const userAddressCard = { street, number, neighborhood, city };
+
+  const passwordCard = {
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: ''
+  };
 
   const onLogout = async () => {
     await dispatch(logout());
@@ -53,20 +60,25 @@ const ProfileScreen = () => {
   return (
     <StyledScrollView contentContainerStyle={[{ alignItems: 'center' }]}>
       <ProfileEditableCard
-        editableFields={DATA_CARD_CONFIGS.editableFields}
-        labelList={DATA_CARD_CONFIGS.labels}
-        contentList={dataList}
+        editableFields={DATA_CARD_CONFIGS_PROFILE.editableFields}
+        labelsObject={DATA_CARD_CONFIGS_PROFILE.labels}
+        valuesObject={userInfoCard}
         title={STRINGS.profile.data}
         apiRoute={API.updateUserPartial}
       />
       <ProfileEditableCard
-        editableFields={ADDRESS_CARD_CONFIGS.editableFields}
-        labelList={ADDRESS_CARD_CONFIGS.labels}
-        contentList={addressList}
+        editableFields={ADDRESS_CARD_CONFIGS_PROFILE.editableFields}
+        labelsObject={ADDRESS_CARD_CONFIGS_PROFILE.labels}
+        valuesObject={userAddressCard}
         title={STRINGS.ADDRESS}
         apiRoute={API.address}
       />
-      {/* <ProfileEditableCard title={STRINGS.password} /> */}
+      <ProfileEditableCard
+        editableFields={PASSWORD_CARD_CONFIGS_PROFILE.editableFields}
+        labelsObject={PASSWORD_CARD_CONFIGS_PROFILE.labels}
+        valuesObject={passwordCard}
+        title={STRINGS.password}
+      />
       <StyledButtonView>
         <SubmitButton
           icon={StyledLogoutIcon}

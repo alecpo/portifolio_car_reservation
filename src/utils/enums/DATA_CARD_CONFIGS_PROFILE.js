@@ -1,6 +1,6 @@
 import STRINGS from '~/utils/strings';
 
-const DATA_CARD_CONFIGS = {
+const DATA_CARD_CONFIGS_PROFILE = {
   editableFields: ['phone', 'birthday'],
   labels: {
     name: { title: STRINGS.name },
@@ -33,4 +33,4 @@ const DATA_CARD_CONFIGS = {
   }
 };
 
-export default DATA_CARD_CONFIGS;
+export default DATA_CARD_CONFIGS_PROFILE;

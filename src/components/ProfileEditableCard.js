@@ -17,23 +17,23 @@ import TYPOGRAPHY from '~/utils/typography';
 import maskPropType from '~/utils/customPropTypes/maskPropType';
 
 const ProfileEditableCard = props => {
-  const { editableFields, labelList, contentList, title, apiRoute } = props;
+  const { editableFields, labelsObject, valuesObject, title, apiRoute } = props;
 
   const navigation = useNavigation();
 
   const onPressCard = () => {
-    const labelListFiltered = {};
+    const labelsObjectFiltered = {};
 
     editableFields.forEach(
-      label => (labelListFiltered[label] = labelList[label])
+      label => (labelsObjectFiltered[label] = labelsObject[label])
     );
 
     const editableObject = {};
     const editedObjectToSubmit = {};
 
-    Object.entries(labelListFiltered).map(item => {
+    Object.entries(labelsObjectFiltered).map(item => {
       editableObject[item[0]] = { ...item[1] };
-      editedObjectToSubmit[item[0]] = contentList[item[0]];
+      editedObjectToSubmit[item[0]] = valuesObject[item[0]];
     });
 
     navigation.navigate('EditModal', {
@@ -54,11 +54,11 @@ const ProfileEditableCard = props => {
         />
         <Icon name='edit' size={20} color={COLORS.primary} />
       </StyledCardHeader>
-      {labelList && (
+      {!labelsObject.currentPassword && (
         <>
           <DivisorLine marginVertical={SPACING.small} />
           <StyledCardBody>
-            {Object.entries(labelList).map(item => {
+            {Object.entries(labelsObject).map(item => {
               return (
                 <StyledKeyValueRow key={item.title}>
                   <Label
@@ -66,9 +66,10 @@ const ProfileEditableCard = props => {
                     color={COLORS.primary}
                     marginBottom={SPACING.small}
                   />
+
                   <Label
                     mask={item[1].mask}
-                    content={contentList[item[0]]}
+                    content={valuesObject[item[0]]}
                     typography={TYPOGRAPHY.defaultLabel}
                     colors={COLORS.defaultGray}
                     marginBottom={SPACING.small}
@@ -111,13 +112,13 @@ ProfileEditableCard.propTypes = {
   title: PropTypes.string.isRequired,
   apiRoute: PropTypes.string.isRequired,
   editableFields: PropTypes.arrayOf(PropTypes.string).isRequired,
-  labelList: PropTypes.objectOf(
+  labelsObject: PropTypes.objectOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       mask: maskPropType
     })
   ).isRequired,
-  contentList: PropTypes.object.isRequired
+  valuesObject: PropTypes.object.isRequired
 };
 
 export default ProfileEditableCard;

@@ -45,6 +45,12 @@ const strings = {
   editModal: {
     edit: 'Editar',
     save: 'SALVAR DADOS'
+  },
+
+  forgotPassword: {
+    currentPassword: 'Senha atual',
+    newPassword: 'Nova senha',
+    confirmNewPassword: 'Confirme sua nova senha'
   }
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -12,26 +13,25 @@ import COLORS from '~/utils/colors';
 import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
 
-const TextInputLine = props => {
-  const { testID } = props;
-  const allProps = { ...props };
-  delete allProps.testID;
-  const {
-    hasLabel,
-    label,
-    labelColor,
-    labelTypography,
-    hasShowPassword,
-    secureTextEntry,
-    mask,
-    textColor,
-    value,
-    marginLeft,
-    marginRight,
-    marginTop,
-    marginBottom
-  } = props;
+const TextInputLine = ({
+  testID,
+  defaultTextInputProps,
+  hasLabel,
+  label,
+  labelColor,
+  labelTypography,
+  hasShowPassword,
+  mask,
+  textColor,
+  marginLeft,
+  marginRight,
+  marginTop,
+  marginBottom
+}) => {
+  const { secureTextEntry } = defaultTextInputProps;
+
   const [passwordIsVisible, setPasswordVisible] = useState(!secureTextEntry);
+
   return (
     <StyledContainer
       testID={testID}
@@ -45,24 +45,21 @@ const TextInputLine = props => {
           typography={labelTypography}
           content={label}
           color={labelColor}
-          marginBottom={SPACING.small}
         />
       )}
       <StyledInputView>
         {mask ? (
           <StyledTextInputLineWithMask
-            {...allProps}
+            {...defaultTextInputProps}
             textColor={textColor}
-            value={value}
             type={mask.type}
             options={mask.settings}
             secureTextEntry={!passwordIsVisible}
           />
         ) : (
           <StyledTextInputLine
-            {...allProps}
+            {...defaultTextInputProps}
             textColor={textColor}
-            value={value}
             secureTextEntry={!passwordIsVisible}
           />
         )}
@@ -100,6 +97,7 @@ const StyledTextInputLine = styled.TextInput`
   border-radius: 7px;
   font-size: 16px;
   color: ${({ textColor }) => textColor};
+  padding-vertical: ${SPACING.verySmall};
 `;
 
 const StyledTextInputLineWithMask = styled(TextInputMask)`
@@ -144,7 +142,8 @@ TextInputLine.propTypes = {
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   marginTop: PropTypes.number,
-  marginBottom: PropTypes.number
+  marginBottom: PropTypes.number,
+  defaultTextInputProps: PropTypes.object.isRequired
 };
 
 export default TextInputLine;

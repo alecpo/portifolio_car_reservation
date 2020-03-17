@@ -57,17 +57,21 @@ const EditModalScreen = ({ route, navigation }) => {
           {Object.entries(editableObject).map(item => (
             <TextInputLine
               key={item[0]}
-              onChangeText={formik.handleChange(item[0])}
-              value={formik.values[item[0]]}
-              marginBottom={10}
               hasLabel
               textColor={COLORS.black}
               label={item[1].title}
               labelColor={COLORS.regularGray}
               mask={item[1].mask}
               typography={TYPOGRAPHY.defaultLabel}
-              autoCapitalize='none'
-              selectionColor={COLORS.primary}
+              hasShowPassword={false}
+              marginBottom={SPACING.smallPlus}
+              defaultTextInputProps={{
+                value: formik.values[item[0]],
+                onChangeText: formik.handleChange(item[0]),
+                autoCapitalize: 'none',
+                selectionColor: COLORS.primary,
+                secureTextEntry: false
+              }}
             />
           ))}
         </StyledBody>
