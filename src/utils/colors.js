@@ -5,6 +5,7 @@ const colors = {
   textInputBorderColorDefault: '#ddd',
   defaultGray: '#aaa',
   regularGray: '#888',
+  darkGray: '#666',
   defaultText: '#333',
   loginButton: '#2f5293',
   cancelButton: '#d94535',

@@ -40,7 +40,7 @@ const EditModalScreen = ({ route, navigation }) => {
       <StyledModalContent>
         <StyledHeader>
           <Label
-            content={`${STRINGS.editModal.edit} ${title.toLowerCase()}:`}
+            content={`${title}:`}
             typography={TYPOGRAPHY.mediumLabelBold}
             color={COLORS.black}
           />
@@ -52,7 +52,7 @@ const EditModalScreen = ({ route, navigation }) => {
             <Icon name='close' size={25} />
           </StyledCloseButton>
         </StyledHeader>
-        <DivisorLine marginVertical={SPACING.small} />
+        <DivisorLine thickness={0.5} marginVertical={SPACING.verySmall} />
         <StyledBody>
           {Object.entries(editableObject).map(item => (
             <TextInputLine
@@ -68,7 +68,7 @@ const EditModalScreen = ({ route, navigation }) => {
               defaultTextInputProps={{
                 value: formik.values[item[0]],
                 onChangeText: formik.handleChange(item[0]),
-                autoCapitalize: 'none',
+                ...item[1].defaultTextInputProps,
                 selectionColor: COLORS.primary,
                 secureTextEntry: false
               }}

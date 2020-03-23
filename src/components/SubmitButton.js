@@ -36,6 +36,7 @@ const StyledButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 7px;
+  width: 100%;
   margin-vertical: ${({ marginVertical }) => marginVertical}px;
   padding-vertical: ${SPACING.smallPlus}px;
   background-color: ${({ backgroundColor }) => backgroundColor};

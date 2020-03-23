@@ -16,15 +16,8 @@ import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
 import maskPropType from '~/utils/customPropTypes/maskPropType';
 
-const ProfileEditableCard = props => {
-  const {
-    editableFields,
-    labelsObject,
-    valuesObject,
-    title,
-    modalTitle,
-    apiRoute
-  } = props;
+const PaymentAddCreditCardBox = props => {
+  const { editableFields, labelsObject, valuesObject, title, apiRoute } = props;
 
   const navigation = useNavigation();
 
@@ -45,7 +38,7 @@ const ProfileEditableCard = props => {
 
     navigation.navigate('EditModal', {
       apiRoute,
-      title: modalTitle,
+      title,
       editableObject,
       editedObjectToSubmit
     });
@@ -115,10 +108,9 @@ const StyledKeyValueRow = styled.View`
   flex-direction: row;
 `;
 
-ProfileEditableCard.propTypes = {
+PaymentAddCreditCardBox.propTypes = {
   title: PropTypes.string.isRequired,
   apiRoute: PropTypes.string.isRequired,
-  modalTitle: PropTypes.string.isRequired,
   editableFields: PropTypes.arrayOf(PropTypes.string).isRequired,
   labelsObject: PropTypes.objectOf(
     PropTypes.shape({
@@ -129,4 +121,4 @@ ProfileEditableCard.propTypes = {
   valuesObject: PropTypes.object.isRequired
 };
 
-export default ProfileEditableCard;
+export default PaymentAddCreditCardBox;

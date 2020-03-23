@@ -44,9 +44,22 @@ const strings = {
   },
   editModal: {
     edit: 'Editar',
-    save: 'SALVAR DADOS'
+    save: 'SALVAR',
+    change: 'Alterar'
   },
-
+  payments: {
+    emptyCard: 'Nenhum cartão cadastrado',
+    addCard: 'ADICIONAR CARTÃO',
+    modalAddCard: {
+      modalTitle: 'Novo cartão',
+      number: 'Número do cartão',
+      name: 'Nome (Como escrito no cartão)',
+      month: 'Validade (Mês)',
+      year: 'Validade (Ano)',
+      cvv: 'CVV',
+      flag: 'Selecione a bandeira do cartão'
+    }
+  },
   forgotPassword: {
     currentPassword: 'Senha atual',
     newPassword: 'Nova senha',

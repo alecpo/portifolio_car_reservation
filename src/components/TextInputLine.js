@@ -97,7 +97,7 @@ const StyledTextInputLine = styled.TextInput`
   border-radius: 7px;
   font-size: 16px;
   color: ${({ textColor }) => textColor};
-  padding-vertical: ${SPACING.verySmall};
+  padding-vertical: ${SPACING.verySmall}px;
 `;
 
 const StyledTextInputLineWithMask = styled(TextInputMask)`
@@ -105,6 +105,7 @@ const StyledTextInputLineWithMask = styled(TextInputMask)`
   border-radius: 7px;
   font-size: 16px;
   color: ${({ textColor }) => textColor};
+  padding-vertical: ${SPACING.verySmall}px;
 `;
 
 const StyledShowPasswordButton = styled.TouchableOpacity`

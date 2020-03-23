@@ -63,21 +63,33 @@ const ProfileScreen = () => {
         editableFields={DATA_CARD_CONFIGS_PROFILE.editableFields}
         labelsObject={DATA_CARD_CONFIGS_PROFILE.labels}
         valuesObject={userInfoCard}
+        modalTitle={`${
+          STRINGS.editModal.edit
+        } ${STRINGS.profile.data.toLowerCase()}`}
         title={STRINGS.profile.data}
+        submitButtonText={STRINGS.editModal.save}
         apiRoute={API.updateUserPartial}
       />
       <ProfileEditableCard
         editableFields={ADDRESS_CARD_CONFIGS_PROFILE.editableFields}
         labelsObject={ADDRESS_CARD_CONFIGS_PROFILE.labels}
         valuesObject={userAddressCard}
+        modalTitle={`${
+          STRINGS.editModal.edit
+        } ${STRINGS.ADDRESS.toLowerCase()}`}
         title={STRINGS.ADDRESS}
+        submitButtonText={STRINGS.editModal.save}
         apiRoute={API.address}
       />
       <ProfileEditableCard
         editableFields={PASSWORD_CARD_CONFIGS_PROFILE.editableFields}
         labelsObject={PASSWORD_CARD_CONFIGS_PROFILE.labels}
         valuesObject={passwordCard}
+        modalTitle={`${
+          STRINGS.editModal.change
+        } ${STRINGS.password.toLowerCase()}`}
         title={STRINGS.password}
+        submitButtonText={STRINGS.editModal.save}
       />
       <StyledButtonView>
         <SubmitButton
