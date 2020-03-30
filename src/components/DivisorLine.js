@@ -4,23 +4,29 @@ import styled from 'styled-components/native';
 
 import COLORS from '~/utils/colors';
 
-const DivisorLine = ({ marginVertical, thickness }) => (
-  <StyledDivisorLine marginVertical={marginVertical} thickness={thickness} />
+const DivisorLine = ({ marginVertical, thickness, color }) => (
+  <StyledDivisorLine
+    marginVertical={marginVertical}
+    thickness={thickness}
+    color={color}
+  />
 );
 
 const StyledDivisorLine = styled.View`
   height: ${({ thickness }) => thickness}px;
   margin-vertical: ${({ marginVertical }) => marginVertical}px;
-  background-color: ${COLORS.defaultGray};
+  background-color: ${({ color }) => color};
 `;
 
 DivisorLine.defaultProps = {
   marginVertical: 0,
+  color: COLORS.defaultGray,
   thickness: 1
 };
 
 DivisorLine.propTypes = {
   marginVertical: PropTypes.number,
+  color: PropTypes.string,
   thickness: PropTypes.number
 };
 

@@ -45,7 +45,7 @@ const StyledText = styled.Text`
   text-align: ${({ textAlign }) => textAlign};
   margin-left: ${({ marginLeft }) => marginLeft}px;
   margin-right: ${({ marginRight }) => marginRight}px;
-  margin-top: ${({ marginTop }) => marginTop};
+  margin-top: ${({ marginTop }) => marginTop}px;
   margin-bottom: ${({ marginBottom }) => marginBottom}px;
   color: ${({ color }) => color};
 `;

@@ -13,7 +13,8 @@ const colors = {
   backgroundModal: 'rgba(0,0,0,0.5)',
   loginScreenActionButtons: 'rgba(0,102,153,0.9)',
   nonLoggedBackgroundColor1: '#2f5293',
-  nonLoggedBackgroundColor2: '#02bf3e'
+  nonLoggedBackgroundColor2: '#02bf3e',
+  red: 'red'
 };
 
 export default colors;

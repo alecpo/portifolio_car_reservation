@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Entypo';
 import styled from 'styled-components/native';
@@ -15,10 +15,10 @@ import TYPOGRAPHY from '~/utils/typography';
 
 const TextInputLine = ({
   testID,
+  hasError,
   defaultTextInputProps,
   hasLabel,
   label,
-  labelColor,
   labelTypography,
   hasShowPassword,
   mask,
@@ -28,9 +28,24 @@ const TextInputLine = ({
   marginTop,
   marginBottom
 }) => {
-  const { secureTextEntry } = defaultTextInputProps;
+  const { onBlur, secureTextEntry } = defaultTextInputProps;
 
   const [passwordIsVisible, setPasswordVisible] = useState(!secureTextEntry);
+
+  const [focused, setFocused] = useState(false);
+  const [color, setColor] = useState(COLORS.defaultGray);
+
+  const defineInputColor = useCallback(() => {
+    if (hasError) return COLORS.red;
+
+    if (focused) return COLORS.primary;
+
+    return COLORS.defaultGray;
+  }, [hasError, focused]);
+
+  useEffect(() => {
+    setColor(defineInputColor());
+  }, [defineInputColor]);
 
   return (
     <StyledContainer
@@ -42,15 +57,20 @@ const TextInputLine = ({
     >
       {hasLabel && (
         <Label
-          typography={labelTypography}
+          typography={focused ? TYPOGRAPHY.defaultLabelBold : labelTypography}
           content={label}
-          color={labelColor}
+          color={color}
         />
       )}
       <StyledInputView>
         {mask ? (
           <StyledTextInputLineWithMask
             {...defaultTextInputProps}
+            onBlur={() => {
+              onBlur();
+              setFocused(false);
+            }}
+            onFocus={() => setFocused(true)}
             textColor={textColor}
             type={mask.type}
             options={mask.settings}
@@ -59,6 +79,11 @@ const TextInputLine = ({
         ) : (
           <StyledTextInputLine
             {...defaultTextInputProps}
+            onFocus={() => setFocused(true)}
+            onBlur={() => {
+              onBlur();
+              setFocused(false);
+            }}
             textColor={textColor}
             secureTextEntry={!passwordIsVisible}
           />
@@ -75,7 +100,7 @@ const TextInputLine = ({
           </StyledShowPasswordButton>
         )}
       </StyledInputView>
-      <DivisorLine />
+      <DivisorLine color={color} thickness={focused ? 2 : 1} />
     </StyledContainer>
   );
 };
@@ -83,7 +108,7 @@ const TextInputLine = ({
 const StyledContainer = styled.View`
   margin-left: ${({ marginLeft }) => marginLeft}px;
   margin-right: ${({ marginRight }) => marginRight}px;
-  margin-top: ${({ marginTop }) => marginTop};
+  margin-top: ${({ marginTop }) => marginTop}px;
   margin-bottom: ${({ marginBottom }) => marginBottom}px;
 `;
 
@@ -116,35 +141,36 @@ TextInputLine.defaultProps = {
   hasLabel: false,
   hasShowPassword: false,
   secureTextEntry: false,
+  hasError: false,
   testID: '',
   label: '',
-  labelColor: '',
-  labelTypography: TYPOGRAPHY.small,
+  labelTypography: TYPOGRAPHY.defaultLabel,
   textColor: COLORS.defaultText,
   marginLeft: 0,
   marginRight: 0,
   marginTop: 0,
-  marginBottom: 0
+  marginBottom: 0,
+  onBlur: () => {}
 };
 
 TextInputLine.propTypes = {
   hasLabel: PropTypes.bool,
   hasShowPassword: PropTypes.bool,
   secureTextEntry: PropTypes.bool,
+  hasError: PropTypes.bool,
   testID: PropTypes.string,
   label: PropTypes.string,
-  labelColor: PropTypes.string,
   labelTypography: PropTypes.shape({
     weight: PropTypes.string,
     size: PropTypes.string
   }),
   textColor: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
-  defaultTextInputProps: PropTypes.object.isRequired
+  defaultTextInputProps: PropTypes.object.isRequired,
+  onBlur: PropTypes.func
 };
 
 export default TextInputLine;

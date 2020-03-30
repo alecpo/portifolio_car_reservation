@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Label from '~/components/Label';
-import StyledPicker from '~/components/StyledPicker';
+import PickerStyled from '~/components/PickerStyled';
 import TextInputBox from '~/components/TextInputBox';
 import CheckCircle from '~/components/CheckCircle';
 import SubmitButton from '~/components/SubmitButton';
@@ -64,7 +64,7 @@ const SignUpScreen = ({ navigation }) => {
     >
       <StyledScrollView showsVerticalScrollIndicator={false}>
         <StyledInputsView>
-          <StyledPicker
+          <PickerStyled
             hasLabel
             label={`${STRINGS.origin} ${STRINGS.mandatory}`}
             labelColor={COLORS.secondary}
