@@ -96,6 +96,7 @@ export const getUser = token => async dispatch => {
           })
           .catch(() => {
             console.log('erro ao tentar recuperar endereço do usuário');
+            dispatch(userLoggedIn(user));
           });
       })
       .catch(() => {
@@ -162,6 +163,7 @@ export const login = ({ email, password }) => dispatch => {
                   })
                   .catch(() => {
                     console.log('erro ao tentar recuperar endereço do usuário');
+                    dispatch(userLoggedIn(user));
                   });
               })
               .catch(() => {

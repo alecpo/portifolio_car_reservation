@@ -11,6 +11,8 @@ import LoginScreen from '~/screens/LoginScreen';
 import SignUpScreen from '~/screens/SignUpScreen';
 import ForgotPasswordScreen from '~/screens/ForgotPasswordScreen';
 import EditModalScreen from '~/screens/EditModalScreen';
+import DeleteModalScreen from '~/screens/DeleteModalScreen';
+import LoadingModalScreen from '~/screens/LoadingModalScreen';
 
 import logo from '~/assets/img/logo_white.png';
 
@@ -33,12 +35,11 @@ const RootStackNavigator = () => {
       const value = await AsyncStorage.getItem('@access_token');
 
       if (value && !userToken) {
-        console.log('value', value, 'userToken', userToken);
         await dispatch(getUser(value));
       }
       setUserToken(value);
     } catch (error) {
-      console.log(`Error retrieving data${error}`);
+      console.log(`Erro ao buscar token : ${error}`);
     }
   }, [userToken, dispatch]);
 
@@ -128,6 +129,16 @@ const RootStackNavigator = () => {
             options={modalAnimationConfig}
             name='EditModal'
             component={EditModalScreen}
+          />
+          <Screen
+            options={modalAnimationConfig}
+            name='DeleteModal'
+            component={DeleteModalScreen}
+          />
+          <Screen
+            options={modalAnimationConfig}
+            name='LoadingModal'
+            component={LoadingModalScreen}
           />
         </>
       )}

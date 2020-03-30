@@ -1,0 +1,6 @@
+module Pods_usecargoapp {
+  umbrella header "Pods-usecargoapp-umbrella.h"
+
+  export *
+  module * { export * }
+}

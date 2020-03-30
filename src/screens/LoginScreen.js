@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
     false
   );
-  const [email, setEmail] = useState('novoclientehmg@teste.com.br');
+  const [email, setEmail] = useState('alessandro.oliveira@usecargo.mobi');
   const [password, setPassword] = useState('dev');
 
   const dispatch = useDispatch();
