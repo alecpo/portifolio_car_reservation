@@ -7,6 +7,7 @@ const spacing = {
   medium: 30,
   mediumPlus: 35,
   big: 40,
+  bigPlus: 50,
   huge: 60
 };
 

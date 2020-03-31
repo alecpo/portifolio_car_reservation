@@ -30,6 +30,14 @@ const typography = {
     weight: WEIGHT.bold,
     size: SIZE.small
   },
+  regularLabel: {
+    weight: WEIGHT.regular,
+    size: SIZE.regular
+  },
+  regularLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.regular
+  },
   defaultLabel: {
     weight: WEIGHT.regular,
     size: SIZE.big
@@ -38,9 +46,21 @@ const typography = {
     weight: WEIGHT.bold,
     size: SIZE.big
   },
+  mediumLabel: {
+    weight: WEIGHT.regular,
+    size: SIZE.veryBig
+  },
   mediumLabelBold: {
     weight: WEIGHT.bold,
     size: SIZE.veryBig
+  },
+  bigLabel: {
+    weight: WEIGHT.regular,
+    size: SIZE.huge
+  },
+  bigLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.huge
   }
 };
 
