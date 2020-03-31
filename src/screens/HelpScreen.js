@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { Linking } from 'react-native';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
@@ -143,7 +144,7 @@ const HelpScreen = () => {
         </StyledInfoContent>
 
         {Object.entries(QUESTIONS).map(section => (
-          <>
+          <View key={section[0]}>
             <Label
               content={STRINGS.helpScreen[section[0]]}
               color={userToken ? COLORS.primary : COLORS.secondary}
@@ -160,9 +161,8 @@ const HelpScreen = () => {
               renderItem={({ item }) => (
                 <StyledCollapsible title={item.p} content={item.r} />
               )}
-              keyExtractor={isTemplateElement => isTemplateElement.id}
             />
-          </>
+          </View>
         ))}
 
         <StyledEmptyView />
@@ -193,7 +193,7 @@ const StyledLogo = styled.Image`
 `;
 
 const StyledInfoContent = styled.View`
-  padding-horizontal: ${SPACING.big};
+  padding-horizontal: ${SPACING.big}px;
 `;
 
 const StyledEmptyView = styled.View`
@@ -201,8 +201,8 @@ const StyledEmptyView = styled.View`
 `;
 
 const StyledFlatList = styled.FlatList`
-  margin-top: ${SPACING.regular};
-  margin-bottom: ${SPACING.regular};
+  margin-top: ${SPACING.regular}px;
+  margin-bottom: ${SPACING.regular}px;
 `;
 
 export default HelpScreen;
