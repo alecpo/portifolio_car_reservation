@@ -53,7 +53,7 @@ const MainStackNavigator = () => {
         activeTintColor: COLORS.primary,
         inactiveTintColor: COLORS.defaultGray
       }}
-      initialRouteName='Payments'
+      initialRouteName='Help'
     >
       <BottomTab.Screen name='Home' component={HomeScreen} />
       <BottomTab.Screen name='Reservations' component={ReservationsScreen} />

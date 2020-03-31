@@ -11,13 +11,13 @@ import maskPropType from '~/utils/customPropTypes/maskPropType';
 const Label = props => {
   const {
     content,
-    typography = TYPOGRAPHY.defaultLabelBold,
-    textAlign = 'left',
-    marginLeft = 0,
-    marginRight = 0,
-    marginTop = 0,
-    marginBottom = 0,
-    color = COLORS.defaultText,
+    typography,
+    textAlign,
+    marginLeft,
+    marginRight,
+    marginTop,
+    marginBottom,
+    color,
     mask
   } = props;
 

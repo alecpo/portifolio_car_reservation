@@ -118,7 +118,11 @@ const RootStackNavigator = () => {
             name='Login'
             component={LoginScreen}
           />
-          <Screen name='Help' component={HelpScreen} />
+          <Screen
+            options={{ headerTitle: null }}
+            name='Help'
+            component={HelpScreen}
+          />
           <Screen name='SignUp' component={SignUpScreen} />
           <Screen name='ForgotPassword' component={ForgotPasswordScreen} />
         </>

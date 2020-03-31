@@ -167,6 +167,7 @@ const PaymentsScreen = ({ navigation }) => {
 
 const StyledContainer = styled.View`
   flex: 1;
+  background-color: ${COLORS.secondary};
   padding: ${SPACING.smallPlus}px;
 `;
 

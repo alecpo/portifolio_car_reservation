@@ -13,23 +13,30 @@ const SubmitButton = ({
   backgroundColor,
   submit,
   disabled,
-  icon,
+  leftIcon,
+  rightIcon,
   marginVertical,
+  hasBorder,
+  borderColor,
   testID
 }) => (
   <StyledButton
     onPress={submit}
+    hasBorder={hasBorder}
+    borderColor={borderColor}
     marginVertical={marginVertical}
     backgroundColor={backgroundColor}
     disabled={disabled}
     testID={testID}
   >
+    {leftIcon()}
     <Label
       content={title}
       color={labelColor}
-      marginRight={icon() ? SPACING.small : 0}
+      marginLeft={leftIcon() ? SPACING.small : 0}
+      marginRight={rightIcon() ? SPACING.small : 0}
     />
-    {icon()}
+    {rightIcon()}
   </StyledButton>
 );
 
@@ -39,6 +46,8 @@ const StyledButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 5px;
   width: 100%;
+  border-width: ${({ hasBorder }) => (hasBorder ? 1 : 0)}px;
+  border-color: ${({ borderColor }) => borderColor};
   margin-vertical: ${({ marginVertical }) => marginVertical}px;
   padding-vertical: ${SPACING.small}px;
   background-color: ${({ backgroundColor, disabled }) =>
@@ -47,8 +56,11 @@ const StyledButton = styled.TouchableOpacity`
 
 SubmitButton.defaultProps = {
   disabled: false,
-  icon: () => {},
+  hasBorder: false,
+  rightIcon: () => {},
+  leftIcon: () => {},
   submit: () => {},
+  borderColor: COLORS.secondary,
   labelColor: COLORS.secondary,
   backgroundColor: COLORS.loginButton,
   marginVertical: 0,
@@ -57,10 +69,13 @@ SubmitButton.defaultProps = {
 
 SubmitButton.propTypes = {
   disabled: PropTypes.bool,
+  hasBorder: PropTypes.bool,
   submit: PropTypes.func,
-  icon: PropTypes.func,
+  rightIcon: PropTypes.func,
+  leftIcon: PropTypes.func,
   title: PropTypes.string.isRequired,
   labelColor: PropTypes.string,
+  borderColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   marginVertical: PropTypes.number,
   testID: PropTypes.string

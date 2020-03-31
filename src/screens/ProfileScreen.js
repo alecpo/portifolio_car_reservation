@@ -53,10 +53,6 @@ const ProfileScreen = () => {
     await dispatch(logout());
   };
 
-  const StyledLogoutIcon = () => (
-    <Icon name='md-exit' color={COLORS.secondary} size={20} />
-  );
-
   return (
     <StyledScrollView contentContainerStyle={[{ alignItems: 'center' }]}>
       <ProfileEditableCard
@@ -93,7 +89,9 @@ const ProfileScreen = () => {
       />
       <StyledButtonView>
         <SubmitButton
-          icon={StyledLogoutIcon}
+          rightIcon={() => (
+            <Icon name='md-exit' color={COLORS.secondary} size={20} />
+          )}
           submit={onLogout}
           title={STRINGS.LOGOUT}
           backgroundColor={COLORS.cancelButton}
@@ -107,6 +105,7 @@ const ProfileScreen = () => {
 
 const StyledScrollView = styled.ScrollView`
   top: ${SPACING.verySmall}px;
+  background-color: ${COLORS.secondary};
 `;
 
 const StyledButtonView = styled.View`

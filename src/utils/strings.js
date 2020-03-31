@@ -77,6 +77,31 @@ const strings = {
     currentPassword: 'Senha atual',
     newPassword: 'Nova senha',
     confirmNewPassword: 'Confirme sua nova senha'
+  },
+  helpScreen: {
+    contactMessage: 'Contato para o caso de sinistro, manutenção ou outros:',
+    numberLabel: '(31) 3317-2081',
+    wppLabel: 'Whatsapp 24h',
+    contactEmail: 'contato@usecargo.mobi',
+    howToUse: 'Como usar:',
+    videoAbstract:
+      'O vídeo explicativo contém todos os passos para a utilização do aplicativo, para assisti-lo clique no botão abaixo.',
+    videoLabel: 'Assistir vídeo',
+    frequentsQuestions: 'Perguntas frequêntes:',
+    externalLink: {
+      phone: 'tel:+553133172081',
+      whatsapp: 'http://api.whatsapp.com/send?phone=5531996571611',
+      youtube: 'https://www.youtube.com/watch?v=uUDqWG4R_Xk&feature=youtu.be'
+    },
+    cadastro: 'Cadastro:',
+    regras: 'Regras:',
+    pontosImportantes: 'Pontos importantes:',
+    reabastecimento: 'Reabastecimento:',
+    valores: 'Valores:',
+    cupons: 'Cupons',
+    pagamentoReembolso: 'Pagamento / Reembolso',
+    sinistros: 'Sinistro:',
+    outros: 'Outros:'
   }
 };
 
