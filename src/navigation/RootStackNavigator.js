@@ -13,6 +13,7 @@ import ForgotPasswordScreen from '~/screens/ForgotPasswordScreen';
 import EditModalScreen from '~/screens/EditModalScreen';
 import DeleteModalScreen from '~/screens/DeleteModalScreen';
 import LoadingModalScreen from '~/screens/LoadingModalScreen';
+import DatePickerModalScreen from '~/screens/DatePickerModalScreen';
 
 import logo from '~/assets/img/logo_white.png';
 
@@ -143,6 +144,11 @@ const RootStackNavigator = () => {
             options={modalAnimationConfig}
             name='LoadingModal'
             component={LoadingModalScreen}
+          />
+          <Screen
+            options={modalAnimationConfig}
+            name='DatePickerModal'
+            component={DatePickerModalScreen}
           />
         </>
       )}

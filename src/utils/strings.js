@@ -11,10 +11,12 @@ const strings = {
   ADDRESS: 'Endereço',
   address: {
     street: 'Rua',
+    zip: 'CEP',
     number: 'Número',
-    complement: 'Complemento',
+    address_formatted: 'Complemento',
     neighborhood: 'Bairro',
-    city: 'Cidade'
+    city: 'Cidade',
+    state: 'Estado'
   },
   resident: 'Morador',
   lessee: 'Locatário',
@@ -65,6 +67,7 @@ const strings = {
       messages: {
         requiredField: 'Campo obrigatório',
         invalidNumber: 'Informe um número válido',
+        invalidPasswordConfirmaion: 'As senhas precisam ser iguais',
         invalidMonth: 'Informe um mês válido (MM)',
         invalidYear: 'Informe um ano válido (YY)',
         invalidCVV: 'Informe um CVV válido',

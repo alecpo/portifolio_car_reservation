@@ -3,12 +3,13 @@ import { StatusBar, Dimensions, Platform, View } from 'react-native';
 import { useFormik } from 'formik';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import axios from 'axios';
 import Label from '~/components/Label';
 import DivisorLine from '~/components/DivisorLine';
 import SubmitButton from '~/components/SubmitButton';
 import TextInputLine from '~/components/TextInputLine';
 import PickerStyled from '~/components/PickerStyled';
+import StyledDatePicker from '~/components/StyledDatePicker';
 
 import STRINGS from '~/utils/strings';
 import TYPOGRAPHY from '~/utils/typography';
@@ -32,6 +33,115 @@ const EditModalScreen = ({ route, navigation }) => {
     },
     validationSchema
   });
+
+  const checkCPF = (zipCode, setError = () => {}, removeError = () => {}) => {
+    axios
+      .get(`https://viacep.com.br/ws/${zipCode}/json`)
+      .then(resAddressUser => {
+        if (resAddressUser.data.erro) setError();
+        else {
+          const {
+            data: { logradouro, bairro, localidade, uf }
+          } = resAddressUser;
+          formik.setValues({
+            ...formik.values,
+            zip: zipCode,
+            street: logradouro,
+            neighborhood: bairro,
+            city: localidade,
+            state: uf
+          });
+          removeError();
+        }
+      })
+      .catch(e => {
+        setError();
+        console.log('Um erro ocorreu ao consumir a API do VIACEP!: ', e);
+      });
+  };
+
+  const renderAppropriateInput = item => {
+    switch (item[1].inputType) {
+      case 'text':
+        return (
+          <View key={item[0]}>
+            <TextInputLine
+              hasLabel
+              hasError={
+                formik.errors[item[0]] &&
+                formik.touched[item[0]] &&
+                formik.values[item[0]]
+              }
+              textColor={COLORS.black}
+              label={item[1].title}
+              mask={item[1].mask}
+              typography={TYPOGRAPHY.defaultLabel}
+              hasShowPassword={item[1].isPassword}
+              marginTop={SPACING.regular}
+              marginBottom={SPACING.small}
+              setInputFieldValue={value => {
+                formik.setFieldValue(item[0], value);
+                if (item[0] === 'zip') {
+                  checkCPF(value, () =>
+                    formik.setFieldError(item[0], 'CPF inválido', () =>
+                      formik.setFieldError(item[0], undefined)
+                    )
+                  );
+                }
+              }}
+              value={formik.values[item[0]]}
+              onChangeText={formik.handleChange(item[0])}
+              defaultTextInputProps={{
+                onBlur: () => {
+                  if (formik.values[item[0]])
+                    formik.setFieldTouched(item[0], true, false);
+                  else {
+                    formik.setFieldTouched(item[0], false);
+                  }
+                },
+                ...item[1].defaultTextInputProps,
+                selectionColor: COLORS.primary,
+                secureTextEntry: item[1].isPassword
+              }}
+            />
+            {formik.errors[item[0]] &&
+            formik.touched[item[0]] &&
+            formik.values[item[0]] ? (
+              <Label
+                content={formik.errors[item[0]]}
+                typography={TYPOGRAPHY.smallLabel}
+                marginBottom={SPACING.small}
+                color={COLORS.red}
+              />
+            ) : null}
+          </View>
+        );
+      case 'picker':
+        return (
+          <PickerStyled
+            key={item[0]}
+            hasLabel
+            label={item[1].title}
+            labelColor={COLORS.defaultGray}
+            dataList={item[1].options}
+            updateState={formik.handleChange(item[0])}
+          />
+        );
+      case 'date-picker':
+        return (
+          <StyledDatePicker
+            key={item[0]}
+            testID='dateTimePicker'
+            label={item[1].title}
+            hasLabel
+            formikValue={formik.values[item[0]]}
+            formikHandleChange={formik.handleChange(item[0])}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <StyledKeyboardAvoidingView
@@ -62,60 +172,7 @@ const EditModalScreen = ({ route, navigation }) => {
         </StyledHeader>
         <DivisorLine thickness={0.5} marginVertical={SPACING.verySmall} />
         <StyledScrollViewBody showsVerticalScrollIndicator={false}>
-          {Object.entries(editableObject).map(item =>
-            item[1].inputType === 'text' ? (
-              <View key={item[0]}>
-                <TextInputLine
-                  hasLabel
-                  hasError={
-                    formik.errors[item[0]] &&
-                    formik.touched[item[0]] &&
-                    formik.values[item[0]]
-                  }
-                  textColor={COLORS.black}
-                  label={item[1].title}
-                  mask={item[1].mask}
-                  typography={TYPOGRAPHY.defaultLabel}
-                  hasShowPassword={false}
-                  marginTop={SPACING.regular}
-                  marginBottom={SPACING.small}
-                  defaultTextInputProps={{
-                    value: formik.values[item[0]],
-                    onChangeText: formik.handleChange(item[0]),
-                    onBlur: () => {
-                      if (formik.values[item[0]])
-                        formik.setFieldTouched(item[0]);
-                      else {
-                        formik.setFieldTouched(item[0], false);
-                      }
-                    },
-                    ...item[1].defaultTextInputProps,
-                    selectionColor: COLORS.primary,
-                    secureTextEntry: false
-                  }}
-                />
-                {formik.errors[item[0]] &&
-                formik.touched[item[0]] &&
-                formik.values[item[0]] ? (
-                  <Label
-                    content={formik.errors[item[0]]}
-                    typography={TYPOGRAPHY.smallLabel}
-                    marginBottom={SPACING.small}
-                    color={COLORS.red}
-                  />
-                ) : null}
-              </View>
-            ) : (
-              <PickerStyled
-                key={item[0]}
-                hasLabel
-                label={item[1].title}
-                labelColor={COLORS.defaultGray}
-                dataList={item[1].options}
-                updateState={formik.handleChange(item[0])}
-              />
-            )
-          )}
+          {Object.entries(editableObject).map(renderAppropriateInput)}
         </StyledScrollViewBody>
 
         <SubmitButton

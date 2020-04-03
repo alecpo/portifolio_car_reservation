@@ -20,7 +20,7 @@ const selectIconName = key => {
       return 'update';
     case 'Payments':
       return 'account-balance-wallet';
-    case 'Perfil':
+    case 'Profile':
       return 'person';
     default:
       return 'help-outline';
@@ -53,12 +53,12 @@ const MainStackNavigator = () => {
         activeTintColor: COLORS.primary,
         inactiveTintColor: COLORS.defaultGray
       }}
-      initialRouteName='Help'
+      initialRouteName='Profile'
     >
       <BottomTab.Screen name='Home' component={HomeScreen} />
       <BottomTab.Screen name='Reservations' component={ReservationsScreen} />
       <BottomTab.Screen name='Payments' component={PaymentsScreen} />
-      <BottomTab.Screen name='Perfil' component={ProfileScreen} />
+      <BottomTab.Screen name='Profile' component={ProfileScreen} />
       <BottomTab.Screen name='Help' component={HelpScreen} />
     </BottomTab.Navigator>
   );

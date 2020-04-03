@@ -6,7 +6,11 @@ import {
   USER_LOGGED_IN,
   USER_LOGGED_OUT,
   LOADING_USER,
-  UPDATE_USER
+  UPDATING_USER,
+  UPDATE_USER,
+  UPDATE_USER_ADDRESS,
+  UPDATE_USER_PASSWORD,
+  UPDATE_USER_FAILURE
 } from './actionTypes';
 
 export const getToken = async () => {
@@ -23,29 +27,49 @@ export const userLoggedIn = user => ({
   payload: user
 });
 
+export const updatingUser = () => ({
+  type: UPDATING_USER
+});
+
 export const updateUser = partialUser => ({
   type: UPDATE_USER,
   payload: partialUser
 });
 
-export const onUpdateUser = (apiRoute, partialUser) => dispatch => {
-  /*  dispatch(loadingUser());
+export const updateUserAddress = address => ({
+  type: UPDATE_USER_ADDRESS,
+  payload: address
+});
+
+export const updateUserFailure = () => ({
+  type: UPDATE_USER_FAILURE
+});
+
+export const updateUserPassword = () => ({
+  type: UPDATE_USER_PASSWORD
+});
+
+export const onUpdateUser = partialUser => dispatch => {
+  dispatch(updatingUser());
   getToken()
     .then(token => {
-      axios
-        .put(apiRoute, {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { ...partialUser }
-        })
-        .then(res => {
-          console.log('res: ', res);
+      axios({
+        method: 'put',
+        url: API.updateUserPartial,
+        headers: { Authorization: `Bearer ${token}` },
+        data: partialUser
+      })
+        .then(() => {
           dispatch(updateUser(partialUser));
         })
         .catch(e => {
+          dispatch(updateUserFailure());
           console.log('erro ao tentar atualizar dados do usuário: ', e);
         });
     })
-    .catch(); */
+    .catch(() => {
+      console.log('Erro ao recuperar token.');
+    });
 };
 
 export const logout = () => async dispatch => {
@@ -58,6 +82,52 @@ export const logout = () => async dispatch => {
   } catch (error) {
     console.log(`Error removing data${error}`);
   }
+};
+
+export const onUpdateUserAddress = address => dispatch => {
+  dispatch(updatingUser());
+  getToken()
+    .then(token => {
+      axios({
+        method: 'put',
+        url: `${API.address}/${address.id}`,
+        headers: { Authorization: `Bearer ${token}` },
+        data: address
+      })
+        .then(() => {
+          dispatch(updateUserAddress(address));
+        })
+        .catch(e => {
+          dispatch(updateUserFailure());
+          console.log('erro ao tentar atualizar dados do usuário: ', e);
+        });
+    })
+    .catch(() => {
+      console.log('Erro ao recuperar token.');
+    });
+};
+
+export const onUpdatePassword = payload => dispatch => {
+  dispatch(updatingUser());
+  getToken()
+    .then(token => {
+      axios({
+        method: 'put',
+        url: `${API.changePassword}/${payload.user_id}`,
+        headers: { Authorization: `Bearer ${token}` },
+        data: payload
+      })
+        .then(() => {
+          dispatch(updateUserPassword());
+        })
+        .catch(e => {
+          dispatch(updateUserFailure());
+          console.log('erro ao tentar atualizar senha do usuário: ', e);
+        });
+    })
+    .catch(() => {
+      console.log('Erro ao recuperar token.');
+    });
 };
 
 export const getUser = token => async dispatch => {
@@ -80,11 +150,20 @@ export const getUser = token => async dispatch => {
           })
           .then(resAddressUser => {
             const {
-              data: { zip, state, city, street, number, neighborhood }
+              data: {
+                zip,
+                address_formatted,
+                state,
+                city,
+                street,
+                number,
+                neighborhood
+              }
             } = resAddressUser;
             Object.assign(user, {
               address: {
-                zip,
+                zip: zip.toString(),
+                address_formatted,
                 state,
                 city,
                 street,
@@ -140,18 +219,26 @@ export const login = ({ email, password }) => dispatch => {
                   userToken: access_token
                 };
                 delete user.password;
-                console.log('resUser: ', resUser);
                 axios
                   .get(`${API.address}/${user.id_address}`, {
                     headers: { Authorization: `Bearer ${access_token}` }
                   })
                   .then(resAddressUser => {
                     const {
-                      data: { zip, state, city, street, number, neighborhood }
+                      data: {
+                        zip,
+                        address_formatted,
+                        state,
+                        city,
+                        street,
+                        number,
+                        neighborhood
+                      }
                     } = resAddressUser;
                     Object.assign(user, {
                       address: {
-                        zip,
+                        zip: zip.toString(),
+                        address_formatted,
                         state,
                         city,
                         street,

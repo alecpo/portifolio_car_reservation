@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Linking } from 'react-native';
+import { Linking, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/FontAwesome';
