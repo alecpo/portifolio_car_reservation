@@ -3,7 +3,8 @@ const endPoints = {
   user: '/user',
   address: '/address',
   updateUserPartial: '/user/partial',
-  creditCard: '/creditCard'
+  creditCard: '/creditCard',
+  changePassword: 'user/changePassword'
 };
 
 export default endPoints;

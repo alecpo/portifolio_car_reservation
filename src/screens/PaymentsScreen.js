@@ -24,14 +24,18 @@ import loadingCard from '~/assets/svgAnimations/loadingCard';
 import deletingCard from '~/assets/svgAnimations/deletingCard';
 
 const PaymentsScreen = ({ navigation }) => {
-  const { editableFields } = CREDIT_CARD_CONFIGS_PAYMENTS;
-  const labelsObject = CREDIT_CARD_CONFIGS_PAYMENTS.labels;
-  const { validationSchema } = CREDIT_CARD_CONFIGS_PAYMENTS;
+  const {
+    editableFields,
+    validationSchema,
+    labels: labelsObject
+  } = CREDIT_CARD_CONFIGS_PAYMENTS;
+
   const valuesObject = {};
 
   const { creditCardsList, isLoading, isDeletingCard } = useSelector(
     ({ payments }) => payments
   );
+
   const { userToken } = useSelector(({ user }) => user);
 
   const dispatch = useDispatch();

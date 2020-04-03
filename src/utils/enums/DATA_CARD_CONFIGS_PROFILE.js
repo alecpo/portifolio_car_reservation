@@ -1,24 +1,34 @@
+import * as Yup from 'yup';
 import STRINGS from '~/utils/strings';
 
 const DATA_CARD_CONFIGS_PROFILE = {
   editableFields: ['phone', 'birthday'],
+
+  validationSchema: Yup.object().shape({
+    phone: Yup.string()
+      .min(10, STRINGS.payments.modalAddCard.messages.invalidNumber)
+      .max(11, STRINGS.payments.modalAddCard.messages.invalidNumber)
+      .required(STRINGS.payments.modalAddCard.messages.requiredField),
+    birthday: Yup.date().required(
+      STRINGS.payments.modalAddCard.messages.requiredField
+    )
+  }),
+
   labels: {
-    name: { title: STRINGS.name },
+    name: { inputType: 'text', title: STRINGS.name },
+    id: { inputType: 'text' },
     cpf: {
+      inputType: 'text',
       title: STRINGS.federalRegister,
       mask: { type: 'cpf' }
     },
-    drive_license: { title: STRINGS.driverLicency },
+    drive_license: { inputType: 'text', title: STRINGS.driverLicency },
     birthday: {
-      title: STRINGS.birthday,
-      mask: {
-        type: 'datetime',
-        settings: {
-          format: 'DD/MM/YYYY'
-        }
-      }
+      inputType: 'date-picker',
+      title: STRINGS.birthday
     },
     phone: {
+      inputType: 'text',
       title: STRINGS.phone,
       mask: {
         type: 'cel-phone',
@@ -29,7 +39,7 @@ const DATA_CARD_CONFIGS_PROFILE = {
         }
       }
     },
-    email: { title: STRINGS.email }
+    email: { inputType: 'text', title: STRINGS.email }
   }
 };
 

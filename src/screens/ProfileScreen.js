@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
-import moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import SubmitButton from '~/components/SubmitButton';
@@ -17,31 +16,94 @@ import PASSWORD_CARD_CONFIGS_PROFILE from '~/utils/enums/PASSWORD_CARD_CONFIGS_P
 
 import API from '~/config/api';
 
-import { logout } from '~/store/actions/userActions';
+import {
+  logout,
+  onUpdateUser,
+  onUpdateUserAddress,
+  onUpdatePassword
+} from '~/store/actions/userActions';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
+  const {
+    editableFields: dataEditableFields,
+    labels: dataLabelsObject,
+    validationSchema: dataValidationSchema
+  } = DATA_CARD_CONFIGS_PROFILE;
+
+  const {
+    editableFields: addressEditableFields,
+    labels: addressLabelsObject,
+    validationSchema: addressValidationSchema
+  } = ADDRESS_CARD_CONFIGS_PROFILE;
+
+  const {
+    editableFields: passwordEditableFields,
+    labels: passwordLabelsObject,
+    validationSchema: passwordValidationSchema
+  } = PASSWORD_CARD_CONFIGS_PROFILE;
+
   const dispatch = useDispatch();
+
+  const { userToken, isUpdating } = useSelector(({ user }) => user);
+
+  const onSavePartialData = values => {
+    dispatch(onUpdateUser(values));
+  };
+
+  const onSaveUserAddress = values => {
+    dispatch(onUpdateUserAddress(values));
+  };
 
   const {
     name,
+    id,
+    id_address,
     cpf,
     drive_license,
     birthday,
     phone,
     email,
-    address: { city, street, number, neighborhood }
+    address: {
+      zip,
+      street,
+      number,
+      address_formatted,
+      neighborhood,
+      city,
+      state
+    }
   } = useSelector(({ user }) => user);
 
   const userInfoCard = {
     name,
+    id,
     cpf,
     drive_license,
-    birthday: `${moment(birthday).format('DD/MM/YYYY')}`,
+    birthday,
     phone,
     email
   };
 
-  const userAddressCard = { street, number, neighborhood, city };
+  const userAddressCard = {
+    zip,
+    street,
+    number,
+    address_formatted,
+    neighborhood,
+    city,
+    state,
+    id: id_address
+  };
+
+  const onSaveNewPassword = ({ newPassword }) => {
+    dispatch(
+      onUpdatePassword({
+        user_id: id,
+        password: newPassword,
+        hasForPasswordChange: false
+      })
+    );
+  };
 
   const passwordCard = {
     currentPassword: '',
@@ -53,11 +115,18 @@ const ProfileScreen = () => {
     await dispatch(logout());
   };
 
+  useEffect(() => {
+    if (userToken)
+      if (isUpdating) {
+        navigation.navigate('LoadingModal', { loading: isUpdating });
+      } else if (!navigation.isFocused()) navigation.pop();
+  }, [userToken, isUpdating, navigation]);
+
   return (
     <StyledScrollView contentContainerStyle={[{ alignItems: 'center' }]}>
       <ProfileEditableCard
-        editableFields={DATA_CARD_CONFIGS_PROFILE.editableFields}
-        labelsObject={DATA_CARD_CONFIGS_PROFILE.labels}
+        editableFields={dataEditableFields}
+        labelsObject={dataLabelsObject}
         valuesObject={userInfoCard}
         modalTitle={`${
           STRINGS.editModal.edit
@@ -65,10 +134,12 @@ const ProfileScreen = () => {
         title={STRINGS.profile.data}
         submitButtonText={STRINGS.editModal.save}
         apiRoute={API.updateUserPartial}
+        validationSchema={dataValidationSchema}
+        onSavePartialData={onSavePartialData}
       />
       <ProfileEditableCard
-        editableFields={ADDRESS_CARD_CONFIGS_PROFILE.editableFields}
-        labelsObject={ADDRESS_CARD_CONFIGS_PROFILE.labels}
+        editableFields={addressEditableFields}
+        labelsObject={addressLabelsObject}
         valuesObject={userAddressCard}
         modalTitle={`${
           STRINGS.editModal.edit
@@ -76,16 +147,20 @@ const ProfileScreen = () => {
         title={STRINGS.ADDRESS}
         submitButtonText={STRINGS.editModal.save}
         apiRoute={API.address}
+        validationSchema={addressValidationSchema}
+        onSavePartialData={onSaveUserAddress}
       />
       <ProfileEditableCard
-        editableFields={PASSWORD_CARD_CONFIGS_PROFILE.editableFields}
-        labelsObject={PASSWORD_CARD_CONFIGS_PROFILE.labels}
+        editableFields={passwordEditableFields}
+        labelsObject={passwordLabelsObject}
         valuesObject={passwordCard}
         modalTitle={`${
           STRINGS.editModal.change
         } ${STRINGS.password.toLowerCase()}`}
         title={STRINGS.password}
         submitButtonText={STRINGS.editModal.save}
+        validationSchema={passwordValidationSchema}
+        onSavePartialData={onSaveNewPassword}
       />
       <StyledButtonView>
         <SubmitButton

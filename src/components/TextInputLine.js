@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Entypo';
 import styled from 'styled-components/native';
-import { TextInputMask } from 'react-native-masked-text';
+import { TextInputMask, MaskService } from 'react-native-masked-text';
 
 import Label from '~/components/Label';
 import DivisorLine from '~/components/DivisorLine';
@@ -15,6 +15,9 @@ import TYPOGRAPHY from '~/utils/typography';
 
 const TextInputLine = ({
   testID,
+  value,
+  setInputFieldValue,
+  onChangeText,
   hasError,
   defaultTextInputProps,
   hasLabel,
@@ -34,6 +37,7 @@ const TextInputLine = ({
 
   const [focused, setFocused] = useState(false);
   const [color, setColor] = useState(COLORS.defaultGray);
+  const [localValue, setLocalValue] = useState(value);
 
   const defineInputColor = useCallback(() => {
     if (hasError) return COLORS.red;
@@ -67,24 +71,41 @@ const TextInputLine = ({
           <StyledTextInputLineWithMask
             {...defaultTextInputProps}
             onBlur={() => {
+              setInputFieldValue(
+                MaskService.toRawValue(mask.type, localValue, mask.type)
+              );
               onBlur();
               setFocused(false);
             }}
+            value={localValue}
             onFocus={() => setFocused(true)}
             textColor={textColor}
             type={mask.type}
             options={mask.settings}
             secureTextEntry={!passwordIsVisible}
+            onChangeText={newValue => {
+              setLocalValue(newValue);
+              const unMaskedValue = MaskService.toRawValue(
+                mask.type,
+                newValue,
+                mask.type
+              );
+              setInputFieldValue(
+                MaskService.toRawValue(mask.type, unMaskedValue, mask.type)
+              );
+            }}
           />
         ) : (
           <StyledTextInputLine
             {...defaultTextInputProps}
-            onFocus={() => setFocused(true)}
             onBlur={() => {
               onBlur();
               setFocused(false);
             }}
+            value={value}
+            onFocus={() => setFocused(true)}
             textColor={textColor}
+            onChangeText={onChangeText}
             secureTextEntry={!passwordIsVisible}
           />
         )}
@@ -139,6 +160,7 @@ const StyledShowPasswordButton = styled.TouchableOpacity`
 
 TextInputLine.defaultProps = {
   hasLabel: false,
+  value: '',
   hasShowPassword: false,
   secureTextEntry: false,
   hasError: false,
@@ -156,6 +178,7 @@ TextInputLine.defaultProps = {
 TextInputLine.propTypes = {
   hasLabel: PropTypes.bool,
   hasShowPassword: PropTypes.bool,
+  value: PropTypes.string,
   secureTextEntry: PropTypes.bool,
   hasError: PropTypes.bool,
   testID: PropTypes.string,
@@ -170,7 +193,9 @@ TextInputLine.propTypes = {
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
   defaultTextInputProps: PropTypes.object.isRequired,
-  onBlur: PropTypes.func
+  setInputFieldValue: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  onChangeText: PropTypes.func.isRequired
 };
 
 export default TextInputLine;

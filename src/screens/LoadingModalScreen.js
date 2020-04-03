@@ -5,22 +5,20 @@ import styled from 'styled-components/native';
 
 import COLORS from '~/utils/colors';
 
-import loadingCard from '~/assets/svgAnimations/loadingCard';
+import defaultAnimation from '~/assets/svgAnimations/default';
 
 const LoadingModalScreen = ({ route, navigation }) => {
-  const { lottieJson } = route.params ?? loadingCard;
+  const { lottieJson } = route.params;
 
   return (
     <StyledContainer>
       <StatusBar hidden />
-      <StyledModalContent>
-        <LottieView
-          source={lottieJson}
-          autoPlay
-          loop={false}
-          onAnimationFinish={() => navigation.pop()}
-        />
-      </StyledModalContent>
+      <StyledModalContent
+        source={lottieJson || defaultAnimation}
+        autoPlay
+        loop={!lottieJson}
+        onAnimationFinish={() => navigation.pop()}
+      />
     </StyledContainer>
   );
 };
@@ -32,9 +30,9 @@ const StyledContainer = styled.View`
   background-color: ${COLORS.backgroundModal};
 `;
 
-const StyledModalContent = styled.View`
-  width: ${Dimensions.get('window').width}px;
-  height: ${Dimensions.get('window').width / 1.7}px;
+const StyledModalContent = styled(LottieView)`
+  height: ${Dimensions.get('window').width / 1.8}px;
+  border-radius: ${Dimensions.get('window').width / 10}px;
   background-color: white;
 `;
 
