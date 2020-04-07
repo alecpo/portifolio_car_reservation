@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import SplashScreen from '~/screens/SplashScreen';
-import MainStackNavigator from '~/navigation/MainStackNavigator';
+import MainBottomTabNavigator from '~/navigation/MainBottomTabNavigator';
 import HelpScreen from '~/screens/HelpScreen';
 import LoginScreen from '~/screens/LoginScreen';
 import SignUpScreen from '~/screens/SignUpScreen';
@@ -129,7 +129,7 @@ const RootStackNavigator = () => {
         </>
       ) : (
         <>
-          <Screen name='Main' component={MainStackNavigator} />
+          <Screen name='Main' component={MainBottomTabNavigator} />
           <Screen
             options={modalAnimationConfig}
             name='EditModal'
