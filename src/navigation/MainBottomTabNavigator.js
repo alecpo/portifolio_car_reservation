@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import HomeScreen from '~/screens/HomeScreen';
-import ReservationsScreen from '~/screens/ReservationsScreen';
+import AllReservationsTopTabNavigator from '~/navigation/AllReservationsTopTabNavigator';
 import PaymentsScreen from '~/screens/PaymentsScreen';
 import ProfileScreen from '~/screens/ProfileScreen';
 import HelpScreen from '~/screens/HelpScreen';
@@ -16,7 +16,7 @@ const selectIconName = key => {
   switch (key) {
     case 'Home':
       return 'event-note';
-    case 'Reservations':
+    case 'AllReservations':
       return 'update';
     case 'Payments':
       return 'account-balance-wallet';
@@ -40,27 +40,30 @@ const TabBarIcon = ({ focused }) => {
   );
 };
 
-const MainStackNavigator = () => {
-  const BottomTab = createBottomTabNavigator();
+const MainBottomTabNavigator = () => {
+  const { Navigator, Screen } = createBottomTabNavigator();
 
   const screenOptions = { tabBarIcon: TabBarIcon };
 
   return (
-    <BottomTab.Navigator
+    <Navigator
       screenOptions={screenOptions}
       tabBarOptions={{
         showLabel: false,
         activeTintColor: COLORS.primary,
         inactiveTintColor: COLORS.defaultGray
       }}
-      initialRouteName='Profile'
+      initialRouteName='AllReservations'
     >
-      <BottomTab.Screen name='Home' component={HomeScreen} />
-      <BottomTab.Screen name='Reservations' component={ReservationsScreen} />
-      <BottomTab.Screen name='Payments' component={PaymentsScreen} />
-      <BottomTab.Screen name='Profile' component={ProfileScreen} />
-      <BottomTab.Screen name='Help' component={HelpScreen} />
-    </BottomTab.Navigator>
+      <Screen name='Home' component={HomeScreen} />
+      <Screen
+        name='AllReservations'
+        component={AllReservationsTopTabNavigator}
+      />
+      <Screen name='Payments' component={PaymentsScreen} />
+      <Screen name='Profile' component={ProfileScreen} />
+      <Screen name='Help' component={HelpScreen} />
+    </Navigator>
   );
 };
 
@@ -72,4 +75,4 @@ TabBarIcon.propTypes = {
   focused: PropTypes.bool
 };
 
-export default MainStackNavigator;
+export default MainBottomTabNavigator;
