@@ -1,4 +1,7 @@
 const strings = {
+  LOGIN: 'LOGIN',
+  LOGOUT: 'SAIR',
+  SIGNUP: 'CADASTRE-SE',
   no: 'NÃO',
   yes: 'SIM',
   mandatory: '*',
@@ -9,6 +12,17 @@ const strings = {
   origin: 'Origem',
   name: 'Nome',
   ADDRESS: 'Endereço',
+  resident: 'Morador',
+  lessee: 'Locatário',
+  federalRegister: 'CPF',
+  driverLicency: 'CNH',
+  phone: 'Telefone',
+  birthday: 'Data de Nascimento',
+  help: 'Ajuda',
+  checkin: 'Check-in',
+  checkout: 'Check-out',
+  total: 'Total',
+  canceled: 'Cancelada',
   address: {
     street: 'Rua',
     zip: 'CEP',
@@ -18,21 +32,11 @@ const strings = {
     city: 'Cidade',
     state: 'Estado'
   },
-  resident: 'Morador',
-  lessee: 'Locatário',
-  federalRegister: 'CPF',
-  driverLicency: 'CNH',
-  phone: 'Telefone',
-  birthday: 'Data de Nascimento',
-  LOGIN: 'LOGIN',
-  help: 'Ajuda',
   login: {
     rememberMe: 'Lembrar de mim',
     signup: 'Cadastre-se',
     forgotPassword: 'Esqueceu sua senha?'
   },
-  LOGOUT: 'SAIR',
-  SIGNUP: 'CADASTRE-SE',
   signup: {
     originPlaceholder: 'Selecione a origem',
     confirmPasswordPlaceholder: 'Confirme sua senha',
@@ -105,6 +109,14 @@ const strings = {
     pagamentoReembolso: 'Pagamento / Reembolso',
     sinistros: 'Sinistro:',
     outros: 'Outros:'
+  },
+  ReservationHistoryDetails: {
+    title: 'Detalhes da reserva',
+    reservationValue: 'Valor do período reservado',
+    mileageTraveled: 'Quilometragem percorrida',
+    mileageAmountCharged: 'Valor cobrado pela quilometragem',
+    delayTime: 'Tempo de atraso',
+    latePenalty: 'Multa por atraso'
   }
 };
 

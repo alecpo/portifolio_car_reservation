@@ -13,7 +13,7 @@ import RootStackNavigator from '~/navigation/RootStackNavigator';
 import COLORS from '~/utils/colors';
 
 /* AXIOS */
-axios.defaults.baseURL = 'https://api.hmg.pickndrive.com.br/api/v1';
+axios.defaults.baseURL = 'https://api.develop.pickndrive.com.br/api/v1';
 
 const App = () => {
   const store = storeConfig();

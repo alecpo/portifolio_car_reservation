@@ -14,7 +14,9 @@ const colors = {
   loginScreenActionButtons: 'rgba(0,102,153,0.9)',
   nonLoggedBackgroundColor1: '#2f5293',
   nonLoggedBackgroundColor2: '#02bf3e',
-  red: 'red'
+  red: 'red',
+  historyCardFont: '#002852',
+  star: '#e3b600'
 };
 
 export default colors;
