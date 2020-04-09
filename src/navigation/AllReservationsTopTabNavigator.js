@@ -17,6 +17,7 @@ const AllReservationsTopTabNavigator = () => {
         labelStyle: { fontWeight: 'bold' },
         indicatorStyle: { backgroundColor: COLORS.primary }
       }}
+      initialRouteName='ReservationsHistory'
     >
       <Screen
         name='Reservations'
