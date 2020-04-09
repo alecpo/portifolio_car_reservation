@@ -117,6 +117,10 @@ const strings = {
     mileageAmountCharged: 'Valor cobrado pela quilometragem',
     delayTime: 'Tempo de atraso',
     latePenalty: 'Multa por atraso'
+  },
+  reservations: {
+    noActiveOrFutureReservation: 'Nennhuma reserva ativa ou futura.',
+    newReservation: 'FAZER NOVA RESERVA'
   }
 };
 

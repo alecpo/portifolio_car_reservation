@@ -4,16 +4,46 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import IconMCI from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconFA from 'react-native-vector-icons/FontAwesome';
 
 import API from '~/config/api';
 
 import Label from '~/components/Label';
+import Icon from '~/components/Icon';
 
 import COLORS from '~/utils/colors';
 import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
+import { MCI } from '~/utils/enums/ICON_FAMILY';
+
+const formatValue = (key, value) => {
+  switch (key) {
+    case 'perHour':
+      return `R$ ${parseFloat((value ?? 0) / 100).toFixed(2)}/h`;
+    case 'perKm':
+      return `R$ ${parseFloat((value ?? 0) / 100).toFixed(2)}/km`;
+    case 'door':
+      return `${value} Portas`;
+    default:
+      return value;
+  }
+};
+
+const renderCarInfo = (iconName, label, labelType, iconFamily) => (
+  <StyledListInfoView>
+    <Icon
+      iconFamily={iconFamily}
+      iconName={iconName}
+      size={18}
+      color={COLORS.historyCardFont}
+    />
+    <Label
+      typography={TYPOGRAPHY.regularLabel}
+      content={formatValue(labelType, label)}
+      color={COLORS.historyCardFont}
+      marginLeft={SPACING.small}
+    />
+  </StyledListInfoView>
+);
 
 const VehicleCard = ({
   vehicle_model: { model, url },
@@ -25,44 +55,6 @@ const VehicleCard = ({
   direction_type,
   air_conditioning
 }) => {
-  const formatValue = (key, value) => {
-    switch (key) {
-      case 'perHour':
-        return `R$ ${parseFloat((value ?? 0) / 100).toFixed(2)}/h`;
-      case 'perKm':
-        return `R$ ${parseFloat((value ?? 0) / 100).toFixed(2)}/km`;
-      case 'door':
-        return `${value} Portas`;
-      default:
-        return value;
-    }
-  };
-
-  const renderIcon = (iconFamily, iconName) => {
-    switch (iconFamily) {
-      case 'MCI':
-        return (
-          <IconMCI name={iconName} size={18} color={COLORS.historyCardFont} />
-        );
-      default:
-        return (
-          <IconFA name={iconName} size={18} color={COLORS.historyCardFont} />
-        );
-    }
-  };
-
-  const renderCarInfo = (iconFamily, iconName, label, labelType) => (
-    <StyledListInfoView>
-      {renderIcon(iconFamily, iconName)}
-      <Label
-        typography={TYPOGRAPHY.regularLabel}
-        content={formatValue(labelType, label)}
-        color={COLORS.historyCardFont}
-        marginLeft={SPACING.small}
-      />
-    </StyledListInfoView>
-  );
-
   return (
     <StyledContainer>
       <StyledCarHeaderView>
@@ -80,18 +72,18 @@ const VehicleCard = ({
       </StyledCarHeaderView>
 
       <StyledCarInfoView>
-        {renderCarInfo('FA', 'dollar', price_hour, 'perHour')}
-        {renderCarInfo('FA', 'dollar', price_km, 'perKm')}
-        {renderCarInfo('FA', 'gear', gearbox ? 'Automático' : 'Manual')}
+        {renderCarInfo('dollar', price_hour, 'perHour')}
+        {renderCarInfo('dollar', price_km, 'perKm')}
+        {renderCarInfo('gear', gearbox ? 'Automático' : 'Manual')}
         {renderCarInfo(
-          'MCI',
           'steering',
-          direction_type ? 'Manual' : 'Hidráulica'
+          direction_type ? 'Manual' : 'Hidráulica',
+          'default',
+          MCI
         )}
-        {renderCarInfo('MCI', 'gas-station', 'flex')}
-        {renderCarInfo('MCI', 'car-door', doors_qtd, 'door')}
-        {air_conditioning &&
-          renderCarInfo('MCI', 'snowflake', 'Ar-condicionado')}
+        {renderCarInfo('gas-station', 'flex', 'default', MCI)}
+        {renderCarInfo('car-door', doors_qtd, 'door', MCI)}
+        {air_conditioning && renderCarInfo('snowflake', 'Ar-condicionado', MCI)}
       </StyledCarInfoView>
     </StyledContainer>
   );
