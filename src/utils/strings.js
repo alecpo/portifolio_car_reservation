@@ -120,7 +120,9 @@ const strings = {
   },
   reservations: {
     noActiveOrFutureReservation: 'Nennhuma reserva ativa ou futura.',
-    newReservation: 'FAZER NOVA RESERVA'
+    newReservation: 'FAZER NOVA RESERVA',
+    checkin: 'FAZER CHECK-IN',
+    cancel: 'CANCELAR RESERVA'
   }
 };
 

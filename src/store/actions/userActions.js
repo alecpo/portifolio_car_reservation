@@ -180,6 +180,7 @@ export const getUser = token => async dispatch => {
       })
       .catch(() => {
         console.log('erro ao tentar recuperar usuário');
+        dispatch(logout());
       });
   } catch (e) {
     console.log('Erro: ', e);
