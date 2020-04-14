@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 
@@ -21,10 +21,6 @@ const ReservationsHistoryScreen = () => {
   const { userToken } = useSelector(({ user }) => user);
 
   const dispatch = useDispatch();
-
-  useLayoutEffect(() => {
-    if (userToken) dispatch(onGetReservations());
-  }, [dispatch, userToken]);
 
   const onLoadMore = () => {
     if (userToken && !isLoading && next) {

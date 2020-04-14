@@ -46,7 +46,8 @@ const initialState = {
           }
         },
         step: {
-          code: ''
+          id: null,
+          code: null
         },
         transaction: [
           {
