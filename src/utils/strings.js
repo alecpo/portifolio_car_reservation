@@ -23,6 +23,10 @@ const strings = {
   checkout: 'Check-out',
   total: 'Total',
   canceled: 'Cancelada',
+  genericModalWithJustificative: {
+    title: 'Tem certeza que deseja realizar esta operação?',
+    placeholder: 'Motivo'
+  },
   address: {
     street: 'Rua',
     zip: 'CEP',
@@ -119,10 +123,15 @@ const strings = {
     latePenalty: 'Multa por atraso'
   },
   reservations: {
-    noActiveOrFutureReservation: 'Nennhuma reserva ativa ou futura.',
+    noActiveOrFutureReservation: 'Nenhuma reserva ativa ou futura.',
     newReservation: 'FAZER NOVA RESERVA',
     checkin: 'FAZER CHECK-IN',
-    cancel: 'CANCELAR RESERVA'
+    cancel: 'CANCELAR RESERVA',
+    cancelModal: {
+      title: 'Tem certeza que deseja cancelar a reserva?',
+      placeholder: 'Motivo do cancelamento',
+      successMessage: 'Sua reserva foi cancelada com sucesso !'
+    }
   }
 };
 

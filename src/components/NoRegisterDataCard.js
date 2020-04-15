@@ -1,5 +1,5 @@
-import React, { useLayoutEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
@@ -11,8 +11,6 @@ import COLORS from '~/utils/colors';
 import SPACING from '~/utils/spacing';
 import TYPOGRAPHY from '~/utils/typography';
 
-import { onGetReservations } from '~/store/actions/reservationsHistoryActions';
-
 const NoRegisterDataCard = ({
   desc,
   onSubmit,
@@ -20,14 +18,6 @@ const NoRegisterDataCard = ({
   iconName,
   labelButton
 }) => {
-  const { userToken } = useSelector(({ user }) => user);
-
-  const dispatch = useDispatch();
-
-  useLayoutEffect(() => {
-    if (userToken) dispatch(onGetReservations());
-  }, [dispatch, userToken]);
-
   return (
     <StyledAddCardView>
       <Label
@@ -59,12 +49,13 @@ const StyledAddCardView = styled.View`
   justify-content: center;
   padding-horizontal: ${SPACING.big}px;
   padding-top: ${SPACING.smallPlus}px;
+  margin-horizontal: ${SPACING.verySmall}px;
   padding-bottom: ${SPACING.verySmall}px;
   align-items: center;
   border-radius: 7px;
   background-color: ${COLORS.secondary};
   elevation: 5;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.3);
 `;
 
 NoRegisterDataCard.propTypes = PropTypes.shape({

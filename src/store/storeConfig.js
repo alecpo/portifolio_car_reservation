@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import userReducer from '~/store/reducers/userReducer';
 import paymentsReducer from '~/store/reducers/paymentsReducer';
-import reservationsHistoryReducer from '~/store/reducers/reservationsHistoryReducer';
+import reservationsReducer from '~/store/reducers/reservationsReducer';
 
 const logger = createLogger({ collapsed: true });
 
@@ -16,7 +16,7 @@ if (__DEV__) {
 const reducers = combineReducers({
   user: userReducer,
   payments: paymentsReducer,
-  reservationsHistory: reservationsHistoryReducer
+  reservations: reservationsReducer
 });
 
 const storeConfig = () => {

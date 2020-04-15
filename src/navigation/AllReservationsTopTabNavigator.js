@@ -6,7 +6,7 @@ import ReservationsHistoryScreen from '~/screens/ReservationsHistoryScreen';
 
 import COLORS from '~/utils/colors';
 
-import { onGetReservations } from '~/store/actions/reservationsHistoryActions';
+import { onGetReservations } from '~/store/actions/reservationsActions';
 
 const AllReservationsTopTabNavigator = () => {
   const { Navigator, Screen } = createMaterialTopTabNavigator();

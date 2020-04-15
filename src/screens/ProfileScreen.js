@@ -118,7 +118,7 @@ const ProfileScreen = ({ navigation }) => {
   useEffect(() => {
     if (userToken)
       if (isUpdating) {
-        navigation.navigate('LoadingModal', { loading: isUpdating });
+        navigation.navigate('LoadingModal');
       } else if (!navigation.isFocused()) navigation.pop();
   }, [userToken, isUpdating, navigation]);
 
