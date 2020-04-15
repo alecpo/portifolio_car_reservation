@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
@@ -14,6 +16,11 @@ import STRINGS from '~/utils/strings';
 import COLORS from '~/utils/colors';
 import TYPOGRAPHY from '~/utils/typography';
 import SPACING from '~/utils/spacing';
+
+import {
+  onCancelReservation,
+  finishAnimation
+} from '~/store/actions/reservationsActions';
 
 const now = moment(new Date());
 
@@ -32,23 +39,25 @@ const renderRow = (label, value) => (
   </StyledRowView>
 );
 
-const ReservationCard = ({ vehicle, begin_date, end_date }) => {
+const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
   const [isCheckinDisabled, setCheckinDisabled] = useState(true);
 
-  const checkCheckinAvailability = useCallback(() => {
+  const navigation = useNavigation();
+
+  const dispatch = useDispatch();
+
+  const onCancel = reservationId => {
+    dispatch(onCancelReservation(reservationId));
+  };
+
+  useEffect(() => {
     const timeLeftToCheckin = moment(begin_date)
-      .subtract(12, 'minutes')
+      .subtract(10, 'minutes')
       .diff(now);
 
-    console.log('timeLeftToCheckin: ', timeLeftToCheckin);
-    //se faltar menos de 25 min para liberar checking, inicia timer
     if (timeLeftToCheckin < 0) setCheckinDisabled(false);
     else if (timeLeftToCheckin / 60000 <= 25)
       setInterval(() => setCheckinDisabled(false), timeLeftToCheckin);
-  });
-
-  useEffect(() => {
-    checkCheckinAvailability();
   }, []);
 
   return (
@@ -66,7 +75,17 @@ const ReservationCard = ({ vehicle, begin_date, end_date }) => {
         marginVertical={SPACING.verySmall}
       />
       <SubmitButton
-        submit={() => {}}
+        submit={() => {
+          navigation.navigate('DeleteModalWithJustification', {
+            title: STRINGS.reservations.cancelModal.title,
+            successMessage: STRINGS.reservations.cancelModal.successMessage,
+            placeholder: STRINGS.reservations.cancelModal.placeholder,
+            finishSuccessAnimation: () => {
+              dispatch(finishAnimation());
+            },
+            onSubmit: motive => onCancel(id, motive)
+          });
+        }}
         backgroundColor={COLORS.red}
         title={STRINGS.reservations.cancel}
         marginVertical={SPACING.verySmall}

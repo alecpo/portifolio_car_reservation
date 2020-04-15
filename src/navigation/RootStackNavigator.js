@@ -15,6 +15,7 @@ import DeleteModalScreen from '~/screens/DeleteModalScreen';
 import LoadingModalScreen from '~/screens/LoadingModalScreen';
 import DatePickerModalScreen from '~/screens/DatePickerModalScreen';
 import ReservationHistoryDetailsScreen from '~/screens/ReservationHistoryDetailsScreen';
+import DeleteModalWithJustificationScreen from '~/screens/DeleteModalWithJustificationScreen';
 
 import logo from '~/assets/img/logo_white.png';
 
@@ -155,6 +156,11 @@ const RootStackNavigator = () => {
             options={modalAnimationConfig}
             name='ReservationHistoryDetails'
             component={ReservationHistoryDetailsScreen}
+          />
+          <Screen
+            options={modalAnimationConfig}
+            name='DeleteModalWithJustification'
+            component={DeleteModalWithJustificationScreen}
           />
         </>
       )}

@@ -70,7 +70,7 @@ const StyledIconView = styled.View`
   margin-vertical: ${SPACING.medium}px;
 `;
 
-const StyledActionBar = styled.TouchableOpacity`
+const StyledActionBar = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

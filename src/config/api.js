@@ -7,13 +7,14 @@ const endPoints = {
   updateUserPartial: '/user/partial',
   creditCard: '/creditCard',
   changePassword: '/user/changePassword',
-  reservationsHistory: '/vehicle-request/by-user',
+  reservations: '/vehicle-request/by-user',
   feedbackReservation: '/feed-back',
   picturesReservation: '/formAnswered/vehicleRequest',
   BUCKET: bucketURL,
   bucket: {
     vehicleImg: `${bucketURL}/vehicles-img`
-  }
+  },
+  cancelReservation: '/vehicleRequest/cancel'
 };
 
 export default endPoints;

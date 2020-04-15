@@ -61,6 +61,14 @@ const typography = {
   bigLabelBold: {
     weight: WEIGHT.bold,
     size: SIZE.huge
+  },
+  hugeLabel: {
+    weight: WEIGHT.regular,
+    size: SIZE.veryHuge
+  },
+  hugeLabelBold: {
+    weight: WEIGHT.bold,
+    size: SIZE.veryHuge
   }
 };
 

@@ -1,13 +1,23 @@
 import {
   LOADING_RESERVATIONS,
   RESERVATIONS_LOADED_SUCCESS,
+  RESERVATIONS_LOADED_FAILURE,
   LOADING_MORE_HISTORY_RESERVATIONS,
-  MORE_HISTORY_RESERVATIONS_LOADED_SUCCESS
+  MORE_HISTORY_RESERVATIONS_LOADED_SUCCESS,
+  MORE_HISTORY_RESERVATIONS_LOADED_FAILURE,
+  REFRESHING_RESERVATIONS,
+  RESERVATIONS_REFRESHED_SUCCESS,
+  RESERVATIONS_REFRESHED_FAILURE,
+  START_ANIMATION,
+  FINISH_ANIMATION
 } from '~/store/actions/actionTypes';
 
 const initialState = {
   isLoading: false,
-  reservationsHistory: {
+  isLoadingMore: false,
+  isAnimating: false,
+  isRefreshing: false,
+  reservations: {
     next: {
       page: null,
       limit: null
@@ -68,26 +78,53 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOADING_RESERVATIONS:
       return { ...state, isLoading: true };
-    case LOADING_MORE_HISTORY_RESERVATIONS:
-      return { ...state, isLoading: true };
     case RESERVATIONS_LOADED_SUCCESS:
       return {
         ...state,
-        reservationsHistory: action.payload,
+        reservations: action.payload,
         isLoading: false
       };
+    case RESERVATIONS_LOADED_FAILURE:
+      return {
+        ...state,
+        isLoading: false
+      };
+    case REFRESHING_RESERVATIONS:
+      return { ...state, isRefreshing: true };
+    case RESERVATIONS_REFRESHED_SUCCESS:
+      return {
+        ...state,
+        reservations: action.payload,
+        isRefreshing: false
+      };
+    case RESERVATIONS_REFRESHED_FAILURE:
+      return {
+        ...state,
+        isRefreshing: false
+      };
+    case LOADING_MORE_HISTORY_RESERVATIONS:
+      return { ...state, isLoadingMore: true };
     case MORE_HISTORY_RESERVATIONS_LOADED_SUCCESS:
       return {
         ...state,
-        reservationsHistory: {
+        reservations: {
           previrous: action.payload.previous,
           next: action.payload.next,
-          vehicleRequests: state.reservationsHistory.vehicleRequests.concat(
+          vehicleRequests: state.reservations.vehicleRequests.concat(
             action.payload.vehicleRequests
           )
         },
-        isLoading: false
+        isLoadingMore: false
       };
+    case MORE_HISTORY_RESERVATIONS_LOADED_FAILURE:
+      return {
+        ...state,
+        isLoadingMore: false
+      };
+    case START_ANIMATION:
+      return { ...state, isAnimating: true };
+    case FINISH_ANIMATION:
+      return { ...state, isAnimating: false };
     default:
       return state;
   }

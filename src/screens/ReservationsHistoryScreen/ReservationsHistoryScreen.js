@@ -8,15 +8,15 @@ import COLORS from '~/utils/colors';
 import SPACING from '~/utils/spacing';
 
 import {
-  onGetReservations,
+  onRefresh,
   onLoadMoreReservation
-} from '~/store/actions/reservationsHistoryActions';
+} from '~/store/actions/reservationsActions';
 
 const ReservationsHistoryScreen = () => {
   const {
     isLoading,
-    reservationsHistory: { next, vehicleRequests }
-  } = useSelector(({ reservationsHistory }) => reservationsHistory);
+    reservations: { next, vehicleRequests }
+  } = useSelector(({ reservations }) => reservations);
 
   const { userToken } = useSelector(({ user }) => user);
 
@@ -28,9 +28,9 @@ const ReservationsHistoryScreen = () => {
     }
   };
 
-  const onRefresh = () => {
+  const onRefreshList = () => {
     if (userToken) {
-      dispatch(onGetReservations());
+      dispatch(onRefresh());
     }
   };
 
@@ -47,7 +47,7 @@ const ReservationsHistoryScreen = () => {
         onEndReached={onLoadMore}
         scrollEventThrottle={400}
         refreshing={isLoading}
-        onRefresh={onRefresh}
+        onRefresh={onRefreshList}
       />
     </StyledContainer>
   );

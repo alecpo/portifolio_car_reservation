@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useCallback
-} from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 
@@ -18,44 +13,27 @@ import { MI } from '~/utils/enums/ICON_FAMILY';
 const ReservationsScreen = ({ navigation }) => {
   const { userToken } = useSelector(({ user }) => user);
   const {
-    reservationsHistory: { vehicleRequests }
-  } = useSelector(({ reservationsHistory }) => reservationsHistory);
+    isLoading,
+    isAnimating,
+    reservations: { vehicleRequests }
+  } = useSelector(({ reservations }) => reservations);
 
-  const [
-    activeOrFutureReservationsList,
-    setActiveOrFutureReservationsList
-  ] = useState(vehicleRequests);
+  useEffect(() => {
+    if (userToken)
+      if (isLoading && !isAnimating) {
+        navigation.navigate('LoadingModal');
+      } else if (!navigation.isFocused() && !isAnimating) navigation.pop();
+  }, [userToken, isLoading, navigation, isAnimating]);
 
-  const updateActiveAndFutureList = useCallback(() => {
-    setActiveOrFutureReservationsList(
-      vehicleRequests.filter(
+  return (
+    <StyledContainer>
+      {!vehicleRequests.filter(
         vehicleRequest =>
           vehicleRequest.step.code &&
           ['cancel', 'auto-cancel', 'complete'].indexOf(
             vehicleRequest.step.code
           ) < 0
-      )
-    );
-  }, [vehicleRequests]);
-
-  useEffect(() => {
-    if (userToken) updateActiveAndFutureList();
-  }, [updateActiveAndFutureList, userToken]);
-
-  const teste = useCallback(
-    () =>
-      console.log(
-        'activeOrFutureReservationsList: ',
-        activeOrFutureReservationsList
-      ),
-    [activeOrFutureReservationsList]
-  );
-
-  useEffect(() => teste(), [teste]);
-
-  return (
-    <StyledContainer>
-      {!activeOrFutureReservationsList.length ? (
+      ).length ? (
         <NoRegisterDataCard
           desc={STRINGS.reservations.noActiveOrFutureReservation}
           labelButton={STRINGS.reservations.newReservation}
@@ -77,6 +55,7 @@ const ReservationsScreen = ({ navigation }) => {
           )}
           renderItem={({ item }) => (
             <ReservationCard
+              id={item.id}
               vehicle={item.vehicle}
               begin_date={item.begin_date}
               end_date={item.end_date}
