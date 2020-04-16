@@ -64,7 +64,7 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
     // Ambas as datas para o mesmo formato (PM)
     const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
     const formatedBeginDate = moment(begin_date)
-      .subtract(parseInt(limitCancellation, 10), 'minutes')
+      .subtract(parseInt(limitCancellation, 10) ?? 15, 'minutes')
       .format('YYYY-MM-DD hh:mm:ss');
 
     const timeLeftToCheckinBecomeAvailable = moment(formatedBeginDate).diff(
@@ -87,7 +87,7 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
     // Ambas as datas para o mesmo formato (PM)
     const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
     const formatedBeginDate = moment(begin_date)
-      .subtract(parseInt(limitCheckin, 10), 'minutes')
+      .subtract(parseInt(limitCheckin, 10) ?? 15, 'minutes')
       .format('YYYY-MM-DD hh:mm:ss');
 
     const timeLeftToCheckinBecomeAvailable = moment(formatedBeginDate).diff(
