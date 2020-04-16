@@ -200,7 +200,7 @@ const StyledScrollViewBody = styled.ScrollView`
 const StyledModalContent = styled.View`
   width: ${Dimensions.get('window').width * 0.8}px;
   height: ${Dimensions.get('window').width * 1.3}px;
-  background-color: white;
+  background-color: ${COLORS.secondary};
   padding-vertical: ${SPACING.smallPlus}px;
   padding-horizontal: ${SPACING.regular}px;
 `;

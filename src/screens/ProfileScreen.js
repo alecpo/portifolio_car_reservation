@@ -17,7 +17,7 @@ import PASSWORD_CARD_CONFIGS_PROFILE from '~/utils/enums/PASSWORD_CARD_CONFIGS_P
 import API from '~/config/api';
 
 import {
-  logout,
+  onLogout,
   onUpdateUser,
   onUpdateUserAddress,
   onUpdatePassword
@@ -111,8 +111,8 @@ const ProfileScreen = ({ navigation }) => {
     confirmNewPassword: ''
   };
 
-  const onLogout = async () => {
-    await dispatch(logout());
+  const logout = async () => {
+    await dispatch(onLogout());
   };
 
   useEffect(() => {
@@ -167,7 +167,7 @@ const ProfileScreen = ({ navigation }) => {
           rightIcon={() => (
             <Icon name='md-exit' color={COLORS.secondary} size={20} />
           )}
-          submit={onLogout}
+          submit={logout}
           title={STRINGS.LOGOUT}
           backgroundColor={COLORS.cancelButton}
           marginVertical={SPACING.small}

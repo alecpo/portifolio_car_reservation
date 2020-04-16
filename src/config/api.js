@@ -14,7 +14,8 @@ const endPoints = {
   bucket: {
     vehicleImg: `${bucketURL}/vehicles-img`
   },
-  cancelReservation: '/vehicleRequest/cancel'
+  cancelReservation: '/vehicleRequest/cancel',
+  configuration: '/configuration'
 };
 
 export default endPoints;

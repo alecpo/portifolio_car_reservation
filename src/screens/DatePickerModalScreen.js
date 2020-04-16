@@ -29,7 +29,7 @@ const StyledContainer = styled.TouchableOpacity`
 
 const StyledModalContent = styled.View`
   width: ${Dimensions.get('window').width}px;
-  background-color: white;
+  background-color: ${COLORS.secondary};
 `;
 
 export default DatePickerModalScreen;
