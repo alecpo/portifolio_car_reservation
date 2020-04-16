@@ -4,6 +4,8 @@ const strings = {
   SIGNUP: 'CADASTRE-SE',
   no: 'NÃO',
   yes: 'SIM',
+  ok: 'OK',
+  cancel: 'Cancelar',
   mandatory: '*',
   email: 'E-mail',
   emailPlaceholder: 'seuemail@host.com.br',
@@ -114,7 +116,7 @@ const strings = {
     sinistros: 'Sinistro:',
     outros: 'Outros:'
   },
-  ReservationHistoryDetails: {
+  ReservationHistoryDetailsModal: {
     title: 'Detalhes da reserva',
     reservationValue: 'Valor do período reservado',
     mileageTraveled: 'Quilometragem percorrida',

@@ -14,23 +14,21 @@ import EditModalScreen from '~/screens/EditModalScreen';
 import DeleteModalScreen from '~/screens/DeleteModalScreen';
 import LoadingModalScreen from '~/screens/LoadingModalScreen';
 import DatePickerModalScreen from '~/screens/DatePickerModalScreen';
-import ReservationHistoryDetailsScreen from '~/screens/ReservationHistoryDetailsScreen';
-import DeleteModalWithJustificationScreen from '~/screens/DeleteModalWithJustificationScreen';
+import ReservationHistoryDetailsModalScreen from '~/screens/ReservationHistoryDetailsModalScreen';
+import DeleteWithJustificationModalScreen from '~/screens/DeleteWithJustificationModalScreen';
+import CancellingAfterTimeModalScreen from '~/screens/CancellingAfterTimeModalScreen';
 
 import logo from '~/assets/img/logo_white.png';
 
 import COLORS from '~/utils/colors';
 
-import { getUser } from '~/store/actions/userActions';
+import { onGetUser } from '~/store/actions/userActions';
 
 const RootStackNavigator = () => {
   const dispatch = useDispatch();
   const { Navigator, Screen } = createStackNavigator();
-  const { userToken, isLoading: isLoadingUser } = useSelector(
-    ({ user }) => user
-  );
+  const { userToken, isLoading } = useSelector(({ user }) => user);
 
-  const [isLoading, setIsLoading] = useState(true);
   const [token, setUserToken] = useState(null);
 
   const getToken = useCallback(async () => {
@@ -38,7 +36,7 @@ const RootStackNavigator = () => {
       const value = await AsyncStorage.getItem('@access_token');
 
       if (value && !userToken) {
-        await dispatch(getUser(value));
+        await dispatch(onGetUser(value));
       }
       setUserToken(value);
     } catch (error) {
@@ -49,10 +47,6 @@ const RootStackNavigator = () => {
   useEffect(() => {
     getToken();
   }, [userToken, getToken]);
-
-  useEffect(() => {
-    setIsLoading(isLoadingUser);
-  }, [isLoadingUser]);
 
   const config = {
     animation: 'spring',
@@ -154,13 +148,18 @@ const RootStackNavigator = () => {
           />
           <Screen
             options={modalAnimationConfig}
-            name='ReservationHistoryDetails'
-            component={ReservationHistoryDetailsScreen}
+            name='ReservationHistoryDetailsModal'
+            component={ReservationHistoryDetailsModalScreen}
           />
           <Screen
             options={modalAnimationConfig}
-            name='DeleteModalWithJustification'
-            component={DeleteModalWithJustificationScreen}
+            name='DeleteWithJustificationModal'
+            component={DeleteWithJustificationModalScreen}
+          />
+          <Screen
+            options={modalAnimationConfig}
+            name='CancellingAfterTimeModal'
+            component={CancellingAfterTimeModalScreen}
           />
         </>
       )}

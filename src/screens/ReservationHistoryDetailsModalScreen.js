@@ -16,7 +16,7 @@ import TYPOGRAPHY from '~/utils/typography';
 import SPACING from '~/utils/spacing';
 import COLORS from '~/utils/colors';
 
-const ReservationHistoryDetailsScreen = ({ route, navigation }) => {
+const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
   const { title, transactionData } = route.params ?? {};
   const stars = ['', '', '', '', ''];
 
@@ -115,27 +115,27 @@ const ReservationHistoryDetailsScreen = ({ route, navigation }) => {
             {renderRow(STRINGS.checkin, begin_date, 'date')}
             {renderRow(STRINGS.checkout, end_date, 'date')}
             {renderRow(
-              STRINGS.ReservationHistoryDetails.reservationValue,
+              STRINGS.ReservationHistoryDetailsModal.reservationValue,
               parseFloat(valor_pre_autorizado) / 100,
               'price'
             )}
             {renderRow(
-              STRINGS.ReservationHistoryDetails.mileageTraveled,
+              STRINGS.ReservationHistoryDetailsModal.mileageTraveled,
               endOdometer - beginOdometer,
               'distance'
             )}
             {renderRow(
-              STRINGS.ReservationHistoryDetails.mileageAmountCharged,
+              STRINGS.ReservationHistoryDetailsModal.mileageAmountCharged,
               total_km_value,
               'price'
             )}
             {renderRow(
-              STRINGS.ReservationHistoryDetails.delayTime,
+              STRINGS.ReservationHistoryDetailsModal.delayTime,
               endOdometer,
               'minutes'
             )}
             {renderRow(
-              STRINGS.ReservationHistoryDetails.latePenalty,
+              STRINGS.ReservationHistoryDetailsModal.latePenalty,
               penalty_value,
               'price'
             )}
@@ -169,7 +169,7 @@ const StyledScrollViewBody = styled.ScrollView`
 const StyledModalContent = styled.View`
   width: ${Dimensions.get('window').width * 0.88}px;
   height: ${Dimensions.get('window').width * 1.7}px;
-  background-color: white;
+  background-color: ${COLORS.secondary};
   padding-vertical: ${SPACING.smallPlus}px;
   padding-horizontal: ${SPACING.regular}px;
 `;
@@ -203,4 +203,4 @@ const StyledImage = styled.Image`
   border-radius: 10px;
 `;
 
-export default ReservationHistoryDetailsScreen;
+export default ReservationHistoryDetailsModalScreen;

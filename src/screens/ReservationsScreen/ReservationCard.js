@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
@@ -22,8 +22,6 @@ import {
   finishAnimation
 } from '~/store/actions/reservationsActions';
 
-const now = moment(new Date());
-
 const renderRow = (label, value) => (
   <StyledRowView>
     <Label
@@ -40,9 +38,21 @@ const renderRow = (label, value) => (
 );
 
 const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
+  const navigation = useNavigation();
+
   const [isCheckinDisabled, setCheckinDisabled] = useState(true);
 
-  const navigation = useNavigation();
+  const [
+    isCancellingAfterAllowedTime,
+    setCancellingAfterAllowedTime
+  ] = useState(false);
+
+  const {
+    configuration: {
+      limit_minutes_before_checkin: { value: limitCheckin },
+      limit_minutes_before_cancelation: { value: limitCancellation }
+    }
+  } = useSelector(({ user }) => user);
 
   const dispatch = useDispatch();
 
@@ -50,15 +60,51 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
     dispatch(onCancelReservation(reservationId));
   };
 
-  useEffect(() => {
-    const timeLeftToCheckin = moment(begin_date)
-      .subtract(10, 'minutes')
-      .diff(now);
+  useLayoutEffect(() => {
+    // Ambas as datas para o mesmo formato (PM)
+    const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+    const formatedBeginDate = moment(begin_date)
+      .subtract(parseInt(limitCancellation, 10), 'minutes')
+      .format('YYYY-MM-DD hh:mm:ss');
 
-    if (timeLeftToCheckin < 0) setCheckinDisabled(false);
-    else if (timeLeftToCheckin / 60000 <= 25)
-      setInterval(() => setCheckinDisabled(false), timeLeftToCheckin);
-  }, []);
+    const timeLeftToCheckinBecomeAvailable = moment(formatedBeginDate).diff(
+      moment(now)
+    );
+
+    const timeLeftToCheckinBecomeAvailableInMinutes =
+      timeLeftToCheckinBecomeAvailable / 60000;
+
+    if (timeLeftToCheckinBecomeAvailableInMinutes <= 0.5)
+      setCancellingAfterAllowedTime(true);
+    else if (timeLeftToCheckinBecomeAvailableInMinutes <= 25)
+      setInterval(
+        () => setCancellingAfterAllowedTime(true),
+        timeLeftToCheckinBecomeAvailable
+      );
+  }, [begin_date, limitCancellation]);
+
+  useLayoutEffect(() => {
+    // Ambas as datas para o mesmo formato (PM)
+    const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+    const formatedBeginDate = moment(begin_date)
+      .subtract(parseInt(limitCheckin, 10), 'minutes')
+      .format('YYYY-MM-DD hh:mm:ss');
+
+    const timeLeftToCheckinBecomeAvailable = moment(formatedBeginDate).diff(
+      moment(now)
+    );
+
+    const timeLeftToCheckinBecomeAvailableInMinutes =
+      timeLeftToCheckinBecomeAvailable / 60000;
+
+    if (timeLeftToCheckinBecomeAvailableInMinutes <= 0.5)
+      setCheckinDisabled(false);
+    else if (timeLeftToCheckinBecomeAvailableInMinutes <= 25)
+      setInterval(
+        () => setCheckinDisabled(false),
+        timeLeftToCheckinBecomeAvailable
+      );
+  }, [begin_date, limitCheckin]);
 
   return (
     <StyledContainer>
@@ -75,17 +121,33 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
         marginVertical={SPACING.verySmall}
       />
       <SubmitButton
-        submit={() => {
-          navigation.navigate('DeleteModalWithJustification', {
-            title: STRINGS.reservations.cancelModal.title,
-            successMessage: STRINGS.reservations.cancelModal.successMessage,
-            placeholder: STRINGS.reservations.cancelModal.placeholder,
-            finishSuccessAnimation: () => {
-              dispatch(finishAnimation());
-            },
-            onSubmit: motive => onCancel(id, motive)
-          });
-        }}
+        submit={
+          isCancellingAfterAllowedTime
+            ? async () => {
+                await navigation.navigate('CancellingAfterTimeModal', {
+                  title: STRINGS.reservations.cancelModal.title,
+                  successMessage:
+                    STRINGS.reservations.cancelModal.successMessage,
+                  placeholder: STRINGS.reservations.cancelModal.placeholder,
+                  finishSuccessAnimation: () => {
+                    dispatch(finishAnimation());
+                  },
+                  onSubmit: motive => onCancel(id, motive)
+                });
+              }
+            : () => {
+                navigation.navigate('DeleteWithJustificationModal', {
+                  title: STRINGS.reservations.cancelModal.title,
+                  successMessage:
+                    STRINGS.reservations.cancelModal.successMessage,
+                  placeholder: STRINGS.reservations.cancelModal.placeholder,
+                  finishSuccessAnimation: () => {
+                    dispatch(finishAnimation());
+                  },
+                  onSubmit: motive => onCancel(id, motive)
+                });
+              }
+        }
         backgroundColor={COLORS.red}
         title={STRINGS.reservations.cancel}
         marginVertical={SPACING.verySmall}

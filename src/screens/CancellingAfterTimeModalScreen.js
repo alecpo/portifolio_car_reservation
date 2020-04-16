@@ -10,39 +10,56 @@ import TYPOGRAPHY from '~/utils/typography';
 import SPACING from '~/utils/spacing';
 import COLORS from '~/utils/colors';
 
-const DeleteModalScreen = ({ route, navigation }) => {
-  const { title = '', icon = () => {}, onSubmit = () => {} } =
-    route.params ?? {};
-
+const CancellingAfterTimeModalScreen = ({ route, navigation }) => {
+  const {
+    title,
+    successMessage,
+    placeholder,
+    finishSuccessAnimation,
+    onSubmit
+  } = route.params;
   return (
     <StyledContainer>
       <StatusBar hidden />
       <StyledModalContent>
         <Label
-          content={title ?? ''}
+          content='É necessário confirmar'
           textAlign='center'
           typography={TYPOGRAPHY.mediumLabelBold}
           color={COLORS.black}
+          marginBottom={SPACING.smallPlus}
         />
-        <StyledIconView>{icon()}</StyledIconView>
+        <Label
+          content='Essa reserva possui prazo de cancelamento posterior ao permitido e terá seu valor integral cobrado. Deseja continuar?'
+          textAlign='justify'
+          typography={TYPOGRAPHY.regularLabel}
+          color={COLORS.black}
+          marginBottom={SPACING.regular}
+        />
+
         <StyledActionBar>
           <StyledButtonView>
             <SubmitButton
-              submit={() => {
-                navigation.pop();
+              submit={async () => {
+                await navigation.pop();
+                await navigation.navigate('DeleteWithJustificationModal', {
+                  title,
+                  successMessage,
+                  placeholder,
+                  finishSuccessAnimation,
+                  onSubmit
+                });
               }}
-              backgroundColor={COLORS.red}
-              title={STRINGS.no}
+              title={STRINGS.ok}
+              backgroundColor={COLORS.successButton}
             />
           </StyledButtonView>
           <StyledButtonView>
             <SubmitButton
               submit={() => {
-                onSubmit();
                 navigation.pop();
               }}
-              title={STRINGS.yes}
-              backgroundColor={COLORS.successButton}
+              title={STRINGS.cancel}
             />
           </StyledButtonView>
         </StyledActionBar>
@@ -66,10 +83,6 @@ const StyledModalContent = styled.View`
   padding: ${SPACING.big}px;
 `;
 
-const StyledIconView = styled.View`
-  margin-vertical: ${SPACING.medium}px;
-`;
-
 const StyledActionBar = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -81,4 +94,4 @@ const StyledButtonView = styled.View`
   width: 40%;
 `;
 
-export default DeleteModalScreen;
+export default CancellingAfterTimeModalScreen;

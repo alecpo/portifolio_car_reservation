@@ -53,8 +53,8 @@ const ReservationHistoryCard = ({ transactionData }) => {
   }
 
   const onClickCard = () => {
-    navigation.navigate('ReservationHistoryDetails', {
-      title: STRINGS.ReservationHistoryDetails.title,
+    navigation.navigate('ReservationHistoryDetailsModal', {
+      title: STRINGS.ReservationHistoryDetailsModal.title,
       transactionData
     });
   };

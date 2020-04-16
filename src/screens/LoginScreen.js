@@ -17,7 +17,7 @@ import COLORS from '~/utils/colors';
 
 import whiteLogo from '~/assets/img/logo_branco.png';
 
-import { login } from '~/store/actions/userActions';
+import { onLogin } from '~/store/actions/userActions';
 
 const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
@@ -28,12 +28,12 @@ const LoginScreen = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
-  const onLogin = async () => {
+  const login = () => {
     const user = {
       email,
       password
     };
-    dispatch(login(user));
+    dispatch(onLogin(user));
   };
 
   return (
@@ -98,7 +98,7 @@ const LoginScreen = ({ navigation }) => {
 
         <>
           <SubmitButton
-            submit={onLogin}
+            submit={login}
             title={STRINGS.LOGIN}
             backgroundColor={COLORS.primary}
             marginVertical={SPACING.smallPlus}

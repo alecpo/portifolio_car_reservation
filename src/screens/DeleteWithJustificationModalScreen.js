@@ -12,7 +12,7 @@ import COLORS from '~/utils/colors';
 
 import success from '~/assets/svgAnimations/success';
 
-const DeleteModalWithJustificationScreen = ({ route, navigation }) => {
+const DeleteWithJustificationModalScreen = ({ route, navigation }) => {
   const [motive, setMotive] = useState('');
 
   const {
@@ -96,7 +96,7 @@ const StyledModalContent = styled.View`
   width: ${Dimensions.get('window').width * 0.8}px;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: ${COLORS.secondary};
   padding: ${SPACING.big}px;
 `;
 
@@ -121,4 +121,4 @@ const StyledButtonView = styled.View`
   width: 40%;
 `;
 
-export default DeleteModalWithJustificationScreen;
+export default DeleteWithJustificationModalScreen;
