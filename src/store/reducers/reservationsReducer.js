@@ -10,7 +10,7 @@ import {
   RESERVATIONS_REFRESHED_FAILURE,
   START_ANIMATION,
   FINISH_ANIMATION
-} from '~/store/actions/actionTypes';
+} from '#/store/actions/actionTypes';
 
 const initialState = {
   isLoading: false,

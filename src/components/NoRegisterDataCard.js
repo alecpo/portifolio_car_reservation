@@ -3,13 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import Label from '~/components/Label';
-import SubmitButton from '~/components/SubmitButton';
-import Icon from '~/components/Icon';
+import Label from '#/components/Label';
+import SubmitButton from '#/components/SubmitButton';
+import Icon from '#/components/Icon';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
 
 const NoRegisterDataCard = ({
   desc,

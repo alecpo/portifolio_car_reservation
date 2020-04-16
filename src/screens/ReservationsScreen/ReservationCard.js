@@ -1,26 +1,25 @@
 /* eslint-disable camelcase */
 import React, { useState, useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Dimensions } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import Label from '~/components/Label';
-import SubmitButton from '~/components/SubmitButton';
-import VehicleCard from '~/components/VehicleCard';
-import DivisorLine from '~/components/DivisorLine';
+import Label from '#/components/Label';
+import SubmitButton from '#/components/SubmitButton';
+import VehicleCard from '#/components/VehicleCard';
+import DivisorLine from '#/components/DivisorLine';
 
-import STRINGS from '~/utils/strings';
-import COLORS from '~/utils/colors';
-import TYPOGRAPHY from '~/utils/typography';
-import SPACING from '~/utils/spacing';
+import STRINGS from '#/utils/strings';
+import COLORS from '#/utils/colors';
+import TYPOGRAPHY from '#/utils/typography';
+import SPACING from '#/utils/spacing';
 
 import {
   onCancelReservation,
   finishAnimation
-} from '~/store/actions/reservationsActions';
+} from '#/store/actions/reservationsActions';
 
 const renderRow = (label, value) => (
   <StyledRowView>
@@ -157,7 +156,6 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
 };
 
 const StyledContainer = styled.View`
-  height: ${Dimensions.get('window').width * 1.1}px;
   justify-content: center;
   padding: ${SPACING.small}px;
   margin-vertical: ${SPACING.small}px;

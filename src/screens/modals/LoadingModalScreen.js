@@ -3,13 +3,13 @@ import { StatusBar, Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components/native';
 
-import Label from '~/components/Label';
+import Label from '#/components/Label';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
 
-import defaultAnimation from '~/assets/svgAnimations/default';
+import defaultAnimation from '#/assets/svgAnimations/default';
 
 const LoadingModalScreen = ({ route, navigation }) => {
   const { lottieJson = null, title = null, finishSuccessAnimation = () => {} } =

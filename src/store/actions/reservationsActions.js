@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import API from '~/config/api';
+import API from '#/config/api';
 import {
   LOADING_RESERVATIONS,
   RESERVATIONS_LOADED_SUCCESS,

@@ -2,13 +2,13 @@ import React from 'react';
 import { StatusBar, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
-import Label from '~/components/Label';
-import SubmitButton from '~/components/SubmitButton';
+import Label from '#/components/Label';
+import SubmitButton from '#/components/SubmitButton';
 
-import STRINGS from '~/utils/strings';
-import TYPOGRAPHY from '~/utils/typography';
-import SPACING from '~/utils/spacing';
-import COLORS from '~/utils/colors';
+import STRINGS from '#/utils/strings';
+import TYPOGRAPHY from '#/utils/typography';
+import SPACING from '#/utils/spacing';
+import COLORS from '#/utils/colors';
 
 const DeleteModalScreen = ({ route, navigation }) => {
   const { title = '', icon = () => {}, onSubmit = () => {} } =
@@ -37,9 +37,9 @@ const DeleteModalScreen = ({ route, navigation }) => {
           </StyledButtonView>
           <StyledButtonView>
             <SubmitButton
-              submit={() => {
+              submit={async () => {
+                await navigation.pop();
                 onSubmit();
-                navigation.pop();
               }}
               title={STRINGS.yes}
               backgroundColor={COLORS.successButton}

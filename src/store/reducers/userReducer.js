@@ -12,7 +12,7 @@ import {
   USER_ADDRESS_LOADED_SUCCESS,
   USER_CONFIGURATION_LOADED_SUCCESS,
   LOGOUT_USER_SUCCESS
-} from '~/store/actions/actionTypes';
+} from '#/store/actions/actionTypes';
 
 const initialState = {
   isLoading: false,

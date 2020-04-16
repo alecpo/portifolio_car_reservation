@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 
-import NoRegisterDataCard from '~/components/NoRegisterDataCard';
+import NoRegisterDataCard from '#/components/NoRegisterDataCard';
 import ReservationCard from './ReservationCard';
 
-import STRINGS from '~/utils/strings';
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import { MI } from '~/utils/enums/ICON_FAMILY';
+import STRINGS from '#/utils/strings';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import { MI } from '#/utils/enums/ICON_FAMILY';
 
 const ReservationsScreen = ({ navigation }) => {
   const { userToken } = useSelector(({ user }) => user);

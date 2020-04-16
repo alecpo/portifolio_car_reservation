@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
-import COLORS from '~/utils/colors';
+import COLORS from '#/utils/colors';
 
 const DatePickerModalScreen = ({ route, navigation }) => {
   const { IOSDateTimePicker } = route.params;

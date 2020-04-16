@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Entypo';
 import styled from 'styled-components/native';
 
-import Label from '~/components/Label';
+import Label from '#/components/Label';
 
 import COLORS from '../utils/colors';
 import SPACING from '../utils/spacing';

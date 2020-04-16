@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import TextInputBox from '~/components/TextInputBox';
-import Label from '~/components/Label';
+import TextInputBox from '#/components/TextInputBox';
+import Label from '#/components/Label';
 
-import API from '~/config/api';
-import STRINGS from '~/utils/strings';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
-import COLORS from '~/utils/colors';
+import API from '#/config/api';
+import STRINGS from '#/utils/strings';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import COLORS from '#/utils/colors';
 
-import background from '~/assets/img/background.png';
+import background from '#/assets/img/background.png';
 
 const ForgotPasswordScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(

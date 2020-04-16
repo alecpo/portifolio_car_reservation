@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Picker, Platform } from 'react-native';
 import styled from 'styled-components/native/';
 
-import Label from '~/components/Label';
+import Label from '#/components/Label';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
 
 const PickerStyled = props => {
   const { hasLabel, label, labelColor, dataList, updateState } = props;

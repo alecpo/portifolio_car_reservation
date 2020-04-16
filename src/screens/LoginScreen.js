@@ -6,18 +6,18 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconHelp from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 
-import TextInputBox from '~/components/TextInputBox';
-import SubmitButton from '~/components/SubmitButton';
-import Label from '~/components/Label';
+import TextInputBox from '#/components/TextInputBox';
+import SubmitButton from '#/components/SubmitButton';
+import Label from '#/components/Label';
 
-import STRINGS from '~/utils/strings';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
-import COLORS from '~/utils/colors';
+import STRINGS from '#/utils/strings';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import COLORS from '#/utils/colors';
 
-import whiteLogo from '~/assets/img/logo_branco.png';
+import whiteLogo from '#/assets/img/logo_branco.png';
 
-import { onLogin } from '~/store/actions/userActions';
+import { onLogin } from '#/store/actions/userActions';
 
 const LoginScreen = ({ navigation }) => {
   const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(

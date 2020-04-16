@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import valid from 'card-validator';
-import STRINGS from '~/utils/strings';
-import cardCompanies from '~/utils/cardCompanies';
+import STRINGS from '#/utils/strings';
+import cardCompanies from '#/utils/cardCompanies';
 
 const CREDIT_CARD_CONFIGS_PAYMENTS = {
   editableFields: ['number', 'name', 'month', 'year', 'cvv', 'flag'],

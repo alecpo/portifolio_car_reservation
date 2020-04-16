@@ -5,8 +5,8 @@ import { MaskService } from 'react-native-masked-text';
 
 import COLORS from '../utils/colors';
 import TYPOGRAPHY from '../utils/typography';
-import typographyPropType from '~/utils/customPropTypes/typographyPropType';
-import maskPropType from '~/utils/customPropTypes/maskPropType';
+import typographyPropType from '#/utils/customPropTypes/typographyPropType';
+import maskPropType from '#/utils/customPropTypes/maskPropType';
 
 const Label = props => {
   const {

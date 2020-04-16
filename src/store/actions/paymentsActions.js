@@ -1,13 +1,16 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import API from '~/config/api';
+import API from '#/config/api';
 import {
   LOADING_CREDIT_CARDS,
-  CREDIT_CARDS_LOADED,
-  /* ADD_CREDIT_CARD,
-  DELETE_CARD, */
-  DELETING_CARD
+  CREDIT_CARDS_LOADED_SUCCESS,
+  CREDIT_CARDS_LOADED_FAILURE,
+  /* ADD_CREDIT_CARD_SUCCESS, */
+  ADD_CREDIT_CARD_FAILURE,
+  DELETING_CREDIT_CARD,
+  CREDIT_CARD_DELETED_SUCCESS,
+  CREDIT_CARD_DELETED_FAILURE
 } from './actionTypes';
 
 export const getToken = async () => {
@@ -15,25 +18,33 @@ export const getToken = async () => {
   return token;
 };
 
-//  TO DO - Otimizar actions de adicionar e remover cartão de crédito para não realizar duas requisições. (backend deve estar preparado)
+//  TO DO - Otimizar actions de adicionar para não realizar duas requisições. (backend deve estar preparado)
 
-/* export const addCreditCard = creditCard => ({
-  type: ADD_CREDIT_CARD,
+/* export const addCreditCardSuccess = creditCard => ({
+  type: ADD_CREDIT_CARD_SUCCESS,
   payload: creditCard
-});
-
-export const deleteCard = id => ({
-  type: DELETE_CARD,
-  payload: id
 }); */
 
+export const addCreditCardFailure = () => ({
+  type: ADD_CREDIT_CARD_FAILURE
+});
+
 export const loadingCreditCard = () => ({ type: LOADING_CREDIT_CARDS });
-
-export const deletingCreditCard = () => ({ type: DELETING_CARD });
-
-export const getCreditCards = creditCardsList => ({
-  type: CREDIT_CARDS_LOADED,
+export const creditCardsLoadedSuccess = creditCardsList => ({
+  type: CREDIT_CARDS_LOADED_SUCCESS,
   payload: creditCardsList
+});
+export const creditCardsLoadedFailure = () => ({
+  type: CREDIT_CARDS_LOADED_FAILURE
+});
+
+export const deletingCreditCard = () => ({ type: DELETING_CREDIT_CARD });
+export const creditCardDeletedSuccess = id => ({
+  type: CREDIT_CARD_DELETED_SUCCESS,
+  payload: id
+});
+export const creditCardDeletedFailure = () => ({
+  type: CREDIT_CARD_DELETED_FAILURE
 });
 
 export const onGetCreditCards = () => dispatch => {
@@ -46,9 +57,10 @@ export const onGetCreditCards = () => dispatch => {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => {
-          dispatch(getCreditCards(res.data));
+          dispatch(creditCardsLoadedSuccess(res.data));
         })
         .catch(e => {
+          dispatch(creditCardsLoadedFailure());
           console.log('erro ao tentar recuperar cartões: ', e);
         });
     })
@@ -65,11 +77,11 @@ export const onAddCreditCard = cardValues => dispatch => {
         headers: { Authorization: `Bearer ${token}` },
         data: cardValues
       })
-        .then(res => {
-          console.log('res de add credit card: ', res);
+        .then(() => {
           dispatch(onGetCreditCards());
         })
         .catch(e => {
+          dispatch(addCreditCardFailure());
           console.log('erro ao tentar cadastrar cartão: ', e);
         });
     })
@@ -78,7 +90,6 @@ export const onAddCreditCard = cardValues => dispatch => {
 
 export const onDeleteCreditCard = id => dispatch => {
   dispatch(deletingCreditCard());
-
   getToken()
     .then(token => {
       axios({
@@ -86,11 +97,11 @@ export const onDeleteCreditCard = id => dispatch => {
         url: `${API.creditCard}/${id}`,
         headers: { Authorization: `Bearer ${token}` }
       })
-        .then(res => {
-          console.log('res de remove credit card: ', res);
-          if (!res.error) dispatch(onGetCreditCards());
+        .then(() => {
+          dispatch(creditCardDeletedSuccess(id));
         })
         .catch(e => {
+          dispatch(creditCardDeletedFailure());
           console.log('erro ao tentar deletar cartão: ', e);
         });
     })

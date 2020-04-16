@@ -4,17 +4,17 @@ import { useFormik } from 'formik';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
-import Label from '~/components/Label';
-import DivisorLine from '~/components/DivisorLine';
-import SubmitButton from '~/components/SubmitButton';
-import TextInputLine from '~/components/TextInputLine';
-import PickerStyled from '~/components/PickerStyled';
-import StyledDatePicker from '~/components/StyledDatePicker';
+import Label from '#/components/Label';
+import DivisorLine from '#/components/DivisorLine';
+import SubmitButton from '#/components/SubmitButton';
+import TextInputLine from '#/components/TextInputLine';
+import PickerStyled from '#/components/PickerStyled';
+import StyledDatePicker from '#/components/StyledDatePicker';
 
-import STRINGS from '~/utils/strings';
-import TYPOGRAPHY from '~/utils/typography';
-import SPACING from '~/utils/spacing';
-import COLORS from '~/utils/colors';
+import STRINGS from '#/utils/strings';
+import TYPOGRAPHY from '#/utils/typography';
+import SPACING from '#/utils/spacing';
+import COLORS from '#/utils/colors';
 
 const EditModalScreen = ({ route, navigation }) => {
   const {
@@ -27,9 +27,9 @@ const EditModalScreen = ({ route, navigation }) => {
 
   const formik = useFormik({
     initialValues: editedObjectToSubmit,
-    onSubmit: values => {
+    onSubmit: async values => {
+      await navigation.pop();
       onSubmit(values);
-      navigation.pop();
     },
     validationSchema
   });
