@@ -8,13 +8,13 @@ import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Label from '~/components/Label';
-import DivisorLine from '~/components/DivisorLine';
+import Label from '#/components/Label';
+import DivisorLine from '#/components/DivisorLine';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
-import maskPropType from '~/utils/customPropTypes/maskPropType';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import maskPropType from '#/utils/customPropTypes/maskPropType';
 
 const PaymentAddCreditCardBox = props => {
   const { editableFields, labelsObject, valuesObject, title, apiRoute } = props;

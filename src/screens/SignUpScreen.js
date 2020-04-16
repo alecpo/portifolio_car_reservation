@@ -3,22 +3,22 @@ import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Label from '~/components/Label';
-import PickerStyled from '~/components/PickerStyled';
-import TextInputBox from '~/components/TextInputBox';
-import CheckCircle from '~/components/CheckCircle';
-import SubmitButton from '~/components/SubmitButton';
+import Label from '#/components/Label';
+import PickerStyled from '#/components/PickerStyled';
+import TextInputBox from '#/components/TextInputBox';
+import CheckCircle from '#/components/CheckCircle';
+import SubmitButton from '#/components/SubmitButton';
 
-import API from '~/config/api';
+import API from '#/config/api';
 
-import STRINGS from '~/utils/strings';
-import SPACING from '~/utils/spacing';
-import COLORS from '~/utils/colors';
-import TYPOGRAPHY from '~/utils/typography';
+import STRINGS from '#/utils/strings';
+import SPACING from '#/utils/spacing';
+import COLORS from '#/utils/colors';
+import TYPOGRAPHY from '#/utils/typography';
 
-import originOptions from '~/utils/originOptions';
+import originOptions from '#/utils/originOptions';
 
-import background from '~/assets/img/background.png';
+import background from '#/assets/img/background.png';
 
 const SignUpScreen = ({ navigation }) => {
   const [state, setState] = useState({

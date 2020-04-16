@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
 
-import whiteLogo from '~/assets/img/logo_branco.png';
+import whiteLogo from '#/assets/img/logo_branco.png';
 
 const SplashScreen = () => (
   <StyledLinearGradient

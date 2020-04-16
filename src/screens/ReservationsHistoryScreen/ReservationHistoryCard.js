@@ -7,12 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Label from '~/components/Label';
+import Label from '#/components/Label';
 
-import STRINGS from '~/utils/strings';
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
+import STRINGS from '#/utils/strings';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
 
 const ReservationHistoryCard = ({ transactionData }) => {
   const {

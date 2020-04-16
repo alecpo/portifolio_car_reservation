@@ -1,4 +1,4 @@
-import STRINGS from '~/utils/strings';
+import STRINGS from '#/utils/strings';
 
 const options = [
   { label: STRINGS.signup.originPlaceholder, value: '', id: -1 },

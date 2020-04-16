@@ -6,12 +6,12 @@ import Icon from 'react-native-vector-icons/Entypo';
 import styled from 'styled-components/native';
 import { TextInputMask, MaskService } from 'react-native-masked-text';
 
-import Label from '~/components/Label';
-import DivisorLine from '~/components/DivisorLine';
+import Label from '#/components/Label';
+import DivisorLine from '#/components/DivisorLine';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
 
 const TextInputLine = ({
   testID,

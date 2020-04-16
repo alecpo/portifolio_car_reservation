@@ -4,24 +4,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Label from '~/components/Label';
-import SubmitButton from '~/components/SubmitButton';
+import Label from '#/components/Label';
+import SubmitButton from '#/components/SubmitButton';
 
-import STRINGS from '~/utils/strings';
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
-import cardCompanies from '~/utils/cardCompanies';
-import CREDIT_CARD_CONFIGS_PAYMENTS from '~/utils/enums/CREDIT_CARD_CONFIGS_PAYMENTS';
+import STRINGS from '#/utils/strings';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+
+import cardCompanies from '#/utils/cardCompanies';
+import CREDIT_CARD_CONFIGS_PAYMENTS from '#/utils/enums/CREDIT_CARD_CONFIGS_PAYMENTS';
 
 import {
   onAddCreditCard,
   onDeleteCreditCard,
   onGetCreditCards
-} from '~/store/actions/paymentsActions';
+} from '#/store/actions/paymentsActions';
 
-import loadingCard from '~/assets/svgAnimations/loadingCard';
-import deletingCard from '~/assets/svgAnimations/deletingCard';
+import loadingCard from '#/assets/svgAnimations/loadingCard';
+import deletingCard from '#/assets/svgAnimations/deletingCard';
 
 const PaymentsScreen = ({ navigation }) => {
   const {
@@ -136,33 +137,34 @@ const PaymentsScreen = ({ navigation }) => {
               marginLeft={SPACING.small}
             />
           </StyledTitle>
-          {creditCardsList.map(card => (
-            <StyledCard key={card.id}>
-              <Label
-                typography={TYPOGRAPHY.defaultLabelBold}
-                content={card.nickname}
-                color={COLORS.primary}
-              />
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('DeleteModal', {
-                    title: STRINGS.payments.confirmDeleteMessage,
-                    icon: () => (
-                      <Icon
-                        name='credit-card'
-                        size={55}
-                        color={COLORS.darkGray}
-                      />
-                    ),
-                    onSubmit: () => onDeleteCard(card.id)
-                  });
-                }}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Icon name='delete' size={22} color={COLORS.primary} />
-              </TouchableOpacity>
-            </StyledCard>
-          ))}
+          {creditCardsList[0].id &&
+            creditCardsList.map(card => (
+              <StyledCard key={card.id}>
+                <Label
+                  typography={TYPOGRAPHY.defaultLabelBold}
+                  content={card.nickname}
+                  color={COLORS.primary}
+                />
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('DeleteModal', {
+                      title: STRINGS.payments.confirmDeleteMessage,
+                      icon: () => (
+                        <Icon
+                          name='credit-card'
+                          size={55}
+                          color={COLORS.darkGray}
+                        />
+                      ),
+                      onSubmit: () => onDeleteCard(card.id)
+                    });
+                  }}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Icon name='delete' size={22} color={COLORS.primary} />
+                </TouchableOpacity>
+              </StyledCard>
+            ))}
         </>
       )}
     </StyledContainer>

@@ -6,7 +6,7 @@ import IconMCI from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 import IconI from 'react-native-vector-icons/Ionicons';
 
-import { MI, MCI, I } from '~/utils/enums/ICON_FAMILY';
+import { MI, MCI, I } from '#/utils/enums/ICON_FAMILY';
 
 const renderIcon = (iconName, size, color, iconFamily) => {
   switch (iconFamily) {

@@ -5,18 +5,18 @@ import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Label from '~/components/Label';
-import SubmitButton from '~/components/SubmitButton';
-import StyledCollapsible from '~/components/StyledCollapsible';
-import DivisorLine from '~/components/DivisorLine';
+import Label from '#/components/Label';
+import SubmitButton from '#/components/SubmitButton';
+import StyledCollapsible from '#/components/StyledCollapsible';
+import DivisorLine from '#/components/DivisorLine';
 
-import STRINGS from '~/utils/strings';
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
-import QUESTIONS from '~/utils/questions';
+import STRINGS from '#/utils/strings';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import QUESTIONS from '#/utils/questions';
 
-import whiteLogo from '~/assets/img/logo_branco.png';
+import whiteLogo from '#/assets/img/logo_branco.png';
 
 const HelpScreen = () => {
   const { userToken } = useSelector(({ user }) => user);

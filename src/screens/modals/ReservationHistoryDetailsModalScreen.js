@@ -5,16 +5,16 @@ import moment from 'moment';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Label from '~/components/Label';
-import DivisorLine from '~/components/DivisorLine';
-import VehicleCard from '~/components/VehicleCard';
+import Label from '#/components/Label';
+import DivisorLine from '#/components/DivisorLine';
+import VehicleCard from '#/components/VehicleCard';
 
-import API from '~/config/api';
+import API from '#/config/api';
 
-import STRINGS from '~/utils/strings';
-import TYPOGRAPHY from '~/utils/typography';
-import SPACING from '~/utils/spacing';
-import COLORS from '~/utils/colors';
+import STRINGS from '#/utils/strings';
+import TYPOGRAPHY from '#/utils/typography';
+import SPACING from '#/utils/spacing';
+import COLORS from '#/utils/colors';
 
 const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
   const { title, transactionData } = route.params ?? {};

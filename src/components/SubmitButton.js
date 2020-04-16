@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import Label from '~/components/Label';
+import Label from '#/components/Label';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
 
 const SubmitButton = ({
   title,

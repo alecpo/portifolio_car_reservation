@@ -4,13 +4,13 @@ import { useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import HomeScreen from '~/screens/HomeScreen';
-import AllReservationsTopTabNavigator from '~/navigation/AllReservationsTopTabNavigator';
-import PaymentsScreen from '~/screens/PaymentsScreen';
-import ProfileScreen from '~/screens/ProfileScreen';
-import HelpScreen from '~/screens/HelpScreen';
+import HomeScreen from '#/screens/HomeScreen';
+import AllReservationsTopTabNavigator from '#/navigation/AllReservationsTopTabNavigator';
+import PaymentsScreen from '#/screens/PaymentsScreen';
+import ProfileScreen from '#/screens/ProfileScreen';
+import HelpScreen from '#/screens/HelpScreen';
 
-import COLORS from '~/utils/colors';
+import COLORS from '#/utils/colors';
 
 const selectIconName = key => {
   switch (key) {

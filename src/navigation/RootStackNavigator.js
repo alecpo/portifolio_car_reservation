@@ -4,25 +4,26 @@ import styled from 'styled-components/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import SplashScreen from '~/screens/SplashScreen';
-import MainBottomTabNavigator from '~/navigation/MainBottomTabNavigator';
-import HelpScreen from '~/screens/HelpScreen';
-import LoginScreen from '~/screens/LoginScreen';
-import SignUpScreen from '~/screens/SignUpScreen';
-import ForgotPasswordScreen from '~/screens/ForgotPasswordScreen';
-import EditModalScreen from '~/screens/EditModalScreen';
-import DeleteModalScreen from '~/screens/DeleteModalScreen';
-import LoadingModalScreen from '~/screens/LoadingModalScreen';
-import DatePickerModalScreen from '~/screens/DatePickerModalScreen';
-import ReservationHistoryDetailsModalScreen from '~/screens/ReservationHistoryDetailsModalScreen';
-import DeleteWithJustificationModalScreen from '~/screens/DeleteWithJustificationModalScreen';
-import CancellingAfterTimeModalScreen from '~/screens/CancellingAfterTimeModalScreen';
+import SplashScreen from '#/screens/SplashScreen';
+import MainBottomTabNavigator from '#/navigation/MainBottomTabNavigator';
+import HelpScreen from '#/screens/HelpScreen';
+import LoginScreen from '#/screens/LoginScreen';
+import SignUpScreen from '#/screens/SignUpScreen';
+import ForgotPasswordScreen from '#/screens/ForgotPasswordScreen';
+import EditModalScreen from '#/screens/modals/EditModalScreen';
+import DeleteModalScreen from '#/screens/modals/DeleteModalScreen';
+import LoadingModalScreen from '#/screens/modals/LoadingModalScreen';
+import DatePickerModalScreen from '#/screens/modals/DatePickerModalScreen';
+import ReservationHistoryDetailsModalScreen from '#/screens/modals/ReservationHistoryDetailsModalScreen';
+import DeleteWithJustificationModalScreen from '#/screens/modals/DeleteWithJustificationModalScreen';
+import CancellingAfterTimeModalScreen from '#/screens/modals/CancellingAfterTimeModalScreen';
 
-import logo from '~/assets/img/logo_white.png';
+import logo from '#/assets/img/logo_white.png';
 
-import COLORS from '~/utils/colors';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
 
-import { onGetUser } from '~/store/actions/userActions';
+import { onGetUser } from '#/store/actions/userActions';
 
 const RootStackNavigator = () => {
   const dispatch = useDispatch();
@@ -171,6 +172,7 @@ const StyledLogo = styled.Image`
   width: 40px;
   height: 40px;
   resize-mode: contain;
+  margin-bottom: ${SPACING.smallPlus}px;
 `;
 
 export default RootStackNavigator;

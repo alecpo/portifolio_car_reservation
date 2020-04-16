@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import COLORS from '~/utils/colors';
+import COLORS from '#/utils/colors';
 
 const DivisorLine = ({ marginVertical, thickness, color }) => (
   <StyledDivisorLine

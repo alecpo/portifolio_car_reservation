@@ -5,15 +5,15 @@ import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import API from '~/config/api';
+import API from '#/config/api';
 
-import Label from '~/components/Label';
-import Icon from '~/components/Icon';
+import Label from '#/components/Label';
+import Icon from '#/components/Icon';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import TYPOGRAPHY from '~/utils/typography';
-import { MCI } from '~/utils/enums/ICON_FAMILY';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import { MCI } from '#/utils/enums/ICON_FAMILY';
 
 const formatValue = (key, value) => {
   switch (key) {
@@ -90,20 +90,19 @@ const VehicleCard = ({
 };
 
 const StyledContainer = styled.View`
-  flex: 14;
   flex-direction: row;
   align-items: center;
 `;
 
 const StyledCarHeaderView = styled.View`
-  flex: 8;
+  width: 200px;
   justify-content: space-between;
   align-items: center;
   padding-vertical: ${SPACING.regularPlus}px;
 `;
 
 const StyledCarInfoView = styled.View`
-  flex: 6;
+  flex: 1;
   margin-left: ${SPACING.small}px;
 `;
 

@@ -4,10 +4,10 @@ import Collapsible from 'react-native-collapsible';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Label from '~/components/Label';
+import Label from '#/components/Label';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
 
 const StyledCollapsible = ({ title, content }) => {
   const [isCollapsed, setCollapsed] = useState(true);

@@ -4,24 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import SubmitButton from '~/components/SubmitButton';
-import ProfileEditableCard from '~/components/ProfileEditableCard';
+import SubmitButton from '#/components/SubmitButton';
+import ProfileEditableCard from '#/components/ProfileEditableCard';
 
-import STRINGS from '~/utils/strings';
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
-import DATA_CARD_CONFIGS_PROFILE from '~/utils/enums/DATA_CARD_CONFIGS_PROFILE';
-import ADDRESS_CARD_CONFIGS_PROFILE from '~/utils/enums/ADDRESS_CARD_CONFIGS_PROFILE';
-import PASSWORD_CARD_CONFIGS_PROFILE from '~/utils/enums/PASSWORD_CARD_CONFIGS_PROFILE';
+import STRINGS from '#/utils/strings';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
+import DATA_CARD_CONFIGS_PROFILE from '#/utils/enums/DATA_CARD_CONFIGS_PROFILE';
+import ADDRESS_CARD_CONFIGS_PROFILE from '#/utils/enums/ADDRESS_CARD_CONFIGS_PROFILE';
+import PASSWORD_CARD_CONFIGS_PROFILE from '#/utils/enums/PASSWORD_CARD_CONFIGS_PROFILE';
 
-import API from '~/config/api';
+import API from '#/config/api';
 
 import {
   onLogout,
   onUpdateUser,
   onUpdateUserAddress,
   onUpdatePassword
-} from '~/store/actions/userActions';
+} from '#/store/actions/userActions';
 
 const ProfileScreen = ({ navigation }) => {
   const {

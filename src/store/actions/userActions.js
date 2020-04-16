@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import API from '~/config/api';
+import API from '#/config/api';
 import {
   LOADING_USER,
   USER_LOADED_SUCCESS,

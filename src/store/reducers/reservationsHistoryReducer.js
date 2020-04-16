@@ -3,7 +3,7 @@ import {
   RESERVATIONS_LOADED_SUCCESS,
   LOADING_MORE_HISTORY_RESERVATIONS,
   MORE_HISTORY_RESERVATIONS_LOADED_SUCCESS
-} from '~/store/actions/actionTypes';
+} from '#/store/actions/actionTypes';
 
 const initialState = {
   isLoading: false,

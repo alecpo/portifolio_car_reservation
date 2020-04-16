@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import STRINGS from '~/utils/strings';
+import STRINGS from '#/utils/strings';
 
 const PASSWORD_CARD_CONFIGS_PROFILE = {
   editableFields: ['newPassword', 'confirmNewPassword'],

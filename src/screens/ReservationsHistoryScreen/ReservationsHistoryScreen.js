@@ -2,15 +2,15 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native/';
 
-import ReservationHistoryCard from '~/screens/ReservationsHistoryScreen/ReservationHistoryCard';
+import ReservationHistoryCard from '#/screens/ReservationsHistoryScreen/ReservationHistoryCard';
 
-import COLORS from '~/utils/colors';
-import SPACING from '~/utils/spacing';
+import COLORS from '#/utils/colors';
+import SPACING from '#/utils/spacing';
 
 import {
   onRefresh,
   onLoadMoreReservation
-} from '~/store/actions/reservationsActions';
+} from '#/store/actions/reservationsActions';
 
 const ReservationsHistoryScreen = () => {
   const {
