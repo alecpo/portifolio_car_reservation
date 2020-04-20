@@ -96,7 +96,7 @@ export const onGetReservations = (page = 1, limit = 5) => dispatch => {
     .catch(() => console.log('Erro ao tentar pegar token'));
 };
 
-export const onRefresh = (page = 1, limit = 5) => dispatch => {
+export const onRefresh = (page = 10, limit = 5) => dispatch => {
   dispatch(refreshingReservations());
   getToken()
     .then(token => {

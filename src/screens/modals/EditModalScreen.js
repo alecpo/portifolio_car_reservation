@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
+
 import Label from '#/components/Label';
 import DivisorLine from '#/components/DivisorLine';
 import SubmitButton from '#/components/SubmitButton';
@@ -82,10 +83,10 @@ const EditModalScreen = ({ route, navigation }) => {
               setInputFieldValue={value => {
                 formik.setFieldValue(item[0], value);
                 if (item[0] === 'zip') {
-                  checkCPF(value, () =>
-                    formik.setFieldError(item[0], 'CPF inválido', () =>
-                      formik.setFieldError(item[0], undefined)
-                    )
+                  checkCPF(
+                    value,
+                    () => formik.setFieldError(item[0], 'CEP inválido'),
+                    () => formik.setFieldError(item[0], undefined)
                   );
                 }
               }}

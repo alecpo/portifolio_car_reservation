@@ -47,6 +47,7 @@ const ProfileScreen = ({ navigation }) => {
   const { userToken, isUpdating } = useSelector(({ user }) => user);
 
   const onSavePartialData = values => {
+    console.log('values: ', values);
     dispatch(onUpdateUser(values));
   };
 
@@ -122,10 +123,19 @@ const ProfileScreen = ({ navigation }) => {
       } else if (!navigation.isFocused()) navigation.pop();
   }, [userToken, isUpdating, navigation]);
 
+  const dataEditable = () => {
+    if (drive_license === '') {
+      if (cpf === '') return [...dataEditableFields, 'cpf', 'drive_license'];
+      return [...dataEditableFields, 'drive_license'];
+    }
+    if (cpf === '') return [...dataEditableFields, 'cpf'];
+    return dataEditableFields;
+  };
+
   return (
     <StyledScrollView contentContainerStyle={[{ alignItems: 'center' }]}>
       <ProfileEditableCard
-        editableFields={dataEditableFields}
+        editableFields={dataEditable()}
         labelsObject={dataLabelsObject}
         valuesObject={userInfoCard}
         modalTitle={`${
@@ -133,7 +143,6 @@ const ProfileScreen = ({ navigation }) => {
         } ${STRINGS.profile.data.toLowerCase()}`}
         title={STRINGS.profile.data}
         submitButtonText={STRINGS.editModal.save}
-        apiRoute={API.updateUserPartial}
         validationSchema={dataValidationSchema}
         onSavePartialData={onSavePartialData}
       />
@@ -146,7 +155,6 @@ const ProfileScreen = ({ navigation }) => {
         } ${STRINGS.ADDRESS.toLowerCase()}`}
         title={STRINGS.ADDRESS}
         submitButtonText={STRINGS.editModal.save}
-        apiRoute={API.address}
         validationSchema={addressValidationSchema}
         onSavePartialData={onSaveUserAddress}
       />
