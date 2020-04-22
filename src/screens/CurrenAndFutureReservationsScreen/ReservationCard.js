@@ -37,8 +37,12 @@ const renderRow = (label, value) => (
   </StyledRowView>
 );
 
-const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
+const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
   const navigation = useNavigation();
+
+  const [isCheckin, setIsCheckin] = useState(
+    step.code.toLowerCase() === 'check-in'
+  );
 
   const [isCheckinDisabled, setCheckinDisabled] = useState(true);
 
@@ -117,48 +121,71 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
       {renderRow(STRINGS.checkin, begin_date)}
       {renderRow(STRINGS.checkout, end_date)}
       <DivisorLine marginVertical={SPACING.small} />
-      <SubmitButton
-        submit={async () => {
-          await onCheckin();
-          navigation.navigate('Checkin', { id });
-        }}
-        disabled={isCheckinDisabled}
-        backgroundColor={COLORS.primary}
-        title={STRINGS.reservations.toCheckIn}
-        marginVertical={SPACING.verySmall}
-      />
-      <SubmitButton
-        submit={
-          isCancellingAfterAllowedTime
-            ? async () => {
-                await navigation.navigate('CancellingAfterTimeModal', {
-                  title: STRINGS.reservations.cancelModal.title,
-                  successMessage:
-                    STRINGS.reservations.cancelModal.successMessage,
-                  placeholder: STRINGS.reservations.cancelModal.placeholder,
-                  finishSuccessAnimation: () => {
-                    dispatch(finishAnimation());
-                  },
-                  onSubmit: motive => onCancel(motive)
-                });
-              }
-            : () => {
-                navigation.navigate('DeleteWithJustificationModal', {
-                  title: STRINGS.reservations.cancelModal.title,
-                  successMessage:
-                    STRINGS.reservations.cancelModal.successMessage,
-                  placeholder: STRINGS.reservations.cancelModal.placeholder,
-                  finishSuccessAnimation: () => {
-                    dispatch(finishAnimation());
-                  },
-                  onSubmit: motive => onCancel(motive)
-                });
-              }
-        }
-        backgroundColor={COLORS.red}
-        title={STRINGS.reservations.cancel}
-        marginVertical={SPACING.verySmall}
-      />
+      {isCheckin ? (
+        <>
+          <SubmitButton
+            submit={async () => {
+              await onCheckin();
+              navigation.navigate('Checkin', { id });
+            }}
+            disabled={isCheckinDisabled}
+            backgroundColor={COLORS.primary}
+            title={STRINGS.reservations.toCheckIn}
+            marginVertical={SPACING.verySmall}
+          />
+          <SubmitButton
+            submit={
+              isCancellingAfterAllowedTime
+                ? async () => {
+                    await navigation.navigate('CancellingAfterTimeModal', {
+                      title: STRINGS.reservations.cancelModal.title,
+                      successMessage:
+                        STRINGS.reservations.cancelModal.successMessage,
+                      placeholder: STRINGS.reservations.cancelModal.placeholder,
+                      finishSuccessAnimation: () => {
+                        dispatch(finishAnimation());
+                      },
+                      onSubmit: motive => onCancel(motive)
+                    });
+                  }
+                : () => {
+                    navigation.navigate('DeleteWithJustificationModal', {
+                      title: STRINGS.reservations.cancelModal.title,
+                      successMessage:
+                        STRINGS.reservations.cancelModal.successMessage,
+                      placeholder: STRINGS.reservations.cancelModal.placeholder,
+                      finishSuccessAnimation: () => {
+                        dispatch(finishAnimation());
+                      },
+                      onSubmit: motive => onCancel(motive)
+                    });
+                  }
+            }
+            backgroundColor={COLORS.cancelButton}
+            title={STRINGS.reservations.cancel}
+            marginVertical={SPACING.verySmall}
+          />
+        </>
+      ) : (
+        <>
+          <SubmitButton
+            submit={() => {
+              console.log('Fazer checkout...');
+            }}
+            backgroundColor={COLORS.primary}
+            title={STRINGS.reservations.toCheckOut}
+            marginVertical={SPACING.verySmall}
+          />
+          <SubmitButton
+            submit={() => {
+              console.log('Abrir portas...');
+            }}
+            backgroundColor={COLORS.successButton}
+            title={STRINGS.reservations.openDors}
+            marginVertical={SPACING.verySmall}
+          />
+        </>
+      )}
     </StyledContainer>
   );
 };

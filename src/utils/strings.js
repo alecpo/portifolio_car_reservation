@@ -128,6 +128,8 @@ const strings = {
     noActiveOrFutureReservation: 'Nenhuma reserva ativa ou futura.',
     newReservation: 'FAZER NOVA RESERVA',
     toCheckIn: 'FAZER CHECK-IN',
+    toCheckOut: 'FAZER CHECK-OUT',
+    openDors: 'ABRIR PORTAS',
     cancel: 'CANCELAR RESERVA',
     cancelModal: {
       title: 'Tem certeza que deseja cancelar a reserva?',
