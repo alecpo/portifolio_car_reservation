@@ -10,7 +10,7 @@ import COLORS from '#/utils/colors';
 import SPACING from '#/utils/spacing';
 import { MI } from '#/utils/enums/ICON_FAMILY';
 
-const ReservationsScreen = ({ navigation }) => {
+const CurrenAndFutureReservationsScreen = ({ navigation }) => {
   const { userToken } = useSelector(({ user }) => user);
   const {
     isLoading,
@@ -53,14 +53,7 @@ const ReservationsScreen = ({ navigation }) => {
                 vehicleRequest.step.code
               ) < 0
           )}
-          renderItem={({ item }) => (
-            <ReservationCard
-              id={item.id}
-              vehicle={item.vehicle}
-              begin_date={item.begin_date}
-              end_date={item.end_date}
-            />
-          )}
+          renderItem={({ item }) => <ReservationCard {...item} />}
           keyExtractor={item => item.id}
         />
       )}
@@ -78,4 +71,4 @@ const StyledFlatList = styled.FlatList`
   padding-horizontal: ${SPACING.verySmall}px;
 `;
 
-export default ReservationsScreen;
+export default CurrenAndFutureReservationsScreen;

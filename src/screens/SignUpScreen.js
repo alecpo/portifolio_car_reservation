@@ -9,7 +9,7 @@ import TextInputBox from '#/components/TextInputBox';
 import CheckCircle from '#/components/CheckCircle';
 import SubmitButton from '#/components/SubmitButton';
 
-import API from '#/config/api';
+import { API } from '#/config/api';
 
 import STRINGS from '#/utils/strings';
 import SPACING from '#/utils/spacing';

@@ -127,12 +127,17 @@ const strings = {
   reservations: {
     noActiveOrFutureReservation: 'Nenhuma reserva ativa ou futura.',
     newReservation: 'FAZER NOVA RESERVA',
-    checkin: 'FAZER CHECK-IN',
+    toCheckIn: 'FAZER CHECK-IN',
     cancel: 'CANCELAR RESERVA',
     cancelModal: {
       title: 'Tem certeza que deseja cancelar a reserva?',
       placeholder: 'Motivo do cancelamento',
       successMessage: 'Sua reserva foi cancelada com sucesso !'
+    },
+    checkinScreen: {
+      checkCarSides:
+        'Percorra o carro e verifique se identifica alguma avaria (Opcional)',
+      takeASelfie: '* Tire uma selfie segurando a sua CNH'
     }
   }
 };

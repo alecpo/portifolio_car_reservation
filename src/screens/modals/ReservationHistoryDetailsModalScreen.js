@@ -9,7 +9,7 @@ import Label from '#/components/Label';
 import DivisorLine from '#/components/DivisorLine';
 import VehicleCard from '#/components/VehicleCard';
 
-import API from '#/config/api';
+import { API } from '#/config/api';
 
 import STRINGS from '#/utils/strings';
 import TYPOGRAPHY from '#/utils/typography';
@@ -67,12 +67,12 @@ const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
       <Label
         typography={TYPOGRAPHY.smallLabelBold}
         content={label}
-        color={COLORS.historyCardFont}
+        color={COLORS.darkBlueFont}
       />
       <Label
         typography={isTotal ? TYPOGRAPHY.smallLabelBold : TYPOGRAPHY.smallLabel}
         content={formatValue(type, value)}
-        color={COLORS.historyCardFont}
+        color={COLORS.darkBlueFont}
       />
     </StyledRowView>
   );

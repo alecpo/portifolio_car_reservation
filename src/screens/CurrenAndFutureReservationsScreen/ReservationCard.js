@@ -18,6 +18,7 @@ import SPACING from '#/utils/spacing';
 
 import {
   onCancelReservation,
+  onCheckinReservation,
   finishAnimation
 } from '#/store/actions/reservationsActions';
 
@@ -26,12 +27,12 @@ const renderRow = (label, value) => (
     <Label
       typography={TYPOGRAPHY.regularLabelBold}
       content={label}
-      color={COLORS.historyCardFont}
+      color={COLORS.darkBlueFont}
     />
     <Label
       typography={TYPOGRAPHY.regularLabel}
       content={moment(value).format('DD/MM/YYYY HH:mm')}
-      color={COLORS.historyCardFont}
+      color={COLORS.darkBlueFont}
     />
   </StyledRowView>
 );
@@ -55,8 +56,12 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
 
   const dispatch = useDispatch();
 
-  const onCancel = reservationId => {
-    dispatch(onCancelReservation(reservationId));
+  const onCancel = motive => {
+    dispatch(onCancelReservation(id, motive));
+  };
+
+  const onCheckin = () => {
+    dispatch(onCheckinReservation(id));
   };
 
   useLayoutEffect(() => {
@@ -113,10 +118,13 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
       {renderRow(STRINGS.checkout, end_date)}
       <DivisorLine marginVertical={SPACING.small} />
       <SubmitButton
-        submit={() => {}}
+        submit={async () => {
+          await onCheckin();
+          navigation.navigate('Checkin', { id });
+        }}
         disabled={isCheckinDisabled}
         backgroundColor={COLORS.primary}
-        title={STRINGS.reservations.checkin}
+        title={STRINGS.reservations.toCheckIn}
         marginVertical={SPACING.verySmall}
       />
       <SubmitButton
@@ -131,7 +139,7 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
                   finishSuccessAnimation: () => {
                     dispatch(finishAnimation());
                   },
-                  onSubmit: motive => onCancel(id, motive)
+                  onSubmit: motive => onCancel(motive)
                 });
               }
             : () => {
@@ -143,7 +151,7 @@ const ReservationCard = ({ id, vehicle, begin_date, end_date }) => {
                   finishSuccessAnimation: () => {
                     dispatch(finishAnimation());
                   },
-                  onSubmit: motive => onCancel(id, motive)
+                  onSubmit: motive => onCancel(motive)
                 });
               }
         }

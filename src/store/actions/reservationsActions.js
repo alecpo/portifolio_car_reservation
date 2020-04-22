@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import API from '#/config/api';
+import { API } from '#/config/api';
 import {
   LOADING_RESERVATIONS,
   RESERVATIONS_LOADED_SUCCESS,
@@ -16,7 +16,9 @@ import {
   CANCEL_RESERVATION_SUCCESS,
   CANCEL_RESERVATION_FAILURE,
   START_ANIMATION,
-  FINISH_ANIMATION
+  FINISH_ANIMATION,
+  GET_RESERVATION_CONFIGURATION_SUCCESS,
+  GET_RESERVATION_CONFIGURATION_FAILURE
 } from './actionTypes';
 
 export const getToken = async () => {
@@ -75,6 +77,38 @@ export const cancelReservationFailure = () => ({
   type: CANCEL_RESERVATION_FAILURE
 });
 
+export const getReservationConfigurationSuccess = (
+  idReservation,
+  reservationConfiguration
+) => ({
+  type: GET_RESERVATION_CONFIGURATION_SUCCESS,
+  payload: { idReservation, reservationConfiguration }
+});
+
+export const getReservationConfigurationFailure = () => ({
+  type: GET_RESERVATION_CONFIGURATION_FAILURE
+});
+
+export const onGetReservationConfiguration = idReservation => dispatch => {
+  getToken()
+    .then(token => {
+      axios({
+        method: 'get',
+        url: `${API.reservationConfig}/${idReservation}`,
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(res => {
+          console.log('res das configuracoes:', res);
+          dispatch(getReservationConfigurationSuccess(idReservation, res.data));
+        })
+        .catch(e => {
+          dispatch(getReservationConfigurationFailure());
+          console.log('erro ao tentar cancelar reserva: ', e);
+        });
+    })
+    .catch(() => console.log('Erro ao tentar pegar token'));
+};
+
 export const onGetReservations = (page = 1, limit = 5) => dispatch => {
   dispatch(loadingReservations());
   getToken()
@@ -96,7 +130,7 @@ export const onGetReservations = (page = 1, limit = 5) => dispatch => {
     .catch(() => console.log('Erro ao tentar pegar token'));
 };
 
-export const onRefresh = (page = 10, limit = 5) => dispatch => {
+export const onRefresh = (page = 1, limit = 5) => dispatch => {
   dispatch(refreshingReservations());
   getToken()
     .then(token => {
@@ -161,4 +195,8 @@ export const onCancelReservation = (id, motive) => dispatch => {
         });
     })
     .catch(() => console.log('Erro ao tentar pegar token'));
+};
+
+export const onCheckinReservation = id => dispatch => {
+  dispatch(onGetReservationConfiguration(id));
 };

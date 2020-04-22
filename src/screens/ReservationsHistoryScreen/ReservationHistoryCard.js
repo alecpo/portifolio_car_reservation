@@ -65,35 +65,32 @@ const ReservationHistoryCard = ({ transactionData }) => {
       disabled={code === 'auto-cancel' || code === 'cancel'}
     >
       <StyledRowView>
-        <Label content={`${model} - ${plate}`} color={COLORS.historyCardFont} />
+        <Label content={`${model} - ${plate}`} color={COLORS.darkBlueFont} />
         {code === 'auto-cancel' || code === 'cancel' ? (
           <Label content={STRINGS.canceled} color={COLORS.red} />
         ) : (
-          <Icon name='info' size={23} color={COLORS.historyCardFont} />
+          <Icon name='info' size={23} color={COLORS.darkBlueFont} />
         )}
       </StyledRowView>
       <StyledRowView>
-        <Label content={STRINGS.checkin} color={COLORS.historyCardFont} />
+        <Label content={STRINGS.checkin} color={COLORS.darkBlueFont} />
         <Label
           typography={TYPOGRAPHY.regularLabel}
           content={moment(begin_date).format('DD/MM/YYYY HH:mm')}
-          color={COLORS.historyCardFont}
+          color={COLORS.darkBlueFont}
         />
       </StyledRowView>
       <StyledRowView>
-        <Label content={STRINGS.checkout} color={COLORS.historyCardFont} />
+        <Label content={STRINGS.checkout} color={COLORS.darkBlueFont} />
         <Label
           typography={TYPOGRAPHY.regularLabel}
           content={moment(end_date).format('DD/MM/YYYY HH:mm')}
-          color={COLORS.historyCardFont}
+          color={COLORS.darkBlueFont}
         />
       </StyledRowView>
       <StyledRowView>
-        <Label content={STRINGS.total} color={COLORS.historyCardFont} />
-        <Label
-          content={`RS ${total.toFixed(2)}`}
-          color={COLORS.historyCardFont}
-        />
+        <Label content={STRINGS.total} color={COLORS.darkBlueFont} />
+        <Label content={`RS ${total.toFixed(2)}`} color={COLORS.darkBlueFont} />
       </StyledRowView>
     </StyledContainer>
   );
