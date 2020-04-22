@@ -1,7 +1,8 @@
 import React, { useLayoutEffect } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useDispatch, useSelector } from 'react-redux';
-import ReservationsScreen from '#/screens/ReservationsScreen';
+
+import ReservationsStackNavigator from '#/navigation/ReservationsStackNavigator';
 import ReservationsHistoryScreen from '#/screens/ReservationsHistoryScreen';
 
 import COLORS from '#/utils/colors';
@@ -33,7 +34,7 @@ const AllReservationsTopTabNavigator = () => {
       >
         <Screen
           name='Reservations'
-          component={ReservationsScreen}
+          component={ReservationsStackNavigator}
           options={{ tabBarLabel: 'RESERVAS' }}
         />
         <Screen

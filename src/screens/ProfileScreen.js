@@ -14,7 +14,7 @@ import DATA_CARD_CONFIGS_PROFILE from '#/utils/enums/DATA_CARD_CONFIGS_PROFILE';
 import ADDRESS_CARD_CONFIGS_PROFILE from '#/utils/enums/ADDRESS_CARD_CONFIGS_PROFILE';
 import PASSWORD_CARD_CONFIGS_PROFILE from '#/utils/enums/PASSWORD_CARD_CONFIGS_PROFILE';
 
-import API from '#/config/api';
+import { API } from '#/config/api';
 
 import {
   onLogout,

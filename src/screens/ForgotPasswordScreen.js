@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TextInputBox from '#/components/TextInputBox';
 import Label from '#/components/Label';
 
-import API from '#/config/api';
+import { API } from '#/config/api';
 import STRINGS from '#/utils/strings';
 import SPACING from '#/utils/spacing';
 import TYPOGRAPHY from '#/utils/typography';

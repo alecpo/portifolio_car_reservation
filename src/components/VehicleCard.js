@@ -5,7 +5,7 @@ import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import API from '#/config/api';
+import { API } from '#/config/api';
 
 import Label from '#/components/Label';
 import Icon from '#/components/Icon';
@@ -34,12 +34,12 @@ const renderCarInfo = (iconName, label, labelType, iconFamily) => (
       iconFamily={iconFamily}
       iconName={iconName}
       size={18}
-      color={COLORS.historyCardFont}
+      color={COLORS.darkBlueFont}
     />
     <Label
       typography={TYPOGRAPHY.regularLabel}
       content={formatValue(labelType, label)}
-      color={COLORS.historyCardFont}
+      color={COLORS.darkBlueFont}
       marginLeft={SPACING.small}
     />
   </StyledListInfoView>
@@ -60,13 +60,13 @@ const VehicleCard = ({
       <StyledCarHeaderView>
         <Label
           content={model}
-          color={COLORS.historyCardFont}
+          color={COLORS.darkBlueFont}
           typography={TYPOGRAPHY.mediumLabelBold}
         />
         <StyledImageCar source={{ uri: `${API.bucket.vehicleImg}/${url}` }} />
         <Label
           content={plate}
-          color={COLORS.historyCardFont}
+          color={COLORS.darkBlueFont}
           typography={TYPOGRAPHY.mediumLabelBold}
         />
       </StyledCarHeaderView>

@@ -9,7 +9,8 @@ import {
   RESERVATIONS_REFRESHED_SUCCESS,
   RESERVATIONS_REFRESHED_FAILURE,
   START_ANIMATION,
-  FINISH_ANIMATION
+  FINISH_ANIMATION,
+  GET_RESERVATION_CONFIGURATION_SUCCESS
 } from '#/store/actions/actionTypes';
 
 const initialState = {
@@ -68,7 +69,8 @@ const initialState = {
           }
         ],
         formFeedback: null,
-        formAnswered: []
+        formAnswered: [],
+        reservationConfiguration: []
       }
     ]
   }
@@ -125,6 +127,23 @@ export default function reducer(state = initialState, action) {
       return { ...state, isAnimating: true };
     case FINISH_ANIMATION:
       return { ...state, isAnimating: false };
+    case GET_RESERVATION_CONFIGURATION_SUCCESS:
+      return {
+        ...state,
+        reservations: {
+          ...state.reservations,
+          vehicleRequests: state.reservations.vehicleRequests.map(
+            vehicleRequest =>
+              vehicleRequest.id === action.payload.idReservation
+                ? {
+                    ...vehicleRequest,
+                    reservationConfiguration:
+                      action.payload.reservationConfiguration
+                  }
+                : vehicleRequest
+          )
+        }
+      };
     default:
       return state;
   }

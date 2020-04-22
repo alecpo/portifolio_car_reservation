@@ -12,10 +12,14 @@ const endPoints = {
   picturesReservation: '/formAnswered/vehicleRequest',
   BUCKET: bucketURL,
   bucket: {
-    vehicleImg: `${bucketURL}/vehicles-img`
+    vehicleImg: `${bucketURL}/vehicles-img`,
+    vehicleSidesImg: `${bucketURL}/vehicles-sides-img`
   },
   cancelReservation: '/vehicleRequest/cancel',
+  reservationConfig: '/formField',
   configuration: '/configuration'
 };
 
-export default endPoints;
+export const BUCKET = bucketURL;
+
+export const API = endPoints;
