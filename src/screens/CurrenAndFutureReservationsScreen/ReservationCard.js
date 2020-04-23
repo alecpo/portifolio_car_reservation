@@ -40,10 +40,6 @@ const renderRow = (label, value) => (
 const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
   const navigation = useNavigation();
 
-  const [isCheckin, setIsCheckin] = useState(
-    step.code.toLowerCase() === 'check-in'
-  );
-
   const [isCheckinDisabled, setCheckinDisabled] = useState(true);
 
   const [
@@ -121,7 +117,7 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
       {renderRow(STRINGS.checkin, begin_date)}
       {renderRow(STRINGS.checkout, end_date)}
       <DivisorLine marginVertical={SPACING.small} />
-      {isCheckin ? (
+      {step.code.toLowerCase() === 'check-in' ? (
         <>
           <SubmitButton
             submit={async () => {

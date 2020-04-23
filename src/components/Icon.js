@@ -5,8 +5,9 @@ import IconMI from 'react-native-vector-icons/MaterialIcons';
 import IconMCI from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 import IconI from 'react-native-vector-icons/Ionicons';
+import IconSLI from 'react-native-vector-icons/SimpleLineIcons';
 
-import { MI, MCI, I } from '#/utils/enums/ICON_FAMILY';
+import { MI, MCI, I, SLI } from '#/utils/enums/ICON_FAMILY';
 
 const renderIcon = (iconName, size, color, iconFamily) => {
   switch (iconFamily) {
@@ -16,6 +17,8 @@ const renderIcon = (iconName, size, color, iconFamily) => {
       return <IconMCI name={iconName} size={size} color={color} />;
     case I:
       return <IconI name={iconName} size={size} color={color} />;
+    case SLI:
+      return <IconSLI name={iconName} size={size} color={color} />;
     default:
       return <IconFA name={iconName} size={size} color={color} />;
   }

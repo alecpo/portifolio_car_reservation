@@ -6,6 +6,8 @@ import Label from '#/components/Label';
 
 import COLORS from '#/utils/colors';
 import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import typographyPropType from '#/utils/customPropTypes/typographyPropType';
 
 const SubmitButton = ({
   title,
@@ -18,6 +20,7 @@ const SubmitButton = ({
   marginVertical,
   hasBorder,
   borderColor,
+  typographyLabel,
   testID
 }) => (
   <StyledButton
@@ -31,6 +34,7 @@ const SubmitButton = ({
   >
     {leftIcon()}
     <Label
+      typography={typographyLabel}
       content={title}
       color={labelColor}
       marginLeft={leftIcon() ? SPACING.small : 0}
@@ -64,6 +68,7 @@ SubmitButton.defaultProps = {
   labelColor: COLORS.secondary,
   backgroundColor: COLORS.loginButton,
   marginVertical: 0,
+  typographyLabel: TYPOGRAPHY.regularLabelBold,
   testID: ''
 };
 
@@ -78,6 +83,7 @@ SubmitButton.propTypes = {
   borderColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   marginVertical: PropTypes.number,
+  typographyLabel: typographyPropType,
   testID: PropTypes.string
 };
 

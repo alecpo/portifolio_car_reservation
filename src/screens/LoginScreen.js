@@ -135,7 +135,7 @@ const LoginScreen = ({ navigation }) => {
 
 const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
-  padding-top: ${SPACING.big};
+  padding-top: ${SPACING.regular};
   padding-horizontal: ${SPACING.smallPlus}px;
 `;
 

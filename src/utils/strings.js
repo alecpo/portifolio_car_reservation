@@ -5,7 +5,8 @@ const strings = {
   no: 'NÃO',
   yes: 'SIM',
   ok: 'OK',
-  cancel: 'Cancelar',
+  send: 'ENVIAR',
+  cancel: 'CANCELAR',
   mandatory: '*',
   email: 'E-mail',
   emailPlaceholder: 'seuemail@host.com.br',
@@ -139,7 +140,8 @@ const strings = {
     checkinScreen: {
       checkCarSides:
         'Percorra o carro e verifique se identifica alguma avaria (Opcional)',
-      takeASelfie: '* Tire uma selfie segurando a sua CNH'
+      takeASelfie: '* Tire uma selfie segurando a sua CNH',
+      observation: 'Observação'
     }
   }
 };

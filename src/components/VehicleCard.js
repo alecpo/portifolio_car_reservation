@@ -95,7 +95,7 @@ const StyledContainer = styled.View`
 `;
 
 const StyledCarHeaderView = styled.View`
-  width: 200px;
+  width: 175px;
   justify-content: space-between;
   align-items: center;
   padding-vertical: ${SPACING.regularPlus}px;

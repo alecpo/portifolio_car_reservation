@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import Icon from '#/components/Icon';
@@ -9,16 +9,9 @@ import SPACING from '#/utils/spacing';
 import COLORS from '#/utils/colors';
 import { MCI } from '#/utils/enums/ICON_FAMILY';
 
-const PictureButton = ({ size, imageName, isSelfie, setSelfieCallback }) => {
-  const [hasContent, setHasContent] = useState(false);
-
-  const openCamera = () => {
-    if (isSelfie) setSelfieCallback();
-    setHasContent(!hasContent);
-  };
-
+const PictureButton = ({ hasContent, imageName, size, onOpenCamera }) => {
   return (
-    <StyledPictureCard onPress={openCamera}>
+    <StyledPictureCard disabled={hasContent} onPress={onOpenCamera}>
       <StyledIconPNG
         imageStyle={{ height: size, width: size, resizeMode: 'contain' }}
         size={size}
@@ -58,16 +51,11 @@ const StyledIconPNG = styled.ImageBackground`
   align-self: center;
 `;
 
-PictureButton.defaultProps = {
-  isSelfie: false,
-  setSelfieCallback: () => {}
-};
-
-PictureButton.propTypes = {
-  isSelfie: PropTypes.bool,
-  setSelfieCallback: PropTypes.func,
-  imageName: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired
-};
+PictureButton.propTypes = PropTypes.shape({
+  hasContent: PropTypes.bool,
+  imageName: PropTypes.string,
+  size: PropTypes.number,
+  onOpenCamera: PropTypes.func
+}).isRequired;
 
 export default PictureButton;
