@@ -18,7 +18,7 @@ import SPACING from '#/utils/spacing';
 
 import {
   onCancelReservation,
-  onCheckinReservation,
+  onClickToCheckin,
   finishAnimation
 } from '#/store/actions/reservationsActions';
 
@@ -61,7 +61,7 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
   };
 
   const onCheckin = () => {
-    dispatch(onCheckinReservation(id));
+    dispatch(onClickToCheckin(id));
   };
 
   useLayoutEffect(() => {

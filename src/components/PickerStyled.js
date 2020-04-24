@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Picker, Platform } from 'react-native';
-import styled from 'styled-components/native/';
+import styled from 'styled-components/native';
 
 import Label from '#/components/Label';
 

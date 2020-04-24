@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import styled from 'styled-components/native/';
+import styled from 'styled-components/native';
 
 import Label from '#/components/Label';
 

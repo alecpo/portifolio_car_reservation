@@ -65,12 +65,14 @@ const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
   const renderRow = (label, value, type, isTotal) => (
     <StyledRowView>
       <Label
-        typography={TYPOGRAPHY.smallLabelBold}
+        typography={TYPOGRAPHY.regularLabelBold}
         content={label}
         color={COLORS.darkBlueFont}
       />
       <Label
-        typography={isTotal ? TYPOGRAPHY.smallLabelBold : TYPOGRAPHY.smallLabel}
+        typography={
+          isTotal ? TYPOGRAPHY.regularLabelBold : TYPOGRAPHY.regularLabel
+        }
         content={formatValue(type, value)}
         color={COLORS.darkBlueFont}
       />
@@ -168,10 +170,11 @@ const StyledScrollViewBody = styled.ScrollView`
 
 const StyledModalContent = styled.View`
   width: ${Dimensions.get('window').width * 0.88}px;
-  height: ${Dimensions.get('window').width * 1.7}px;
+  height: ${Dimensions.get('window').width * 1.5}px;
   background-color: ${COLORS.secondary};
   padding-vertical: ${SPACING.smallPlus}px;
   padding-horizontal: ${SPACING.regular}px;
+  border-radius: 5px;
 `;
 
 const StyledHeader = styled.View`
@@ -188,7 +191,7 @@ const StyledRowView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-vertical: ${SPACING.verySmall}px;
+  padding-vertical: ${SPACING.tiny}px;
 `;
 
 const StyledStarsView = styled.View`
@@ -198,9 +201,10 @@ const StyledStarsView = styled.View`
 
 const StyledImage = styled.Image`
   width: 100%;
-  height: 140px;
+  height: 240px;
+  resize-mode: cover;
   margin-vertical: ${SPACING.verySmall}px;
-  border-radius: 10px;
+  border-radius: 5px;
 `;
 
 export default ReservationHistoryDetailsModalScreen;

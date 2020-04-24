@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components/native/';
+import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import SubmitButton from '#/components/SubmitButton';

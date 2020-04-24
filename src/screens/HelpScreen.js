@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linking, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components/native/';
+import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 

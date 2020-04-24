@@ -11,7 +11,7 @@ import LoginScreen from '#/screens/LoginScreen';
 import SignUpScreen from '#/screens/SignUpScreen';
 import ForgotPasswordScreen from '#/screens/ForgotPasswordScreen';
 import EditModalScreen from '#/screens/modals/EditModalScreen';
-import DeleteModalScreen from '#/screens/modals/DeleteModalScreen';
+import ConfirmModalScreen from '#/screens/modals/ConfirmModalScreen';
 import LoadingModalScreen from '#/screens/modals/LoadingModalScreen';
 import DatePickerModalScreen from '#/screens/modals/DatePickerModalScreen';
 import ReservationHistoryDetailsModalScreen from '#/screens/modals/ReservationHistoryDetailsModalScreen';
@@ -134,8 +134,8 @@ const RootStackNavigator = () => {
           />
           <Screen
             options={modalAnimationConfig}
-            name='DeleteModal'
-            component={DeleteModalScreen}
+            name='ConfirmModal'
+            component={ConfirmModalScreen}
           />
           <Screen
             options={modalAnimationConfig}

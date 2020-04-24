@@ -10,9 +10,14 @@ import TYPOGRAPHY from '#/utils/typography';
 import SPACING from '#/utils/spacing';
 import COLORS from '#/utils/colors';
 
-const DeleteModalScreen = ({ route, navigation }) => {
-  const { title = '', icon = () => {}, onSubmit = () => {} } =
-    route.params ?? {};
+const ConfirmModalScreen = ({ route, navigation }) => {
+  const {
+    title = '',
+    icon = () => {},
+    hasCancelButton = true,
+    onCancel = () => navigation.pop(),
+    onSubmit = () => {}
+  } = route.params ?? {};
 
   return (
     <StyledContainer>
@@ -25,27 +30,34 @@ const DeleteModalScreen = ({ route, navigation }) => {
           color={COLORS.black}
         />
         <StyledIconView>{icon()}</StyledIconView>
-        <StyledActionBar>
-          <StyledButtonView>
-            <SubmitButton
-              submit={() => {
-                navigation.pop();
-              }}
-              backgroundColor={COLORS.red}
-              title={STRINGS.no}
-            />
-          </StyledButtonView>
-          <StyledButtonView>
-            <SubmitButton
-              submit={async () => {
-                await navigation.pop();
-                onSubmit();
-              }}
-              title={STRINGS.yes}
-              backgroundColor={COLORS.successButton}
-            />
-          </StyledButtonView>
-        </StyledActionBar>
+        {hasCancelButton ? (
+          <StyledActionBar>
+            <StyledButtonView>
+              <SubmitButton
+                submit={onCancel}
+                backgroundColor={COLORS.red}
+                title={STRINGS.no}
+              />
+            </StyledButtonView>
+
+            <StyledButtonView>
+              <SubmitButton
+                submit={onSubmit}
+                title={STRINGS.yes}
+                backgroundColor={COLORS.successButton}
+              />
+            </StyledButtonView>
+          </StyledActionBar>
+        ) : (
+          <SubmitButton
+            submit={async () => {
+              await navigation.pop();
+              onSubmit();
+            }}
+            title={STRINGS.ok}
+            backgroundColor={COLORS.successButton}
+          />
+        )}
       </StyledModalContent>
     </StyledContainer>
   );
@@ -81,4 +93,4 @@ const StyledButtonView = styled.View`
   width: 40%;
 `;
 
-export default DeleteModalScreen;
+export default ConfirmModalScreen;

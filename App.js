@@ -10,10 +10,11 @@ import storeConfig from '#/store/storeConfig';
 
 import RootStackNavigator from '#/navigation/RootStackNavigator';
 
+import { SERVER_URL } from '#/config/api';
 import COLORS from '#/utils/colors';
 
 /* AXIOS */
-axios.defaults.baseURL = 'https://api.develop.pickndrive.com.br/api/v1';
+axios.defaults.baseURL = SERVER_URL;
 
 const App = () => {
   const store = storeConfig();

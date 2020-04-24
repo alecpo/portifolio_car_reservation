@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components/native/';
+import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconHelp from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';

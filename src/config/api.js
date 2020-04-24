@@ -17,8 +17,13 @@ const endPoints = {
   },
   cancelReservation: '/vehicleRequest/cancel',
   reservationConfig: '/formField',
-  configuration: '/configuration'
+  configuration: '/configuration',
+  photo: 'formAnswered/photo',
+  newFormAnswered: '/newFormAnswered',
+  changeStatus: '/vehicle/change-status'
 };
+
+export const SERVER_URL = 'https://api.develop.pickndrive.com.br/api/v1';
 
 export const BUCKET = bucketURL;
 
