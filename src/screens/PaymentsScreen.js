@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components/native/';
+import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Label from '#/components/Label';
@@ -147,7 +147,7 @@ const PaymentsScreen = ({ navigation }) => {
                 />
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate('DeleteModal', {
+                    navigation.navigate('ConfirmModal', {
                       title: STRINGS.payments.confirmDeleteMessage,
                       icon: () => (
                         <Icon

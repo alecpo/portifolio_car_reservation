@@ -3,7 +3,6 @@ import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { RNCamera } from 'react-native-camera';
 import styled from 'styled-components/native';
-
 import PictureModal from './PictureModal';
 import Icon from '#/components/Icon';
 
@@ -23,9 +22,10 @@ const Camera = ({ closeCamera, onSendPicture, type }) => {
     if (cameraRef) {
       const options = {
         quality: 0.5,
+        width: 300,
         base64: true,
         mirrorImage: cameraType === 'front',
-        fixOrientation: cameraType === 'front'
+        fixOrientation: true
       };
       setPicture(await cameraRef.current.takePictureAsync(options));
       setImageCaptured(true);

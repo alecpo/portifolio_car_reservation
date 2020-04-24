@@ -34,7 +34,7 @@ const LoadingModalScreen = ({ route, navigation }) => {
           loop={!lottieJson}
           onAnimationFinish={async () => {
             await navigation.pop();
-            finishSuccessAnimation();
+            await finishSuccessAnimation();
           }}
         />
       </StyledContentView>
