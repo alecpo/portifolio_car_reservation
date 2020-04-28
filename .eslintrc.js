@@ -23,5 +23,13 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'babel/no-unused-expressions': 0,
     'babel/no-unused-expressions': 1
-  }
+  },
+  overrides: [
+    {
+      files: ['src/store/actions/*.js'],
+      rules: {
+        'no-console': 'off'
+      }
+    }
+  ]
 };

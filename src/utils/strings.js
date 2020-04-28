@@ -2,8 +2,8 @@ const strings = {
   LOGIN: 'LOGIN',
   LOGOUT: 'SAIR',
   SIGNUP: 'CADASTRE-SE',
-  no: 'NÃO',
-  yes: 'SIM',
+  no: 'Não',
+  yes: 'Sim',
   ok: 'OK',
   send: 'ENVIAR',
   cancel: 'CANCELAR',
@@ -26,6 +26,8 @@ const strings = {
   checkout: 'Check-out',
   total: 'Total',
   canceled: 'Cancelada',
+  observation: 'Observação',
+  feedback: 'Feedback',
   genericModalWithJustificative: {
     title: 'Tem certeza que deseja realizar esta operação?',
     placeholder: 'Motivo'
@@ -132,16 +134,39 @@ const strings = {
     toCheckOut: 'FAZER CHECK-OUT',
     openDors: 'ABRIR PORTAS',
     cancel: 'CANCELAR RESERVA',
+    openCloseDoorAgainSuccessMessage: 'Comando enviado com sucesso !',
+    isDoorsOpen: 'As portas do carro se abriram?',
+    closeDoors: 'TRANCAR PORTAS',
+    keyLocation: 'A chave está no porta-luvas.',
     cancelModal: {
       title: 'Tem certeza que deseja cancelar a reserva?',
       placeholder: 'Motivo do cancelamento',
       successMessage: 'Sua reserva foi cancelada com sucesso !'
     },
+    checkCarSides:
+      'Percorra o carro e verifique se identifica alguma avaria (Opcional)',
     checkinScreen: {
-      checkCarSides:
-        'Percorra o carro e verifique se identifica alguma avaria (Opcional)',
-      takeASelfie: '* Tire uma selfie segurando a sua CNH',
-      observation: 'Observação'
+      takeASelfie: '* Tire uma selfie segurando a sua CNH'
+    },
+    checkoutScreen: {
+      takeAEstepePicture: '* Tire uma foto do estepe',
+      feedbackForm: {
+        insideCarState: 'Estado interno do carro',
+        outsideCarState: 'Estado externo do carro',
+        badSmell: 'O carro apresentou algum odor?',
+        carDefect: 'O carro apresentou algum defeito?',
+        othersObs: 'Outras observações',
+        othersObsPlaceHolder: 'Alguma outra observação?',
+        carDefectObs: 'Informe mais detalhes sobre o defeito',
+        howWasTheExperience: '* Como foi sua experiência com o UseCar Go?',
+        isDoorsClose: 'As portas do carro se trancaram?',
+        areYouInTheCarTitle: 'Você ainda está dentro do carro?',
+        areYouInTheCarMessage:
+          'Caso esteja, coloque a chave no porta-luvas, e antes de sair verifique se pegou todos os seus pertences.',
+        doYouHaveTheKeysTitle: 'A chave ainda está com você?',
+        doYouHaveTheKeysMessage:
+          'Não se esqueça de deixá-la dentro do porta-luvas.'
+      }
     }
   }
 };

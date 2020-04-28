@@ -3,6 +3,7 @@
 /* eslint-disable global-require */
 import React, { useState, useLayoutEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
+import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import RNFetchBlob from 'rn-fetch-blob';
 import styled from 'styled-components/native';
@@ -11,6 +12,7 @@ import Camera from '#/components/Camera';
 import Icon from '#/components/Icon';
 import SubmitButton from '#/components/SubmitButton';
 import Label from '#/components/Label';
+import FeedBackForm from './FeedBackForm';
 import PictureButton from './PictureButton';
 
 import { API, SERVER_URL } from '#/config/api';
@@ -23,15 +25,14 @@ import { MCI } from '#/utils/enums/ICON_FAMILY';
 
 import {
   getToken,
-  onCheckinReservation,
+  onCheckoutReservation,
   onGetReservations,
-  onGetReservationConfiguration,
-  onOpenDoors
+  onCloseDoors
 } from '#/store/actions/reservationsActions';
 
 import success from '#/assets/svgAnimations/success';
 
-const CheckinScreen = ({ route, navigation }) => {
+const CheckoutScreen = ({ route, navigation }) => {
   const { id } = route.params;
 
   const [vehicleRequest, setVehicleRequest] = useState(false);
@@ -39,14 +40,73 @@ const CheckinScreen = ({ route, navigation }) => {
   const [pictureID, setPictureID] = useState(undefined);
   const [observation, setObservation] = useState(true);
   const [checkinFields, setCheckinFields] = useState([]);
-  const [selfieField, setSelfieField] = useState({});
-  const [isSendingSelfie, setIsSendingSelfie] = useState(false);
+  const [estepeField, setEstepeField] = useState({});
+  const [isSendingEstepe, setIsSendingSelfie] = useState(false);
 
   const {
     reservations: { vehicleRequests }
   } = useSelector(({ reservations }) => reservations);
 
+  const initialValues = {
+    rating: 0,
+    odorCarro: '',
+    estadoCarroDefeito: '',
+    obsDefeitoCarro: '',
+    obsOutras: '',
+    estadoInterno: '',
+    estadoExterno: ''
+  };
+
   const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues,
+    // eslint-disable-next-line no-use-before-define
+    onSubmit: () => onClickToCheckout()
+  });
+
+  const onFinishCheckout = async () => {
+    await dispatch(onCheckoutReservation(id, formik.values));
+    await navigation.pop();
+    await dispatch(onGetReservations());
+  };
+
+  const onClickToCloseDoors = async () => {
+    await dispatch(onCloseDoors(vehicleRequest.vehicle.id));
+    navigation.navigate('LoadingModal', {
+      lottieJson: success,
+      title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
+      finishSuccessAnimation: () =>
+        navigation.navigate('ConfirmModal', {
+          title: STRINGS.reservations.checkoutScreen.feedbackForm.isDoorsClose,
+          icon: () => (
+            <Icon iconName='lock' size={55} color={COLORS.darkGray} />
+          ),
+          onCancel: onClickToCloseDoors,
+          onSubmit: onFinishCheckout
+        })
+    });
+  };
+
+  const onClickToCheckout = async () => {
+    navigation.navigate('ConfirmModal', {
+      title:
+        STRINGS.reservations.checkoutScreen.feedbackForm.areYouInTheCarTitle,
+      desc:
+        STRINGS.reservations.checkoutScreen.feedbackForm.areYouInTheCarMessage,
+      icon: () => (
+        <Icon
+          iconName='alert-octagon-outline'
+          iconFamily={MCI}
+          size={65}
+          color={COLORS.darkGray}
+        />
+      ),
+      hasCancelButton: false,
+      submitButtonLabel: STRINGS.reservations.closeDoors,
+      onSubmit: onClickToCloseDoors
+    });
+  };
 
   const onOpenCamera = selectedPictureID => {
     setPictureID(selectedPictureID);
@@ -59,7 +119,7 @@ const CheckinScreen = ({ route, navigation }) => {
   };
 
   const onSendPicture = base64 => {
-    const isSelfie = pictureID === selfieField.id;
+    const isSelfie = pictureID === estepeField.id;
 
     if (isSelfie) setIsSendingSelfie(true);
 
@@ -68,7 +128,7 @@ const CheckinScreen = ({ route, navigation }) => {
       default: defaultImage,
       description: stepName
     } = isSelfie
-      ? selfieField
+      ? estepeField
       : checkinFields.find(field => field.id === pictureID);
 
     const stepContent = {
@@ -106,7 +166,7 @@ const CheckinScreen = ({ route, navigation }) => {
         )
           .then(res => {
             if (isSelfie) {
-              setSelfieField({ ...selfieField, hasContent: true });
+              setEstepeField({ ...estepeField, hasContent: true });
               setIsSendingSelfie(false);
             } else {
               setCheckinFields(
@@ -127,50 +187,6 @@ const CheckinScreen = ({ route, navigation }) => {
       .catch(() => console.log('Erro ao tentar pegar token'));
   };
 
-  const onFinishCheckin = async () => {
-    await navigation.pop();
-    await dispatch(onGetReservations());
-    await dispatch(onGetReservationConfiguration(id));
-  };
-
-  const onConfirmDoorsIsOpen = async () => {
-    await navigation.navigate('ConfirmModal', {
-      title: STRINGS.reservations.keyLocation,
-      icon: () => (
-        <Icon
-          iconName='key'
-          iconFaily={MCI}
-          size={55}
-          color={COLORS.darkGray}
-        />
-      ),
-      hasCancelButton: false,
-      onSubmit: onFinishCheckin
-    });
-  };
-
-  const onClickToOpenDoors = () => {
-    dispatch(onOpenDoors(vehicleRequest.vehicle.id));
-    navigation.navigate('LoadingModal', {
-      lottieJson: success,
-      title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
-      finishSuccessAnimation: () =>
-        navigation.navigate('ConfirmModal', {
-          title: STRINGS.reservations.isDoorsOpen,
-          icon: () => (
-            <Icon iconName='unlock-alt' size={55} color={COLORS.darkGray} />
-          ),
-          onCancel: onClickToOpenDoors,
-          onSubmit: onConfirmDoorsIsOpen
-        })
-    });
-  };
-
-  const onClickToCheckin = async () => {
-    await dispatch(onCheckinReservation(id));
-    onClickToOpenDoors();
-  };
-
   useLayoutEffect(() => {
     const reservation = vehicleRequests.find(
       vehicleResquest => vehicleResquest.id === id
@@ -182,14 +198,14 @@ const CheckinScreen = ({ route, navigation }) => {
 
     if (reservationConfiguration) {
       const mandatorySelfie = reservationConfiguration.find(
-        config => config.description.toLowerCase() === 'selfie'
+        config => config.description.toLowerCase() === 'estepe'
       );
 
-      setSelfieField({ ...mandatorySelfie, hasContent: false });
+      setEstepeField({ ...mandatorySelfie, hasContent: false });
 
       setCheckinFields(
         reservationConfiguration
-          .filter(config => config.description.toLowerCase() !== 'selfie')
+          .filter(config => config.description.toLowerCase() !== 'estepe')
           .map(configFiltered => ({
             ...configFiltered,
             hasContent: false
@@ -202,7 +218,7 @@ const CheckinScreen = ({ route, navigation }) => {
     <>
       {isCameraOpen ? (
         <Camera
-          type={pictureID === selfieField.id ? 'front' : 'back'}
+          type='back'
           onSendPicture={onSendPicture}
           closeCamera={closeCamera}
         />
@@ -211,8 +227,10 @@ const CheckinScreen = ({ route, navigation }) => {
           <StyledScrollView>
             <Label
               content={STRINGS.reservations.checkCarSides}
-              marginTop={SPACING.small}
-              color={COLORS.darkBlueFont}
+              color={COLORS.primary}
+              marginTop={SPACING.smallPlus}
+              marginBottom={SPACING.smallPlus}
+              typography={TYPOGRAPHY.mediumLabelBold}
             />
             <StyledFlatListRow
               horizontal
@@ -228,21 +246,19 @@ const CheckinScreen = ({ route, navigation }) => {
               )}
               keyExtractor={item => item.id}
             />
-
-            <StyledTitleRow>
-              <Label
-                content={STRINGS.reservations.checkinScreen.takeASelfie}
-                color={COLORS.darkBlueFont}
-              />
-            </StyledTitleRow>
-
+            <Label
+              content={STRINGS.reservations.checkoutScreen.takeAEstepePicture}
+              color={COLORS.primary}
+              marginTop={SPACING.smallPlus}
+              marginBottom={SPACING.smallPlus}
+              typography={TYPOGRAPHY.mediumLabelBold}
+            />
             <PictureButton
               size={90}
-              imageName={selfieField.default}
-              hasContent={selfieField.hasContent}
-              onOpenCamera={() => onOpenCamera(selfieField.id)}
+              imageName={estepeField.default}
+              hasContent={estepeField.hasContent}
+              onOpenCamera={() => onOpenCamera(estepeField.id)}
             />
-
             <StyledTextInput
               value={observation}
               onChangeText={setObservation}
@@ -253,8 +269,16 @@ const CheckinScreen = ({ route, navigation }) => {
               selectionColor={COLORS.primary}
               autoCorrect={false}
             />
+            <Label
+              content={STRINGS.feedback}
+              color={COLORS.primary}
+              marginTop={SPACING.smallPlus}
+              marginBottom={SPACING.smallPlus}
+              typography={TYPOGRAPHY.mediumLabelBold}
+            />
+            <FeedBackForm formik={formik} />
             <SubmitButton
-              typographyLabel={TYPOGRAPHY.regularLabelBold}
+              typographyLabel={TYPOGRAPHY.mediumLabelBold}
               submit={() => {
                 navigation.pop();
               }}
@@ -265,19 +289,21 @@ const CheckinScreen = ({ route, navigation }) => {
             <StyledSpacingView />
           </StyledScrollView>
           <StyledCheckinButton
-            onPress={onClickToCheckin}
-            disabled={!selfieField.hasContent}
+            onPress={formik.handleSubmit}
+            disabled={!estepeField.hasContent || !formik.values.rating}
             color={
-              selfieField.hasContent ? COLORS.primary : COLORS.backgroundModal
+              estepeField.hasContent && formik.values.rating
+                ? COLORS.primary
+                : COLORS.backgroundModal
             }
           >
-            {isSendingSelfie ? (
+            {isSendingEstepe ? (
               <ActivityIndicator size='small' color={COLORS.secondary} />
             ) : (
               <Label
-                typography={TYPOGRAPHY.regularLabelBold}
+                typography={TYPOGRAPHY.mediumLabelBold}
                 textAlign='center'
-                content={STRINGS.reservations.toCheckIn}
+                content={STRINGS.reservations.toCheckOut}
                 color={COLORS.secondary}
               />
             )}
@@ -301,10 +327,6 @@ const StyledScrollView = styled.ScrollView`
 
 const StyledFlatListRow = styled.FlatList`
   flex-grow: 0;
-`;
-
-const StyledTitleRow = styled.View`
-  flex-direction: row;
 `;
 
 const StyledTextInput = styled.TextInput`
@@ -331,4 +353,4 @@ const StyledCheckinButton = styled.TouchableOpacity`
   background-color: ${({ color }) => color};
 `;
 
-export default CheckinScreen;
+export default CheckoutScreen;

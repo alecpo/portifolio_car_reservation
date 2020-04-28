@@ -17,7 +17,7 @@ const colors = {
   nonLoggedBackgroundColor2: '#02bf3e',
   red: 'red',
   darkBlueFont: '#002852',
-  star: '#e3b600'
+  star: '#fcce03'
 };
 
 export default colors;

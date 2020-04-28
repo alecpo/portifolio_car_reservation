@@ -20,9 +20,15 @@ import {
   GET_RESERVATION_CONFIGURATION_SUCCESS,
   GET_RESERVATION_CONFIGURATION_FAILURE,
   CHECKIN_SUCCESS,
-  CHECKIN_SUCCESS_FAILURE,
+  CHECKIN_FAILURE,
+  CHECKOUT_SUCCESS,
+  CHECKOUT_FAILURE,
   OPEN_VEHICLE_SUCCESS,
-  OPEN_VEHICLE_FAILURE
+  OPEN_VEHICLE_FAILURE,
+  CLOSE_VEHICLE_SUCCESS,
+  CLOSE_VEHICLE_FAILURE,
+  SEND_FEEDBACK_RESERVATION_SUCCESS,
+  SEND_FEEDBACK_RESERVATION_FAILURE
 } from './actionTypes';
 
 export const getToken = async () => {
@@ -92,11 +98,18 @@ export const getReservationConfigurationFailure = () => ({
   type: GET_RESERVATION_CONFIGURATION_FAILURE
 });
 
-export const checkinReservationSucces = () => ({
+export const checkinReservationSuccess = () => ({
   type: CHECKIN_SUCCESS
 });
 export const checkinReservationFailure = () => ({
-  type: CHECKIN_SUCCESS_FAILURE
+  type: CHECKIN_FAILURE
+});
+
+export const checkoutReservationSuccess = () => ({
+  type: CHECKOUT_SUCCESS
+});
+export const checkoutReservationFailure = () => ({
+  type: CHECKOUT_FAILURE
 });
 
 export const openVehicleSuccess = () => ({
@@ -104,6 +117,20 @@ export const openVehicleSuccess = () => ({
 });
 export const openVehicleFailure = () => ({
   type: OPEN_VEHICLE_FAILURE
+});
+
+export const closeVehicleSuccess = () => ({
+  type: CLOSE_VEHICLE_SUCCESS
+});
+export const closeVehicleFailure = () => ({
+  type: CLOSE_VEHICLE_FAILURE
+});
+
+export const sendFeedbackReservationSuccess = () => ({
+  type: SEND_FEEDBACK_RESERVATION_SUCCESS
+});
+export const sendFeedbackReservationFailure = () => ({
+  type: SEND_FEEDBACK_RESERVATION_FAILURE
 });
 
 export const onGetReservationConfiguration = idReservation => dispatch => {
@@ -237,6 +264,26 @@ export const onOpenDoors = vehicle_id => dispatch => {
     .catch(() => console.log('Erro ao tentar pegar token'));
 };
 
+export const onCloseDoors = vehicle_id => dispatch => {
+  getToken()
+    .then(token => {
+      axios({
+        method: 'post',
+        url: API.changeStatus,
+        headers: { Authorization: `Bearer ${token}` },
+        data: { option: 'lock', vehicle_id }
+      })
+        .then(res => {
+          if (res.status === 200) dispatch(closeVehicleSuccess());
+        })
+        .catch(e => {
+          dispatch(closeVehicleFailure());
+          console.log('erro ao fechar portas: ', e);
+        });
+    })
+    .catch(() => console.log('Erro ao tentar pegar token'));
+};
+
 export const onCheckinReservation = vehicle_request_id => dispatch => {
   getToken()
     .then(token => {
@@ -247,7 +294,7 @@ export const onCheckinReservation = vehicle_request_id => dispatch => {
         data: { vehicle_request_id }
       })
         .then(res => {
-          if (res.status === 200) dispatch(checkinReservationSucces());
+          if (res.status === 200) dispatch(checkinReservationSuccess());
         })
         .catch(e => {
           dispatch(checkinReservationFailure());
@@ -255,4 +302,54 @@ export const onCheckinReservation = vehicle_request_id => dispatch => {
         });
     })
     .catch(() => console.log('Erro ao tentar pegar token'));
+};
+
+const onSendFeedbackReservation = (
+  vehicle_request_id,
+  form_data
+) => dispatch => {
+  getToken()
+    .then(token => {
+      axios({
+        method: 'post',
+        url: API.feedbackReservation,
+        headers: { Authorization: `Bearer ${token}` },
+        data: {
+          vehicle_request_id: vehicle_request_id.toString(),
+          form_date: form_data
+        }
+      })
+        .then(res => {
+          if (res.status === 200) dispatch(sendFeedbackReservationSuccess());
+        })
+        .catch(e => {
+          dispatch(sendFeedbackReservationFailure());
+          console.log('erro ao tentar registrar feedback: ', e);
+        });
+    })
+    .catch(() => console.log('Erro ao tentar pegar token'));
+};
+
+export const onCheckoutReservation = (
+  vehicle_request_id,
+  form_data
+) => async dispatch => {
+  await getToken()
+    .then(token => {
+      axios({
+        method: 'post',
+        url: API.newFormAnswered,
+        headers: { Authorization: `Bearer ${token}` },
+        data: { vehicle_request_id }
+      })
+        .then(res => {
+          if (res.status === 200) dispatch(checkoutReservationSuccess());
+        })
+        .catch(e => {
+          dispatch(checkoutReservationFailure());
+          console.log('erro ao tentar fazer checkout: ', e);
+        });
+    })
+    .catch(() => console.log('Erro ao tentar pegar token'));
+  await dispatch(onSendFeedbackReservation(vehicle_request_id, form_data));
 };

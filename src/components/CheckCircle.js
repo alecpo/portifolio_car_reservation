@@ -10,16 +10,22 @@ import SPACING from '#/utils/spacing';
 import TYPOGRAPHY from '#/utils/typography';
 
 const CheckCircle = props => {
-  const { label, isChecked } = props;
+  const {
+    label,
+    isChecked,
+    unCheckedColor,
+    checkedColor,
+    marginVertical
+  } = props;
   return (
-    <StyledView {...props}>
+    <StyledView {...props} marginVertical={marginVertical} activeOpacity={1}>
       <Icon
         size={30}
         name={isChecked ? 'radio-button-checked' : 'radio-button-unchecked'}
-        color={isChecked ? COLORS.secondary : COLORS.black}
+        color={isChecked ? checkedColor : unCheckedColor}
       />
       <Label
-        color={COLORS.secondary}
+        color={COLORS.darkBlueFont}
         content={label}
         marginLeft={SPACING.small}
         typography={TYPOGRAPHY.defaultLabel}
@@ -32,15 +38,22 @@ const StyledView = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   margin-right: ${SPACING.regular}px;
+  margin-vertical: ${({ marginVertical }) => marginVertical}px;
 `;
 
 CheckCircle.defaultProps = {
-  isChecked: false
+  isChecked: false,
+  unCheckedColor: COLORS.defaultText,
+  checkedColor: COLORS.secondary,
+  marginVertical: 0
 };
 
 CheckCircle.propTypes = {
+  label: PropTypes.string.isRequired,
   isChecked: PropTypes.bool,
-  label: PropTypes.string.isRequired
+  unCheckedColor: PropTypes.string,
+  checkedColor: PropTypes.string,
+  marginVertical: PropTypes.number
 };
 
 export default CheckCircle;

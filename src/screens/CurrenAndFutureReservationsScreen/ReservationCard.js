@@ -6,6 +6,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
+import Icon from '#/components/Icon';
 import Label from '#/components/Label';
 import SubmitButton from '#/components/SubmitButton';
 import VehicleCard from '#/components/VehicleCard';
@@ -15,12 +16,16 @@ import STRINGS from '#/utils/strings';
 import COLORS from '#/utils/colors';
 import TYPOGRAPHY from '#/utils/typography';
 import SPACING from '#/utils/spacing';
+import { MCI } from '#/utils/enums/ICON_FAMILY';
 
 import {
   onCancelReservation,
-  onClickToCheckin,
-  finishAnimation
+  onGetReservationConfiguration,
+  finishAnimation,
+  onOpenDoors
 } from '#/store/actions/reservationsActions';
+
+import success from '#/assets/svgAnimations/success';
 
 const renderRow = (label, value) => (
   <StyledRowView>
@@ -41,6 +46,7 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
   const navigation = useNavigation();
 
   const [isCheckinDisabled, setCheckinDisabled] = useState(true);
+  const [vehicleRequest, setVehicleRequest] = useState({});
 
   const [
     isCancellingAfterAllowedTime,
@@ -54,14 +60,51 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
     }
   } = useSelector(({ user }) => user);
 
+  const {
+    reservations: { vehicleRequests }
+  } = useSelector(({ reservations }) => reservations);
+
   const dispatch = useDispatch();
 
   const onCancel = motive => {
     dispatch(onCancelReservation(id, motive));
   };
 
-  const onCheckin = () => {
-    dispatch(onClickToCheckin(id));
+  const onCheckout = async () => {
+    await dispatch(onGetReservationConfiguration(id));
+    await navigation.navigate('Checkout', { id });
+    await navigation.navigate('ConfirmModal', {
+      title:
+        STRINGS.reservations.checkoutScreen.feedbackForm.doYouHaveTheKeysTitle,
+      desc:
+        STRINGS.reservations.checkoutScreen.feedbackForm
+          .doYouHaveTheKeysMessage,
+      icon: () => (
+        <Icon
+          iconName='key'
+          iconFaily={MCI}
+          size={55}
+          color={COLORS.darkGray}
+        />
+      ),
+      hasCancelButton: false
+    });
+  };
+
+  const onOpenDoorsAgain = () => {
+    dispatch(onOpenDoors(vehicleRequest.vehicle.id));
+    navigation.navigate('LoadingModal', {
+      lottieJson: success,
+      title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
+      finishSuccessAnimation: () =>
+        navigation.navigate('ConfirmModal', {
+          title: STRINGS.reservations.isDoorsOpen,
+          icon: () => (
+            <Icon iconName='unlock-alt' size={55} color={COLORS.darkGray} />
+          ),
+          onCancel: onOpenDoorsAgain
+        })
+    });
   };
 
   useLayoutEffect(() => {
@@ -110,6 +153,12 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
       );
   }, [begin_date, limitCheckin]);
 
+  useLayoutEffect(() => {
+    setVehicleRequest(
+      vehicleRequests.find(vehicleResquest => vehicleResquest.id === id)
+    );
+  }, [id, vehicleRequests]);
+
   return (
     <StyledContainer>
       <VehicleCard {...vehicle} />
@@ -121,7 +170,7 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
         <>
           <SubmitButton
             submit={async () => {
-              await onCheckin();
+              await dispatch(onGetReservationConfiguration(id));
               navigation.navigate('Checkin', { id });
             }}
             disabled={isCheckinDisabled}
@@ -165,17 +214,13 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
       ) : (
         <>
           <SubmitButton
-            submit={() => {
-              console.log('Fazer checkout...');
-            }}
+            submit={onCheckout}
             backgroundColor={COLORS.primary}
             title={STRINGS.reservations.toCheckOut}
             marginVertical={SPACING.verySmall}
           />
           <SubmitButton
-            submit={() => {
-              console.log('Abrir portas...');
-            }}
+            submit={onOpenDoorsAgain}
             backgroundColor={COLORS.successButton}
             title={STRINGS.reservations.openDors}
             marginVertical={SPACING.verySmall}
