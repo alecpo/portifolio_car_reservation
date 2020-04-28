@@ -167,7 +167,8 @@ const strings = {
         doYouHaveTheKeysMessage:
           'Não se esqueça de deixá-la dentro do porta-luvas.'
       }
-    }
+    },
+    teste: 'teste'
   }
 };
 
