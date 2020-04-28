@@ -2,6 +2,7 @@
 import React from 'react';
 import { StatusBar, Dimensions } from 'react-native';
 import moment from 'moment';
+import { AirbnbRating } from 'react-native-ratings';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -15,10 +16,10 @@ import STRINGS from '#/utils/strings';
 import TYPOGRAPHY from '#/utils/typography';
 import SPACING from '#/utils/spacing';
 import COLORS from '#/utils/colors';
+import { REVIEW } from '#/utils/enums/FEEDBACK_RATING';
 
 const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
   const { title, transactionData } = route.params ?? {};
-  const stars = ['', '', '', '', ''];
 
   const {
     formFeedback,
@@ -48,18 +49,6 @@ const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
       default:
         return value;
     }
-  };
-
-  const renderStars = (value, index) => {
-    if (value === 0)
-      return <Icon name='star-border' color={COLORS.star} size={25} />;
-    return (
-      <Icon
-        name={index <= value ? 'star' : 'star-border'}
-        color={COLORS.star}
-        size={30}
-      />
-    );
   };
 
   const renderRow = (label, value, type, isTotal) => (
@@ -104,12 +93,16 @@ const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
           {formFeedback && (
             <>
               <DivisorLine thickness={0.5} marginVertical={SPACING.regular} />
-
-              <StyledStarsView>
-                {stars.map((item, index) =>
-                  renderStars(formFeedback.form_date.rating, index + 1)
-                )}
-              </StyledStarsView>
+              <AirbnbRating
+                count={5}
+                reviews={REVIEW}
+                defaultRating={formFeedback.form_date.rating}
+                reviewSize={18}
+                size={23}
+                reviewColor={COLORS.star}
+                selectedColor={COLORS.star}
+                isDisabled
+              />
             </>
           )}
           <DivisorLine thickness={0.5} marginVertical={SPACING.regular} />
@@ -192,11 +185,6 @@ const StyledRowView = styled.View`
   justify-content: space-between;
   align-items: center;
   padding-vertical: ${SPACING.tiny}px;
-`;
-
-const StyledStarsView = styled.View`
-  flex-direction: row;
-  justify-content: center;
 `;
 
 const StyledImage = styled.Image`

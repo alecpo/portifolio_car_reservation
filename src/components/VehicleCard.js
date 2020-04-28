@@ -83,7 +83,8 @@ const VehicleCard = ({
         )}
         {renderCarInfo('gas-station', 'flex', 'default', MCI)}
         {renderCarInfo('car-door', doors_qtd, 'door', MCI)}
-        {air_conditioning && renderCarInfo('snowflake', 'Ar-condicionado', MCI)}
+        {air_conditioning &&
+          renderCarInfo('snowflake', 'Ar-condicionado', 'default', MCI)}
       </StyledCarInfoView>
     </StyledContainer>
   );
@@ -92,10 +93,11 @@ const VehicleCard = ({
 const StyledContainer = styled.View`
   flex-direction: row;
   align-items: center;
+  padding: ${SPACING.verySmall}px;
 `;
 
 const StyledCarHeaderView = styled.View`
-  width: 175px;
+  width: 150px;
   justify-content: space-between;
   align-items: center;
   padding-vertical: ${SPACING.regularPlus}px;

@@ -13,8 +13,10 @@ import COLORS from '#/utils/colors';
 const ConfirmModalScreen = ({ route, navigation }) => {
   const {
     title = '',
+    desc = '',
     icon = () => {},
     hasCancelButton = true,
+    submitButtonLabel = null,
     onCancel = () => navigation.pop(),
     onSubmit = () => {}
   } = route.params ?? {};
@@ -30,11 +32,23 @@ const ConfirmModalScreen = ({ route, navigation }) => {
           color={COLORS.black}
         />
         <StyledIconView>{icon()}</StyledIconView>
+        {Boolean(desc) && (
+          <Label
+            content={desc}
+            textAlign='center'
+            typography={TYPOGRAPHY.defaultLabel}
+            color={COLORS.black}
+            marginBottom={SPACING.medium}
+          />
+        )}
         {hasCancelButton ? (
           <StyledActionBar>
             <StyledButtonView>
               <SubmitButton
-                submit={onCancel}
+                submit={async () => {
+                  await navigation.pop();
+                  onCancel();
+                }}
                 backgroundColor={COLORS.red}
                 title={STRINGS.no}
               />
@@ -42,8 +56,11 @@ const ConfirmModalScreen = ({ route, navigation }) => {
 
             <StyledButtonView>
               <SubmitButton
-                submit={onSubmit}
-                title={STRINGS.yes}
+                submit={async () => {
+                  await navigation.pop();
+                  onSubmit();
+                }}
+                title={submitButtonLabel ?? STRINGS.yes}
                 backgroundColor={COLORS.successButton}
               />
             </StyledButtonView>
@@ -54,7 +71,7 @@ const ConfirmModalScreen = ({ route, navigation }) => {
               await navigation.pop();
               onSubmit();
             }}
-            title={STRINGS.ok}
+            title={submitButtonLabel ?? STRINGS.ok}
             backgroundColor={COLORS.successButton}
           />
         )}
