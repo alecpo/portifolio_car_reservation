@@ -168,7 +168,7 @@ const strings = {
           'Não se esqueça de deixá-la dentro do porta-luvas.'
       }
     },
-    teste: 'teste'
+    teste: 'teste2'
   }
 };
 
