@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Dimensions, Platform, View } from 'react-native';
+import { Dimensions, Platform, View } from 'react-native';
 import { useFormik } from 'formik';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -155,7 +155,6 @@ const EditModalScreen = ({ route, navigation }) => {
         android: -100
       })}
     >
-      <StatusBar hidden />
       <StyledModalContent>
         <StyledHeader>
           <Label

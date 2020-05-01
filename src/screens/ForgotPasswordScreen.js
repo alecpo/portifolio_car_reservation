@@ -1,87 +1,113 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux';
+import LinearGradient from 'react-native-linear-gradient';
 
 import TextInputBox from '#/components/TextInputBox';
+import SubmitButton from '#/components/SubmitButton';
 import Label from '#/components/Label';
 
-import { API } from '#/config/api';
 import STRINGS from '#/utils/strings';
 import SPACING from '#/utils/spacing';
 import TYPOGRAPHY from '#/utils/typography';
 import COLORS from '#/utils/colors';
 
-import background from '#/assets/img/background.png';
+import whiteLogo from '#/assets/img/logo_branco.png';
+import success from '#/assets/svgAnimations/success';
+
+import { onForgotPassword } from '#/store/actions/userActions';
 
 const ForgotPasswordScreen = ({ navigation }) => {
-  const [isRememberPasswordChecked, setRememberPasswordChecked] = useState(
-    false
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const onSubmit = async () => {
+    await setIsLoading(true);
+    dispatch(
+      onForgotPassword(email, async () => {
+        await setIsLoading(false);
+        setEmail('');
+      })
+    );
+  };
+
+  const teste = useCallback(async () => {
+    if (isLoading) {
+      navigation.navigate('PublicModals', {
+        screen: 'LoadingModal'
+      });
+    } else if (!navigation.isFocused()) {
+      await navigation.pop();
+      await navigation.navigate('PublicModals', {
+        screen: 'LoadingModal',
+        params: {
+          lottieJson: success,
+          title: STRINGS.forgotPassword.emailSentMessage
+        }
+      });
+    }
+  }, [isLoading, navigation]);
+
+  useEffect(() => {
+    teste();
+  }, [teste]);
+
+  return (
+    <StyledLinearGradient
+      colors={[
+        COLORS.nonLoggedBackgroundColor1,
+        COLORS.nonLoggedBackgroundColor2
+      ]}
+    >
+      <StyledLogo source={whiteLogo} />
+      <TextInputBox
+        onChangeText={setEmail}
+        value={email}
+        hasLabel
+        label={STRINGS.email}
+        labelColor={COLORS.secondary}
+        placeholder={STRINGS.emailPlaceholder}
+        autoCapitalize='none'
+        keyboardType='email-address'
+        autoCorrect={false}
+      />
+      <StyledInstructionLabelView>
+        <Label
+          textAlign='justify'
+          typography={TYPOGRAPHY.defaultLabel}
+          content={STRINGS.forgotPassword.requestMessage}
+          marginTop={SPACING.small}
+          marginBottom={SPACING.small}
+          color={COLORS.secondary}
+        />
+      </StyledInstructionLabelView>
+
+      <SubmitButton
+        submit={onSubmit}
+        title={STRINGS.request.toUpperCase()}
+        backgroundColor={COLORS.primary}
+        marginVertical={SPACING.smallPlus}
+      />
+    </StyledLinearGradient>
   );
-  return <></>;
 };
 
-const StyledScrollView = styled.ScrollView`
-  width: 100%;
-`;
-
-const StyledImageBackground = styled.ImageBackground`
+const StyledLinearGradient = styled(LinearGradient)`
   flex: 1;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-`;
-
-const StyledHelpButton = styled.TouchableOpacity`
-  position: absolute;
-  margin-top: ${SPACING.regular}px;
-  right: 6px;
-`;
-
-const StyledLogoView = styled.View`
-  width: 100%;
-  align-items: center;
-  margin-top: ${SPACING.huge}px;
-`;
-
-const StyledInputsView = styled.View`
-  width: 100%;
-  margin-top: ${SPACING.big}px;
+  padding-horizontal: ${SPACING.regularPlus}px;
 `;
 
 const StyledLogo = styled.Image`
-  width: 120px;
-  height: 120px;
-  resize-mode: contain;
+  margin-vertical: ${SPACING.smallPlus}px;
+  width: 140px;
+  height: 140px;
 `;
 
-const StyledCheckButton = styled.TouchableOpacity`
-  flex-direction: row;
-  align-items: center;
-`;
-
-const StyledActionsView = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StyledLoginButton = styled.TouchableOpacity`
-  align-items: center;
-  border-radius: 7px;
-  background-color: ${COLORS.loginButton};
-  margin-top: ${SPACING.medium}px;
-`;
-
-const StyledActionButton = styled.TouchableOpacity`
-  align-items: center;
-  border-radius: 7px;
-  background-color: ${COLORS.loginScreenActionButtons};
-  margin-top: ${SPACING.regular}px;
-  padding-top: ${SPACING.small}px;
-  padding-right: ${SPACING.regular}px;
-  padding-left: ${SPACING.regular}px;
-  padding-bottom: ${SPACING.small}px;
+const StyledInstructionLabelView = styled.View`
+  padding-horizontal: ${SPACING.regular}px;
 `;
 
 export default ForgotPasswordScreen;

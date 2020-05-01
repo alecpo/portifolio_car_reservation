@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { StatusBar, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import moment from 'moment';
 import { AirbnbRating } from 'react-native-ratings';
 import styled from 'styled-components/native';
@@ -70,7 +70,6 @@ const ReservationHistoryDetailsModalScreen = ({ route, navigation }) => {
 
   return (
     <StyledContainer>
-      <StatusBar hidden />
       <StyledModalContent>
         <StyledHeader>
           <Label
@@ -163,7 +162,7 @@ const StyledScrollViewBody = styled.ScrollView`
 
 const StyledModalContent = styled.View`
   width: ${Dimensions.get('window').width * 0.88}px;
-  height: ${Dimensions.get('window').width * 1.5}px;
+  height: ${Dimensions.get('window').width * 1.3}px;
   background-color: ${COLORS.secondary};
   padding-vertical: ${SPACING.smallPlus}px;
   padding-horizontal: ${SPACING.regular}px;

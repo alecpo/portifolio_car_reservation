@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar, Dimensions, Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import styled from 'styled-components/native';
 
 import Label from '#/components/Label';
@@ -34,7 +34,6 @@ const DeleteWithJustificationModalScreen = ({ route, navigation }) => {
         android: -100
       })}
     >
-      <StatusBar hidden />
       <StyledModalContent>
         <Label
           content={title}
@@ -68,10 +67,13 @@ const DeleteWithJustificationModalScreen = ({ route, navigation }) => {
               submit={async () => {
                 await onSubmit(motive);
                 await navigation.pop();
-                await navigation.navigate('LoadingModal', {
-                  lottieJson: success,
-                  title: successMessage,
-                  finishSuccessAnimation
+                await navigation.navigate('PublicModals', {
+                  screen: 'LoadingModal',
+                  params: {
+                    lottieJson: success,
+                    title: successMessage,
+                    finishSuccessAnimation
+                  }
                 });
               }}
               disabled={!motive}

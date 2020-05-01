@@ -52,12 +52,15 @@ const ProfileEditableCard = props => {
       } else editedObjectToSubmit[item[0]] = valuesObject[item[0]];
     });
 
-    navigation.navigate('EditModal', {
-      onSubmit: onSavePartialData,
-      title,
-      editableObject,
-      editedObjectToSubmit,
-      validationSchema
+    navigation.navigate('OnlineModals', {
+      screen: 'EditModal',
+      params: {
+        onSubmit: onSavePartialData,
+        title,
+        editableObject,
+        editedObjectToSubmit,
+        validationSchema
+      }
     });
   };
 

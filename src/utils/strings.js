@@ -28,6 +28,7 @@ const strings = {
   canceled: 'Cancelada',
   observation: 'Observação',
   feedback: 'Feedback',
+  request: 'Solicitar',
   genericModalWithJustificative: {
     title: 'Tem certeza que deseja realizar esta operação?',
     placeholder: 'Motivo'
@@ -92,7 +93,10 @@ const strings = {
   forgotPassword: {
     currentPassword: 'Senha atual',
     newPassword: 'Nova senha',
-    confirmNewPassword: 'Confirme sua nova senha'
+    confirmNewPassword: 'Confirme sua nova senha',
+    requestMessage:
+      'Ao solicitar, você receberá um e-mail com instruções para realizar o procedimento.',
+    emailSentMessage: 'Email enviado com sucesso !'
   },
   helpScreen: {
     contactMessage: 'Contato para o caso de sinistro, manutenção ou outros:',

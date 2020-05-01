@@ -36,11 +36,9 @@ const PaymentAddCreditCardBox = props => {
       editedObjectToSubmit[item[0]] = valuesObject[item[0]];
     });
 
-    navigation.navigate('EditModal', {
-      apiRoute,
-      title,
-      editableObject,
-      editedObjectToSubmit
+    navigation.navigate('OnlineModals', {
+      screen: 'EditModal',
+      params: { apiRoute, title, editableObject, editedObjectToSubmit }
     });
   };
 

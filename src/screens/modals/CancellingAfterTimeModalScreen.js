@@ -20,7 +20,6 @@ const CancellingAfterTimeModalScreen = ({ route, navigation }) => {
   } = route.params;
   return (
     <StyledContainer>
-      <StatusBar hidden />
       <StyledModalContent>
         <Label
           content='É necessário confirmar'
@@ -42,12 +41,15 @@ const CancellingAfterTimeModalScreen = ({ route, navigation }) => {
             <SubmitButton
               submit={async () => {
                 await navigation.pop();
-                await navigation.navigate('DeleteWithJustificationModal', {
-                  title,
-                  successMessage,
-                  placeholder,
-                  finishSuccessAnimation,
-                  onSubmit
+                await navigation.navigate('OnlineModals', {
+                  screen: 'DeleteWithJustificationModal',
+                  params: {
+                    title,
+                    successMessage,
+                    placeholder,
+                    finishSuccessAnimation,
+                    onSubmit
+                  }
                 });
               }}
               title={STRINGS.ok}

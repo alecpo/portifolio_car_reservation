@@ -73,37 +73,47 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
   const onCheckout = async () => {
     await dispatch(onGetReservationConfiguration(id));
     await navigation.navigate('Checkout', { id });
-    await navigation.navigate('ConfirmModal', {
-      title:
-        STRINGS.reservations.checkoutScreen.feedbackForm.doYouHaveTheKeysTitle,
-      desc:
-        STRINGS.reservations.checkoutScreen.feedbackForm
-          .doYouHaveTheKeysMessage,
-      icon: () => (
-        <Icon
-          iconName='key'
-          iconFaily={MCI}
-          size={55}
-          color={COLORS.darkGray}
-        />
-      ),
-      hasCancelButton: false
+    await navigation.navigate('OnlineModals', {
+      screen: 'ConfirmModal',
+      params: {
+        title:
+          STRINGS.reservations.checkoutScreen.feedbackForm
+            .doYouHaveTheKeysTitle,
+        desc:
+          STRINGS.reservations.checkoutScreen.feedbackForm
+            .doYouHaveTheKeysMessage,
+        icon: () => (
+          <Icon
+            iconName='key'
+            iconFaily={MCI}
+            size={55}
+            color={COLORS.darkGray}
+          />
+        ),
+        hasCancelButton: false
+      }
     });
   };
 
   const onOpenDoorsAgain = () => {
     dispatch(onOpenDoors(vehicleRequest.vehicle.id));
-    navigation.navigate('LoadingModal', {
-      lottieJson: success,
-      title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
-      finishSuccessAnimation: () =>
-        navigation.navigate('ConfirmModal', {
-          title: STRINGS.reservations.isDoorsOpen,
-          icon: () => (
-            <Icon iconName='unlock-alt' size={55} color={COLORS.darkGray} />
-          ),
-          onCancel: onOpenDoorsAgain
-        })
+    navigation.navigate('PublicModals', {
+      screen: 'LoadingModal',
+      params: {
+        lottieJson: success,
+        title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
+        finishSuccessAnimation: () =>
+          navigation.navigate('OnlineModals', {
+            screen: 'ConfirmModal',
+            params: {
+              title: STRINGS.reservations.isDoorsOpen,
+              icon: () => (
+                <Icon iconName='unlock-alt' size={55} color={COLORS.darkGray} />
+              ),
+              onCancel: onOpenDoorsAgain
+            }
+          })
+      }
     });
   };
 
@@ -182,27 +192,35 @@ const ReservationCard = ({ id, step, vehicle, begin_date, end_date }) => {
             submit={
               isCancellingAfterAllowedTime
                 ? async () => {
-                    await navigation.navigate('CancellingAfterTimeModal', {
-                      title: STRINGS.reservations.cancelModal.title,
-                      successMessage:
-                        STRINGS.reservations.cancelModal.successMessage,
-                      placeholder: STRINGS.reservations.cancelModal.placeholder,
-                      finishSuccessAnimation: () => {
-                        dispatch(finishAnimation());
-                      },
-                      onSubmit: motive => onCancel(motive)
+                    await navigation.navigate('OnlineModals', {
+                      screen: 'CancellingAfterTimeModal',
+                      params: {
+                        title: STRINGS.reservations.cancelModal.title,
+                        successMessage:
+                          STRINGS.reservations.cancelModal.successMessage,
+                        placeholder:
+                          STRINGS.reservations.cancelModal.placeholder,
+                        finishSuccessAnimation: () => {
+                          dispatch(finishAnimation());
+                        },
+                        onSubmit: motive => onCancel(motive)
+                      }
                     });
                   }
                 : () => {
-                    navigation.navigate('DeleteWithJustificationModal', {
-                      title: STRINGS.reservations.cancelModal.title,
-                      successMessage:
-                        STRINGS.reservations.cancelModal.successMessage,
-                      placeholder: STRINGS.reservations.cancelModal.placeholder,
-                      finishSuccessAnimation: () => {
-                        dispatch(finishAnimation());
-                      },
-                      onSubmit: motive => onCancel(motive)
+                    navigation.navigate('OnlineModals', {
+                      screen: 'DeleteWithJustificationModal',
+                      params: {
+                        title: STRINGS.reservations.cancelModal.title,
+                        successMessage:
+                          STRINGS.reservations.cancelModal.successMessage,
+                        placeholder:
+                          STRINGS.reservations.cancelModal.placeholder,
+                        finishSuccessAnimation: () => {
+                          dispatch(finishAnimation());
+                        },
+                        onSubmit: motive => onCancel(motive)
+                      }
                     });
                   }
             }

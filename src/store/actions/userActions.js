@@ -20,7 +20,9 @@ import {
   LOGOUT_USER_FAILURE,
   LOADING_USER_CONFIGURATION,
   USER_CONFIGURATION_LOADED_SUCCESS,
-  USER_CONFIGURATION_LOADED_FAILURE
+  USER_CONFIGURATION_LOADED_FAILURE,
+  EMAIL_SENT_SUCCESS,
+  EMAIL_SENT_FAILURE
 } from './actionTypes';
 
 export const getToken = async () => {
@@ -92,6 +94,13 @@ export const userConfigurationsLoadedSuccess = configuration => ({
 });
 export const userConfigurationsLoadedFailure = () => ({
   type: USER_CONFIGURATION_LOADED_FAILURE
+});
+
+export const emailSentSuccess = () => ({
+  type: EMAIL_SENT_SUCCESS
+});
+export const emailSentFailure = () => ({
+  type: EMAIL_SENT_FAILURE
 });
 
 export const onUpdateUser = partialUser => dispatch => {
@@ -294,4 +303,28 @@ export const onLogin = ({ email, password }) => dispatch => {
     .catch(() => {
       console.log('Erro ao recuperar token.');
     });
+};
+
+export const onForgotPassword = (
+  email,
+  successCalback = () => {}
+) => dispatch => {
+  getToken()
+    .then(token => {
+      axios({
+        method: 'post',
+        url: API.forgotPassword,
+        headers: { Authorization: `Bearer ${token}` },
+        data: { email }
+      })
+        .then(res => {
+          if (res.status === 200) dispatch(emailSentSuccess());
+          successCalback();
+        })
+        .catch(e => {
+          dispatch(emailSentFailure());
+          console.log('erro ao tentar solicitar alteração de senha: ', e);
+        });
+    })
+    .catch(() => console.log('Erro ao tentar pegar token'));
 };
