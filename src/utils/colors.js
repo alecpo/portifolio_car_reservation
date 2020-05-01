@@ -1,6 +1,8 @@
 const colors = {
-  primary: '#2f5293',
+  primary: 'rgb(46, 82, 146)',
   secondary: 'white',
+  secondaryTransparent: '#555',
+  primaryTransparent: 'rgb(23, 41, 73)',
   black: 'black',
   textInputBorderColorDefault: '#ddd',
   defaultGray: '#aaa',

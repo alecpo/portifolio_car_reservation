@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useCallback } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,9 +16,15 @@ const AllReservationsTopTabNavigator = () => {
 
   const dispatch = useDispatch();
 
-  useLayoutEffect(() => {
-    if (userToken) dispatch(onGetReservations());
+  const getReservations = useCallback(() => {
+    if (userToken) {
+      dispatch(onGetReservations());
+    }
   }, [dispatch, userToken]);
+
+  useLayoutEffect(() => {
+    getReservations();
+  }, [getReservations]);
 
   return (
     <>

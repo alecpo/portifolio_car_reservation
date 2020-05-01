@@ -45,18 +45,21 @@ const StyledDatePicker = ({
     setColor(COLORS.primary);
 
     if (Platform.OS === 'ios') {
-      navigation.navigate('DatePickerModal', {
-        IOSDateTimePicker: () => (
-          <DateTimePicker
-            testID={testID}
-            value={value}
-            onChange={onChange}
-            locale='pt-br'
-            timeZoneOffsetInMinutes={0}
-            is24Hour
-            display='default'
-          />
-        )
+      navigation.navigate('OnlineModals', {
+        screen: 'DatePickerModal',
+        params: {
+          IOSDateTimePicker: () => (
+            <DateTimePicker
+              testID={testID}
+              value={value}
+              onChange={onChange}
+              locale='pt-br'
+              timeZoneOffsetInMinutes={0}
+              is24Hour
+              display='default'
+            />
+          )
+        }
       });
     } else {
       setDatePickerOpen(true);

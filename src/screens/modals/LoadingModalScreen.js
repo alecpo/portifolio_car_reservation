@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components/native';
 
@@ -17,7 +17,6 @@ const LoadingModalScreen = ({ route, navigation }) => {
 
   return (
     <StyledContainer>
-      <StatusBar hidden />
       <StyledContentView>
         {title && (
           <Label

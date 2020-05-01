@@ -21,7 +21,9 @@ const CurrenAndFutureReservationsScreen = ({ navigation }) => {
   useEffect(() => {
     if (userToken)
       if (isLoading && !isAnimating) {
-        navigation.navigate('LoadingModal');
+        navigation.navigate('PublicModals', {
+          screen: 'LoadingModal'
+        });
       } else if (!navigation.isFocused() && !isAnimating) navigation.pop();
   }, [userToken, isLoading, navigation, isAnimating]);
 

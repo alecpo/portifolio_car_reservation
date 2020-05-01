@@ -134,35 +134,44 @@ const CheckinScreen = ({ route, navigation }) => {
   };
 
   const onConfirmDoorsIsOpen = async () => {
-    await navigation.navigate('ConfirmModal', {
-      title: STRINGS.reservations.keyLocation,
-      icon: () => (
-        <Icon
-          iconName='key'
-          iconFaily={MCI}
-          size={55}
-          color={COLORS.darkGray}
-        />
-      ),
-      hasCancelButton: false,
-      onSubmit: onFinishCheckin
+    await navigation.navigate('OnlineModals', {
+      screen: 'ConfirmModal',
+      params: {
+        title: STRINGS.reservations.keyLocation,
+        icon: () => (
+          <Icon
+            iconName='key'
+            iconFaily={MCI}
+            size={55}
+            color={COLORS.darkGray}
+          />
+        ),
+        hasCancelButton: false,
+        onSubmit: onFinishCheckin
+      }
     });
   };
 
   const onClickToOpenDoors = () => {
     dispatch(onOpenDoors(vehicleRequest.vehicle.id));
-    navigation.navigate('LoadingModal', {
-      lottieJson: success,
-      title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
-      finishSuccessAnimation: () =>
-        navigation.navigate('ConfirmModal', {
-          title: STRINGS.reservations.isDoorsOpen,
-          icon: () => (
-            <Icon iconName='unlock-alt' size={55} color={COLORS.darkGray} />
-          ),
-          onCancel: onClickToOpenDoors,
-          onSubmit: onConfirmDoorsIsOpen
-        })
+    navigation.navigate('PublicModals', {
+      screen: 'LoadingModal',
+      params: {
+        lottieJson: success,
+        title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
+        finishSuccessAnimation: () =>
+          navigation.navigate('OnlineModals', {
+            screen: 'ConfirmModal',
+            params: {
+              title: STRINGS.reservations.isDoorsOpen,
+              icon: () => (
+                <Icon iconName='unlock-alt' size={55} color={COLORS.darkGray} />
+              ),
+              onCancel: onClickToOpenDoors,
+              onSubmit: onConfirmDoorsIsOpen
+            }
+          })
+      }
     });
   };
 

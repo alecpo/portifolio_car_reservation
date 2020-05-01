@@ -77,12 +77,15 @@ const PaymentsScreen = ({ navigation }) => {
 
     const title = STRINGS.payments.modalAddCard.modalTitle;
 
-    navigation.navigate('EditModal', {
-      onSubmit: onAddCard,
-      title,
-      editableObject,
-      editedObjectToSubmit,
-      validationSchema
+    navigation.navigate('OnlineModals', {
+      screen: 'EditModal',
+      params: {
+        onSubmit: onAddCard,
+        title,
+        editableObject,
+        editedObjectToSubmit,
+        validationSchema
+      }
     });
   };
 
@@ -97,9 +100,15 @@ const PaymentsScreen = ({ navigation }) => {
   useEffect(() => {
     if (userToken)
       if (isLoading && !isDeletingCard) {
-        navigation.navigate('LoadingModal', { lottieJson: loadingCard });
+        navigation.navigate('PublicModals', {
+          screen: 'LoadingModal',
+          params: { lottieJson: loadingCard }
+        });
       } else if (isDeletingCard)
-        navigation.navigate('LoadingModal', { lottieJson: deletingCard });
+        navigation.navigate('PublicModals', {
+          screen: 'LoadingModal',
+          params: { lottieJson: deletingCard }
+        });
   }, [userToken, isLoading, isDeletingCard, navigation]);
 
   return (
@@ -147,16 +156,19 @@ const PaymentsScreen = ({ navigation }) => {
                 />
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate('ConfirmModal', {
-                      title: STRINGS.payments.confirmDeleteMessage,
-                      icon: () => (
-                        <Icon
-                          name='credit-card'
-                          size={55}
-                          color={COLORS.darkGray}
-                        />
-                      ),
-                      onSubmit: () => onDeleteCard(card.id)
+                    navigation.navigate('OnlineModals', {
+                      screen: 'ConfirmModal',
+                      params: {
+                        title: STRINGS.payments.confirmDeleteMessage,
+                        icon: () => (
+                          <Icon
+                            name='credit-card'
+                            size={55}
+                            color={COLORS.darkGray}
+                          />
+                        ),
+                        onSubmit: () => onDeleteCard(card.id)
+                      }
                     });
                   }}
                   hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}

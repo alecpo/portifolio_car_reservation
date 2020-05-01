@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
 import COLORS from '#/utils/colors';
@@ -14,7 +14,6 @@ const DatePickerModalScreen = ({ route, navigation }) => {
         navigation.pop();
       }}
     >
-      <StatusBar hidden />
       <StyledModalContent>{IOSDateTimePicker()}</StyledModalContent>
     </StyledContainer>
   );

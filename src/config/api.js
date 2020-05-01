@@ -20,7 +20,8 @@ const endPoints = {
   configuration: '/configuration',
   photo: 'formAnswered/photo',
   newFormAnswered: '/newFormAnswered',
-  changeStatus: '/vehicle/change-status'
+  changeStatus: '/vehicle/change-status',
+  forgotPassword: '/forgot-password'
 };
 
 export const SERVER_URL = 'https://api.develop.pickndrive.com.br/api/v1';

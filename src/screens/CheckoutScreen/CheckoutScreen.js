@@ -73,38 +73,49 @@ const CheckoutScreen = ({ route, navigation }) => {
 
   const onClickToCloseDoors = async () => {
     await dispatch(onCloseDoors(vehicleRequest.vehicle.id));
-    navigation.navigate('LoadingModal', {
-      lottieJson: success,
-      title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
-      finishSuccessAnimation: () =>
-        navigation.navigate('ConfirmModal', {
-          title: STRINGS.reservations.checkoutScreen.feedbackForm.isDoorsClose,
-          icon: () => (
-            <Icon iconName='lock' size={55} color={COLORS.darkGray} />
-          ),
-          onCancel: onClickToCloseDoors,
-          onSubmit: onFinishCheckout
-        })
+    navigation.navigate('PublicModals', {
+      screen: 'LoadingModal',
+      params: {
+        lottieJson: success,
+        title: STRINGS.reservations.openCloseDoorAgainSuccessMessage,
+        finishSuccessAnimation: () =>
+          navigation.navigate('OnlineModals', {
+            screen: 'ConfirmModal',
+            params: {
+              title:
+                STRINGS.reservations.checkoutScreen.feedbackForm.isDoorsClose,
+              icon: () => (
+                <Icon iconName='lock' size={55} color={COLORS.darkGray} />
+              ),
+              onCancel: onClickToCloseDoors,
+              onSubmit: onFinishCheckout
+            }
+          })
+      }
     });
   };
 
   const onClickToCheckout = async () => {
-    navigation.navigate('ConfirmModal', {
-      title:
-        STRINGS.reservations.checkoutScreen.feedbackForm.areYouInTheCarTitle,
-      desc:
-        STRINGS.reservations.checkoutScreen.feedbackForm.areYouInTheCarMessage,
-      icon: () => (
-        <Icon
-          iconName='alert-octagon-outline'
-          iconFamily={MCI}
-          size={65}
-          color={COLORS.darkGray}
-        />
-      ),
-      hasCancelButton: false,
-      submitButtonLabel: STRINGS.reservations.closeDoors,
-      onSubmit: onClickToCloseDoors
+    navigation.navigate('Modals', {
+      screen: 'ConfirmModal',
+      params: {
+        title:
+          STRINGS.reservations.checkoutScreen.feedbackForm.areYouInTheCarTitle,
+        desc:
+          STRINGS.reservations.checkoutScreen.feedbackForm
+            .areYouInTheCarMessage,
+        icon: () => (
+          <Icon
+            iconName='alert-octagon-outline'
+            iconFamily={MCI}
+            size={65}
+            color={COLORS.darkGray}
+          />
+        ),
+        hasCancelButton: false,
+        submitButtonLabel: STRINGS.reservations.closeDoors,
+        onSubmit: onClickToCloseDoors
+      }
     });
   };
 
