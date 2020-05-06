@@ -17,7 +17,7 @@ const ConfirmModalScreen = ({ route, navigation }) => {
     icon = () => {},
     hasCancelButton = true,
     submitButtonLabel = null,
-    onCancel = () => navigation.pop(),
+    onCancel = () => {},
     onSubmit = () => {}
   } = route.params ?? {};
 

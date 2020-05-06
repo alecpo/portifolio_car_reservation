@@ -1,7 +1,6 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
-import { useRoute, useFocusEffect } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -45,10 +44,6 @@ const MainBottomTabNavigator = () => {
   const { Navigator, Screen } = createBottomTabNavigator();
 
   const screenOptions = { tabBarIcon: TabBarIcon };
-
-  useFocusEffect(() => {
-    StatusBar.setBackgroundColor(COLORS.primary);
-  });
 
   return (
     <Navigator

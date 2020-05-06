@@ -96,7 +96,7 @@ const CheckoutScreen = ({ route, navigation }) => {
   };
 
   const onClickToCheckout = async () => {
-    navigation.navigate('Modals', {
+    navigation.navigate('OnlineModals', {
       screen: 'ConfirmModal',
       params: {
         title:
