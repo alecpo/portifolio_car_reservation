@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StatusBar } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -67,17 +65,7 @@ const RootStackNavigator = () => {
       open: config,
       close: config
     },
-    headerTitle: () => (
-      <StyledLogo tintColor={COLORS.secondaryTransparent} source={logo} />
-    ),
-    headerStyle: {
-      backgroundColor: COLORS.primaryTransparent,
-      elevation: 0,
-      shadowOpacity: 0,
-      height: 60
-    },
-    headerLeft: null,
-    headerTitleAlign: 'center',
+    headerShown: false,
     cardStyle: { backgroundColor: 'transparent' },
     cardOverlayEnabled: true,
     cardStyleInterpolator: ({ current, layouts }) => {
@@ -108,9 +96,6 @@ const RootStackNavigator = () => {
   if (isLoading) return <SplashScreen />;
 
   const OfflineNavigator = () => {
-    useFocusEffect(() => {
-      StatusBar.setBackgroundColor(COLORS.primary);
-    });
     return (
       <Navigator
         screenOptions={{
@@ -118,8 +103,7 @@ const RootStackNavigator = () => {
           headerStyle: {
             backgroundColor: COLORS.primary,
             elevation: 0,
-            shadowOpacity: 0,
-            height: 60
+            shadowOpacity: 0
           },
           headerTintColor: COLORS.secondary,
           headerTitleAlign: 'center'
@@ -150,35 +134,30 @@ const RootStackNavigator = () => {
     );
   };
 
-  const OnlineModalsNavigator = () => {
-    useFocusEffect(() => {
-      StatusBar.setBackgroundColor(COLORS.primaryTransparent);
-    });
-    return (
-      <Navigator screenOptions={modalAnimationConfig}>
-        <Screen name='EditModal' component={EditModalScreen} />
-        <Screen name='ConfirmModal' component={ConfirmModalScreen} />
-        <Screen name='DatePickerModal' component={DatePickerModalScreen} />
-        <Screen
-          name='ReservationHistoryDetailsModal'
-          component={ReservationHistoryDetailsModalScreen}
-        />
-        <Screen
-          name='DeleteWithJustificationModal'
-          component={DeleteWithJustificationModalScreen}
-        />
-        <Screen
-          name='CancellingAfterTimeModal'
-          component={CancellingAfterTimeModalScreen}
-        />
-        <Screen name='LoadingModal' component={LoadingModalScreen} />
-      </Navigator>
-    );
-  };
+  const PrivateModalsNavigator = () => (
+    <Navigator screenOptions={modalAnimationConfig} mode='modal'>
+      <Screen name='EditModal' component={EditModalScreen} />
+      <Screen name='ConfirmModal' component={ConfirmModalScreen} />
+      <Screen name='DatePickerModal' component={DatePickerModalScreen} />
+      <Screen
+        name='ReservationHistoryDetailsModal'
+        component={ReservationHistoryDetailsModalScreen}
+      />
+      <Screen
+        name='DeleteWithJustificationModal'
+        component={DeleteWithJustificationModalScreen}
+      />
+      <Screen
+        name='CancellingAfterTimeModal'
+        component={CancellingAfterTimeModalScreen}
+      />
+      <Screen name='LoadingModal' component={LoadingModalScreen} />
+    </Navigator>
+  );
 
   const OnlineNavigator = () => {
     return (
-      <Navigator>
+      <Navigator headerMode='screen' mode='modal'>
         <Screen
           name='Main'
           options={{
@@ -186,8 +165,7 @@ const RootStackNavigator = () => {
             headerStyle: {
               backgroundColor: COLORS.primary,
               elevation: 0,
-              shadowOpacity: 0,
-              height: 60
+              shadowOpacity: 0
             },
             headerLeft: null,
             headerTintColor: COLORS.secondary,
@@ -202,25 +180,24 @@ const RootStackNavigator = () => {
             cardStyle: { backgroundColor: 'transparent' },
             cardOverlayEnabled: true
           }}
-          component={OnlineModalsNavigator}
+          component={PrivateModalsNavigator}
         />
       </Navigator>
     );
   };
 
-  const PublicModalsNavigator = () => {
-    useFocusEffect(() => {
-      StatusBar.setBackgroundColor(COLORS.primaryTransparent);
-    });
-    return (
-      <Navigator screenOptions={modalAnimationConfig}>
-        <Screen name='LoadingModal' component={LoadingModalScreen} />
-      </Navigator>
-    );
-  };
+  const PublicModalsNavigator = () => (
+    <Navigator screenOptions={modalAnimationConfig}>
+      <Screen name='LoadingModal' component={LoadingModalScreen} />
+    </Navigator>
+  );
 
   return (
-    <Navigator screenOptions={{ headerShown: false }} headerMode='float'>
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      headerMode='screen'
+      mode='modal'
+    >
       <>
         {!token ? (
           <>

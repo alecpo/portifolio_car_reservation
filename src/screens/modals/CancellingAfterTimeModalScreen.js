@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
 import Label from '#/components/Label';
