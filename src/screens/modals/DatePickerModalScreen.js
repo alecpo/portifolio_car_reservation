@@ -5,13 +5,14 @@ import styled from 'styled-components/native';
 import COLORS from '#/utils/colors';
 
 const DatePickerModalScreen = ({ route, navigation }) => {
-  const { IOSDateTimePicker } = route.params;
+  const { IOSDateTimePicker, onCloseModal = () => {} } = route.params;
 
   return (
     <StyledContainer
       activeOpacity={1}
-      onPress={() => {
-        navigation.pop();
+      onPress={async () => {
+        await navigation.pop();
+        onCloseModal();
       }}
     >
       <StyledModalContent>{IOSDateTimePicker()}</StyledModalContent>

@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import HomeScreen from '#/screens/HomeScreen';
+import CreateResevationStackNavigator from '#/navigation/CreateResevationStackNavigator';
 import AllReservationsTopTabNavigator from '#/navigation/AllReservationsTopTabNavigator';
 import PaymentsScreen from '#/screens/PaymentsScreen';
 import ProfileScreen from '#/screens/ProfileScreen';
@@ -14,7 +14,7 @@ import COLORS from '#/utils/colors';
 
 const selectIconName = key => {
   switch (key) {
-    case 'Home':
+    case 'CreateResevation':
       return 'event-note';
     case 'AllReservations':
       return 'update';
@@ -43,19 +43,20 @@ const TabBarIcon = ({ focused }) => {
 const MainBottomTabNavigator = () => {
   const { Navigator, Screen } = createBottomTabNavigator();
 
-  const screenOptions = { tabBarIcon: TabBarIcon };
-
   return (
     <Navigator
-      screenOptions={screenOptions}
+      screenOptions={{ tabBarIcon: TabBarIcon }}
       tabBarOptions={{
         showLabel: false,
         activeTintColor: COLORS.primary,
         inactiveTintColor: COLORS.defaultGray
       }}
-      initialRouteName='AllReservations'
+      initialRouteName='CreateResevation'
     >
-      <Screen name='Home' component={HomeScreen} />
+      <Screen
+        name='CreateResevation'
+        component={CreateResevationStackNavigator}
+      />
       <Screen
         name='AllReservations'
         component={AllReservationsTopTabNavigator}

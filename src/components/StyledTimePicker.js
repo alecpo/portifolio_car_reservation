@@ -12,37 +12,37 @@ import Label from '#/components/Label';
 import COLORS from '#/utils/colors';
 import SPACING from '#/utils/spacing';
 
-const StyledDatePicker = ({
+const StyledTimePicker = ({
   testID,
   hasLabel,
   label,
+  labelAlign,
   formikValue,
-  formikHandleChange,
-  labelAlign
+  formikHandleChange
 }) => {
-  const [isDatePickerOpen, setDatePickerOpen] = useState(false);
-  const [value, setValue] = useState(
-    formikValue ? moment(formikValue).toDate() : new Date()
+  const [isTimePickerOpen, setTimePickerOpen] = useState(false);
+  const [time, setTime] = useState(
+    formikValue ? moment(formikValue).toDate() : moment()
   );
   const [color, setColor] = useState(COLORS.defaultGray);
 
   const navigation = useNavigation();
 
-  const onChange = (event, date) => {
-    setValue(date);
+  const onChange = (event, newHour) => {
+    setTime(newHour);
 
-    const formatedDate = moment(date)
+    const formatedTime = moment(newHour)
       .parseZone()
-      .format('YYYY-MM-DD');
+      .format('YYYY-MM-DD HH:mm');
 
-    formikHandleChange(formatedDate);
+    formikHandleChange(formatedTime);
 
-    if (Platform.OS !== 'ios') setDatePickerOpen(false);
+    if (Platform.OS !== 'ios') setTimePickerOpen(false);
 
     setColor(COLORS.defaultGray);
   };
 
-  const openDatePicker = () => {
+  const openTimePicker = () => {
     setColor(COLORS.primary);
 
     if (Platform.OS === 'ios') {
@@ -52,18 +52,16 @@ const StyledDatePicker = ({
           IOSDateTimePicker: () => (
             <DateTimePicker
               testID={testID}
-              value={value}
-              onChange={onChange}
+              value={time}
               locale='pt-br'
-              timeZoneOffsetInMinutes={0}
-              is24Hour
-              display='default'
+              onChange={onChange}
+              mode='time'
             />
           )
         }
       });
     } else {
-      setDatePickerOpen(true);
+      setTimePickerOpen(true);
     }
   };
 
@@ -78,19 +76,18 @@ const StyledDatePicker = ({
           marginBottom={SPACING.smallPlus}
         />
       )}
-      <StyledInputView onPress={openDatePicker}>
+      <StyledInputView onPress={openTimePicker}>
         <Label
           textAlign='center'
-          content={moment(value)
+          content={moment(time)
             .locale('pt-br')
-            .format('ll')}
+            .format('HH:mm')}
         />
       </StyledInputView>
 
-      {isDatePickerOpen && Platform.OS !== 'ios' && (
+      {isTimePickerOpen && Platform.OS !== 'ios' && (
         <DateTimePicker
-          testID={testID}
-          value={value}
+          value={time}
           onChange={onChange}
           is24Hour
           display='default'
@@ -111,14 +108,14 @@ const StyledInputView = styled.TouchableOpacity`
   padding: ${SPACING.small}px;
 `;
 
-StyledDatePicker.defaultProps = {
+StyledTimePicker.defaultProps = {
   hasLabel: false,
   label: '',
   testID: '',
   labelAlign: 'left'
 };
 
-StyledDatePicker.propTypes = {
+StyledTimePicker.propTypes = {
   hasLabel: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
@@ -127,4 +124,4 @@ StyledDatePicker.propTypes = {
   formikHandleChange: PropTypes.func.isRequired
 };
 
-export default StyledDatePicker;
+export default StyledTimePicker;

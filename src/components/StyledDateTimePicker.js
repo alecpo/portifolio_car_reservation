@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -12,7 +12,9 @@ import Label from '#/components/Label';
 import COLORS from '#/utils/colors';
 import SPACING from '#/utils/spacing';
 
-const StyledDatePicker = ({
+//const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+
+const StyledDateTimePicker = ({
   testID,
   hasLabel,
   label,
@@ -21,45 +23,76 @@ const StyledDatePicker = ({
   labelAlign
 }) => {
   const [isDatePickerOpen, setDatePickerOpen] = useState(false);
-  const [value, setValue] = useState(
-    formikValue ? moment(formikValue).toDate() : new Date()
+  const [isTimePickerOpen, setTimePickerOpen] = useState(false);
+
+  const [date, setDate] = useState(
+    formikValue ? moment(formikValue).toDate() : moment()
   );
+  const [time, setTime] = useState(
+    formikValue ? moment(formikValue).toDate() : moment()
+  );
+
+  const [dateTime, setDateTime] = useState(moment());
+
   const [color, setColor] = useState(COLORS.defaultGray);
 
   const navigation = useNavigation();
 
-  const onChange = (event, date) => {
-    setValue(date);
-
-    const formatedDate = moment(date)
-      .parseZone()
-      .format('YYYY-MM-DD');
-
-    formikHandleChange(formatedDate);
+  const onChangeDate = (event, value) => {
+    setDate(value);
 
     if (Platform.OS !== 'ios') setDatePickerOpen(false);
 
     setColor(COLORS.defaultGray);
   };
 
-  const openDatePicker = () => {
-    setColor(COLORS.primary);
+  const onChangeTime = (event, value) => {
+    setTime(value);
 
+    /*  const formatedDate = moment(date).format('YYYY-MM-DD');
+    const formatedTime = moment(value).format('HH:mm'); */
+
+    if (Platform.OS !== 'ios') setDatePickerOpen(false);
+
+    setColor(COLORS.defaultGray);
+  };
+
+  const openTimePicker = () => {
+    console.log('data ao abrir modal de hora: ', date);
     if (Platform.OS === 'ios') {
       navigation.navigate('OnlineModals', {
         screen: 'DatePickerModal',
         params: {
           IOSDateTimePicker: () => (
             <DateTimePicker
-              testID={testID}
-              value={value}
-              onChange={onChange}
+              value={time}
+              onChange={onChangeTime}
+              mode='time'
               locale='pt-br'
-              timeZoneOffsetInMinutes={0}
-              is24Hour
-              display='default'
             />
-          )
+          ),
+          onCloseModal: () =>
+            console.log('data ao fechar modal de hora: ', date)
+        }
+      });
+    } else {
+      setTimePickerOpen(true);
+    }
+  };
+
+  const openDatePicker = () => {
+    if (Platform.OS === 'ios') {
+      navigation.navigate('OnlineModals', {
+        screen: 'DatePickerModal',
+        params: {
+          IOSDateTimePicker: () => (
+            <DateTimePicker
+              value={date}
+              onChange={onChangeDate}
+              locale='pt-br'
+            />
+          ),
+          onCloseModal: openTimePicker
         }
       });
     } else {
@@ -81,17 +114,15 @@ const StyledDatePicker = ({
       <StyledInputView onPress={openDatePicker}>
         <Label
           textAlign='center'
-          content={moment(value)
-            .locale('pt-br')
-            .format('ll')}
+          content={dateTime.locale('pt-br').format('lll')}
         />
       </StyledInputView>
 
       {isDatePickerOpen && Platform.OS !== 'ios' && (
         <DateTimePicker
           testID={testID}
-          value={value}
-          onChange={onChange}
+          value={date}
+          onChange={onChangeDate}
           is24Hour
           display='default'
         />
@@ -111,14 +142,14 @@ const StyledInputView = styled.TouchableOpacity`
   padding: ${SPACING.small}px;
 `;
 
-StyledDatePicker.defaultProps = {
+StyledDateTimePicker.defaultProps = {
   hasLabel: false,
   label: '',
   testID: '',
   labelAlign: 'left'
 };
 
-StyledDatePicker.propTypes = {
+StyledDateTimePicker.propTypes = {
   hasLabel: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
@@ -127,4 +158,4 @@ StyledDatePicker.propTypes = {
   formikHandleChange: PropTypes.func.isRequired
 };
 
-export default StyledDatePicker;
+export default StyledDateTimePicker;
